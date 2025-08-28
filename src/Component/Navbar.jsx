@@ -4,11 +4,17 @@ const Navbar = ({ isDark, toggleTheme }) => {
   return (
     <div className='flex justify-between items-center w-full'>
       <div className='flex items-center'>
+        <span><lord-icon
+               src="https://cdn.lordicon.com/jeuxydnh.json"
+               trigger="hover"
+               stroke="light">
+              </lord-icon>
+              </span>
         <a href="/" rel="noopener noreferrer">
           <span className={`text-lg font-medium cursor-pointer transition-colors duration-200 ${
             isDark ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-600'
           }`}>
-            Arnav Sharma
+            Arnav 
           </span>
         </a>
       </div>
@@ -26,7 +32,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
           <span className={`transition-colors text-sm cursor-pointer ${
             isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
           }`}>
-            Twitter
+            X
           </span>
         </a>
         

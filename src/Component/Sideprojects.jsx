@@ -3,25 +3,25 @@ import React from 'react';
 const Sideprojects = ({ isDark }) => {
   const projects = [
     {
-      title: "Your Main Project 1",
-      description: "Description of your first main project. Replace this with your actual project details.",
+      title: "R-Vision",
+      description: "AI Text to image generation place",
       tech: "React / Node.js / MongoDB / Express",
       liveUrl: "#",
-      githubUrl: "#"
+      githubUrl: "https://github.com/Arnav270803/Rvision"
     },
     {
-      title: "Your Main Project 2",
-      description: "Description of your second main project. Replace this with your actual project details.",
-      tech: "Next.js / TypeScript / PostgreSQL / Tailwind CSS",
-      liveUrl: "#",
-      githubUrl: "#"
+      title: "WhisperFlix",
+      description: "An underrated Binge-watching that genuinely shows you underrated old cinema",
+      tech: " React / Tailwind CSS",
+      liveUrl: "https://whisper-flix.vercel.app/",
+      githubUrl: "https://github.com/Arnav270803/WhisperFlix"
     },
     {
-      title: "Your SaaS Project",
-      description: "Your SaaS service that gave you practical marketing experience. Replace this with details about your actual SaaS project.",
-      tech: "React / Node.js / Stripe / AWS",
-      liveUrl: "#",
-      githubUrl: "#"
+      title: "Vynix",
+      description: "Text to video generator using manim and LLM's ",
+      tech: "React / Node.js / Express.js ",
+      liveUrl: "https://vynix-one.vercel.app/",
+      githubUrl: "https://github.com/Arnav270803/Vynix"
     }
   ];
 
@@ -84,14 +84,14 @@ const Sideprojects = ({ isDark }) => {
             Get in touch →
           </a>
           <a 
-            href="https://www.linkedin.com/in/arnav-sharma2708/" 
+            href="https://x.com/Bokinsha" 
             target="_blank" 
             rel="noopener noreferrer" 
             className={`transition-colors ${
               isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
             }`}
           >
-            LinkedIn
+            X
           </a>
         </div>
       </div>
