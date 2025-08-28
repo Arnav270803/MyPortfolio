@@ -1,69 +1,70 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ isDark, toggleTheme }) => {
   return (
-    <div className='flex justify-between top-0 left-10 right-10 py-6 items-center w-full px-6 lg:px-16'>{/*Main div that have all the main characterstic */}
-      
-      <div className='flex items-center gap-1'> {/*div for my first button*/}
-        <a href="/" target="_blank" rel="noopener noreferrer">
-        <button className="flex items-center text-md text-white font-sans bg-clip-text text-transparent cursor-pointer bg-gray-900 border border-gray-700 px-3 py-2 rounded-lg hover:bg-gray-800 hover:border-gray-600 transition">{/*My home button */}
-          <span>{/*using lord-icons for my home logo */}
-            <lord-icon 
-              src="https://cdn.lordicon.com/jeuxydnh.json"
-              trigger="hover"
-              colors="primary:#ffffff,secondary:#b4b4b4"
-              style={{ width: "24px", height: "24px" }}
-            ></lord-icon>
+    <div className='flex justify-between items-center w-full'>
+      <div className='flex items-center'>
+        <a href="/" rel="noopener noreferrer">
+          <span className={`text-lg font-medium cursor-pointer transition-colors duration-200 ${
+            isDark ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-600'
+          }`}>
+            Arnav Sharma
           </span>
-          <span className='ml-1 '>Home</span>{/*using ml-1 to allign the text with my image */}
-        </button>
+        </a>
+      </div>
+      
+      <div className='flex items-center gap-6'>
+        <a href="https://www.linkedin.com/in/arnav-sharma2708/" target="_blank" rel="noopener noreferrer">
+          <span className={`transition-colors text-sm cursor-pointer ${
+            isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+          }`}>
+            LinkedIn
+          </span>
         </a>
         
-      </div>
-
-    <div className='flex items-center gap-4'>{/*this div for my socials */}
-      <a href="https://www.linkedin.com/in/arnav-sharma2708/" target="_blank" rel="noopener noreferrer">
-        <button className='flex  items-center  cursor-pointer'>{/*linkedin button */}
-      <lord-icon
-    src="https://cdn.lordicon.com/dsdlqjde.json"
-    trigger="hover"
-    colors="primary:#ffffff,secondary:#ffffff">
-    </lord-icon>
-      </button>
-      </a>
-
         <a href="https://x.com/Bokinsha" target="_blank" rel="noopener noreferrer">
-         <button className='flex items-center cursor-pointer' >{/*button for X */}
-        <lord-icon
-    src="https://cdn.lordicon.com/yizwahhw.json"
-    trigger="hover"
-    colors="primary:#ffffff,secondary:#ffffff">
-    </lord-icon>
-      </button>
-      </a>
-
+          <span className={`transition-colors text-sm cursor-pointer ${
+            isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+          }`}>
+            Twitter
+          </span>
+        </a>
+        
         <a href="https://github.com/Arnav270803" target="_blank" rel="noopener noreferrer">
-           <button className='flex items-center cursor-pointer'>{/*this div for my github  */}
-        <lord-icon
-    src="https://cdn.lordicon.com/jjxzcivr.json"
-    trigger="hover"
-    colors="primary:#ffffff,secondary:#ffffff">
-    </lord-icon>
-      </button>
-      </a>
-     
+          <span className={`transition-colors text-sm cursor-pointer ${
+            isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+          }`}>
+            GitHub
+          </span>
+        </a>
+        
         <a href="mailto:arnvsharma2708@gmail.com" target="_blank" rel="noopener noreferrer">
-          <button className='flex items-center cursor-pointer'>{/*this div for my mail */}
-        <lord-icon
-    src="https://cdn.lordicon.com/vpbspaec.json"
-    trigger="hover"
-    colors="primary:#ffffff,secondary:#ffffff">
-</lord-icon>
-      </button>
-      </a>
-    </div>
+          <span className={`transition-colors text-sm cursor-pointer ${
+            isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+          }`}>
+            Contact
+          </span>
+        </a>
 
+        {/* Theme Toggle Button */}
+        <button
+          onClick={toggleTheme}
+          className={`p-2 rounded-lg cursor-pointer transition-colors ${
+            isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
+          }`}
+          aria-label="Toggle theme"
+        >
+          {isDark ? (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          ) : (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          )}
+        </button>
+      </div>
     </div>
   );
 };
