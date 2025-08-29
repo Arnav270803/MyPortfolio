@@ -5,9 +5,9 @@ const Navbar = ({ isDark, toggleTheme }) => {
     <div className='flex justify-between items-center w-full'>
       <div className='flex items-center'>
         <span><lord-icon
-               src="https://cdn.lordicon.com/jeuxydnh.json"
-               trigger="hover"
-               stroke="light">
+                src="https://cdn.lordicon.com/jeuxydnh.json"
+                trigger="hover"
+                colors="primary:#b4b4b4,secondary:#08a88a">
               </lord-icon>
               </span>
         <a href="/" rel="noopener noreferrer">
@@ -20,37 +20,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
       </div>
       
       <div className='flex items-center gap-6'>
-        <a href="https://www.linkedin.com/in/arnav-sharma2708/" target="_blank" rel="noopener noreferrer">
-          <span className={`transition-colors text-sm cursor-pointer ${
-            isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-          }`}>
-            LinkedIn
-          </span>
-        </a>
-        
-        <a href="https://x.com/Bokinsha" target="_blank" rel="noopener noreferrer">
-          <span className={`transition-colors text-sm cursor-pointer ${
-            isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-          }`}>
-            X
-          </span>
-        </a>
-        
-        <a href="https://github.com/Arnav270803" target="_blank" rel="noopener noreferrer">
-          <span className={`transition-colors text-sm cursor-pointer ${
-            isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-          }`}>
-            GitHub
-          </span>
-        </a>
-        
-        <a href="mailto:arnvsharma2708@gmail.com" target="_blank" rel="noopener noreferrer">
-          <span className={`transition-colors text-sm cursor-pointer ${
-            isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-          }`}>
-            Contact
-          </span>
-        </a>
+       
 
         {/* Theme Toggle Button */}
         <button
