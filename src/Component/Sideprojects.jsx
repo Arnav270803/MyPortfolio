@@ -34,7 +34,7 @@ const RVisionProject = ({ isDark }) => (
       AI Text to image generation place
     </div>
     <div className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-      React / Node.js / MongoDB / Express
+      vite / React / Tailwind CSS / Node.js / MongoDB / Express / motion.dev / lordicon / Clipdrop API / JWT
     </div>
   </div>
 );
@@ -73,7 +73,7 @@ const WhisperFlixProject = ({ isDark }) => (
       An underrated Binge-watching that genuinely shows you underrated old cinema
     </div>
     <div className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-      React / Tailwind CSS
+      React / Tailwind CSS / motion.dev / lordicon
     </div>
   </div>
 );
@@ -134,6 +134,14 @@ const Sideprojects = ({ isDark }) => {
         <RVisionProject isDark={isDark} />
         <WhisperFlixProject isDark={isDark} />
         <VynixProject isDark={isDark} />
+      </div>
+      <div className='pt-10 text-xs text-gray-400 flex justify-between items-center w-full'>
+    <div>
+      @my-portfolio
+    </div>
+    <div>
+      Build in react
+    </div>
       </div>
     </div>
   );
