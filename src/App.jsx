@@ -14,15 +14,15 @@ const App = () => {
 
   return (
     <div className={`${isDark ? 'bg-black text-white' : 'bg-white text-gray-900'} min-h-screen transition-colors duration-300`}>
-      <div className='max-w-2xl mx-auto px-6 py-12'>
+      <div className='max-w-2xl mx-auto px-6 py-5'>
         <Navbar isDark={isDark} toggleTheme={toggleTheme} />
-        <div className='mt-5'>
+        <div className='mt-2'>
           <Logos isDark={isDark}/>
         </div>
-        <div className='mt-10'>
+        <div className='mt-4'>
           <MyIntro isDark={isDark} />
         </div>
-        <div className='mt-12'>
+        <div className='mt-6'>
           <Sideprojects isDark={isDark} />
         </div>
         

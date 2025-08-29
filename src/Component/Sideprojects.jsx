@@ -27,13 +27,13 @@ const Sideprojects = ({ isDark }) => {
 
   return (
     <div className="w-full">
-      <h2 className={`text-2xl font-medium mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+      <h2 className={`text-2xl underline underline-offset-4 font-medium mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
         Projects
       </h2>
       
-      <div className="space-y-8">
+      <div className="space-y-4">
         {projects.map((project, index) => (
-          <div key={index} className={`pb-8 ${index !== projects.length - 1 ? `border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}` : ''}`}>
+          <div key={index} className={`pb-2 ${index !== projects.length - 1 ? `border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}` : ''}`}>
             <div className="flex items-start justify-between mb-3">
               <h3 className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 {project.title}
@@ -67,34 +67,7 @@ const Sideprojects = ({ isDark }) => {
         ))}
       </div>
       
-      <div className={`mt-16 pt-8 border-t ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-        <h2 className={`text-2xl font-medium mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-          Let's work together
-        </h2>
-        <p className={`mb-6 leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-          I'm always open to discussing new opportunities and interesting projects.
-        </p>
-        <div className="flex items-center gap-6">
-          <a 
-            href="mailto:arnvsharma2708@gmail.com" 
-            className={`font-medium transition-colors ${
-              isDark ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-600'
-            }`}
-          >
-            Get in touch →
-          </a>
-          <a 
-            href="https://x.com/Bokinsha" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className={`transition-colors ${
-              isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-            }`}
-          >
-            X
-          </a>
-        </div>
-      </div>
+      
     </div>
   );
 };

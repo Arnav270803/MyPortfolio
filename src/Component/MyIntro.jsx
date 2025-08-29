@@ -3,8 +3,8 @@ import React from 'react';
 const MyIntro = ({ isDark }) => {
   return (
     <div className="w-full">
-      <h1 className={`text-4xl font-medium mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-        Hi, I'm Arnav Sharma
+      <h1 className={`text-4xl underline underline-offset-4 cursor-pointer font-medium mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+        Hay, I'm Arnav 
       </h1>
       
       <div className={`space-y-3 text-base leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
