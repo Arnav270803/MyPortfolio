@@ -10,16 +10,6 @@ const RVisionProject = ({ isDark }) => (
       <div className="flex items-center gap-4">
         <div>
           <a
-            href="#"
-            className={`text-sm transition-colors ${
-              isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-            }`}
-          >
-            Live →
-          </a>
-        </div>
-        <div>
-          <a
             href="https://github.com/Arnav270803/Rvision"
             className={`text-sm transition-colors ${
               isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
@@ -46,7 +36,12 @@ const WhisperFlixProject = ({ isDark }) => (
       <div className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
         WhisperFlix
       </div>
+      
       <div className="flex items-center gap-4">
+        <div className={`text-sm transition-colors hover:text-red-500 animate-pulse text-red-500 ${
+          isDark ? '' : ''}`}>
+            Ongoing
+        </div>
         <div>
           <a
             href="https://whisper-flix.vercel.app/"
