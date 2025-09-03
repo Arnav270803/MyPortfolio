@@ -117,6 +117,50 @@ const VynixProject = ({ isDark }) => (
   </div>
 );
 
+
+const Teachers_ERP = ({ isDark }) => (
+  <div className="pb-2">
+    <div className="flex items-start justify-between mb-3">
+      <div className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+        Teacher's ERP
+      </div>
+      <div className="flex items-center gap-4">
+        <div className={`text-sm transition-colors hover:text-red-500 animate-pulse text-red-500 ${
+              isDark ? '' : ''
+            }`}>
+            Ongoing
+        </div>
+        <div>
+          <a
+            href="https://teacher-erp-theta.vercel.app/"
+            className={`text-sm transition-colors ${
+              isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
+            Live →
+          </a>
+        </div>
+        <div>
+          <a
+            href="https://github.com/Arnav270803/Teacher-ERP"
+            className={`text-sm transition-colors ${
+              isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
+            Code →
+          </a>
+        </div>
+      </div>
+    </div>
+    <div className={`mb-3 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+      Better solution for teachers then regular ERP
+    </div>
+    <div className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
+      React / Node.js / Express.js
+    </div>
+  </div>
+);
+
 // Main Component
 const Sideprojects = ({ isDark }) => {
   return (
@@ -129,6 +173,7 @@ const Sideprojects = ({ isDark }) => {
         <RVisionProject isDark={isDark} />
         <WhisperFlixProject isDark={isDark} />
         <VynixProject isDark={isDark} />
+        <Teachers_ERP isDark={isDark} />
       </div>
       <div className='pt-10 text-xs text-gray-400 flex justify-between items-center w-full'>
     <div>
