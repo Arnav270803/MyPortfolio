@@ -156,13 +156,14 @@ const Teachers_ERP = ({ isDark }) => (
       Better solution for teachers then regular ERP
     </div>
     <div className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-      React / Node.js / Express.js
+      React / Tailwind / Node.js / SQL / Shadcn / Prisma
     </div>
   </div>
 );
 
 // Main Component
 const Sideprojects = ({ isDark }) => {
+
   return (
     <div className="w-full">
       <h2 className={`text-2xl underline underline-offset-4 font-medium mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
