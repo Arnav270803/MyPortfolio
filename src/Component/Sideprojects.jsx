@@ -88,7 +88,7 @@ const VynixProject = ({ isDark }) => (
         </div>
         <div>
           <a
-            href="https://vynix-one.vercel.app/"
+            href="https://vynix-wnyp.vercel.app/"
             className={`text-sm transition-colors ${
               isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
             }`}
@@ -165,6 +165,7 @@ const Teachers_ERP = ({ isDark }) => (
 const Sideprojects = ({ isDark }) => {
 
   return (
+    
     <div className="w-full">
       <h2 className={`text-2xl underline underline-offset-4 font-medium mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
         Projects
