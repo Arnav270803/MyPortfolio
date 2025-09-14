@@ -2,9 +2,17 @@ import React from 'react';
 
 const MyIntro = ({ isDark }) => {
   return (
+    <>
+        <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+        />
+
     <div className="w-full">
-      <h1 className={`text-4xl underline underline-offset-4 cursor-pointer font-medium mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-        Hay, I'm Arnav 
+      <h1 className={`text-5xl underline underline-offset-4 cursor-pointer font-medium mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}
+        style={{fontFamily: 'Caveat, cursive'}}>     
+            Hay, I'm Arnav 
+
       </h1>
       
       <div className={`space-y-3 text-base leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
@@ -36,6 +44,7 @@ const MyIntro = ({ isDark }) => {
         </p>
       </div>
     </div>
+    </>
   );
 };
 

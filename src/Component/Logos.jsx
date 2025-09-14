@@ -3,6 +3,7 @@ import React from 'react';
 const Logos = ({ isDark }) => {
   const email = 'arnavsharma2708@gmail.com';
   return (
+
     <div className="flex items-center gap-5">
       <span className="cursor-pointer">
         <a href="https://www.linkedin.com/in/arnav-sharma2708/">
