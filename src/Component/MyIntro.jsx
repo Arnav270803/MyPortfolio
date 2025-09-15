@@ -7,8 +7,8 @@ const MyIntro = ({ isDark }) => {
         href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap"
         rel="stylesheet"
         />
-
-    <div className="w-full">
+  
+    <div className="w-full px-6 ">
       <h1 className={`text-5xl underline underline-offset-4 cursor-pointer font-medium mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}
         style={{fontFamily: 'Caveat, cursive'}}>     
             Hay, I'm Arnav 
@@ -44,6 +44,8 @@ const MyIntro = ({ isDark }) => {
         </p>
       </div>
     </div>
+    <div className={`border-b border-gray-800 ${isDark ? 'border-gray-800' : 'border-neutral-200'} py-3`}>
+  </div>
     </>
   );
 };

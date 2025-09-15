@@ -23,7 +23,8 @@ const Navbar = ({ isDark, toggleTheme }) => {
         rel="stylesheet"
       />
     
-    <div className='flex justify-between items-center mb-4 w-full'>
+    <div className={`border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
+    <div className='flex justify-between items-center px-6 my-4  mb-4 w-full'>
       <div className='flex items-center'>
         <span>
           <lord-icon
@@ -74,6 +75,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
           )}
         </button>
       </div>
+    </div>
     </div>
     </>
   );

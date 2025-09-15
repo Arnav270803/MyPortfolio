@@ -4,7 +4,8 @@ const Logos = ({ isDark }) => {
   const email = 'arnavsharma2708@gmail.com';
   return (
 
-    <div className="flex items-center gap-5">
+    <div className={`border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
+    <div className="flex items-center justify-end gap-7 px-6">
       <span className="cursor-pointer">
         <a href="https://www.linkedin.com/in/arnav-sharma2708/">
           {isDark ? (
@@ -91,6 +92,7 @@ const Logos = ({ isDark }) => {
         </a>
       </span>
     </div>
+  </div>
   );
 };
 

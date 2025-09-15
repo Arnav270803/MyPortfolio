@@ -2,7 +2,7 @@ import React from 'react';
 
 // R-Vision Project
 const RVisionProject = ({ isDark }) => (
-  <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
+  <div className={`pb-2 px-6 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
     <div className="flex items-start justify-between mb-3">
       <div className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
         R-Vision
@@ -31,7 +31,7 @@ const RVisionProject = ({ isDark }) => (
 
 // WhisperFlix Project
 const WhisperFlixProject = ({ isDark }) => (
-  <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
+  <div className={`pb-2 px-6 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
     <div className="flex items-start justify-between mb-3">
       <div className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
         WhisperFlix
@@ -75,7 +75,7 @@ const WhisperFlixProject = ({ isDark }) => (
 
 // Vynix Project
 const VynixProject = ({ isDark }) => (
-  <div className="pb-2">
+  <div className="pb-2 px-6">
     <div className="flex items-start justify-between mb-3">
       <div className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
         Vynix
@@ -119,7 +119,7 @@ const VynixProject = ({ isDark }) => (
 
 
 const Teachers_ERP = ({ isDark }) => (
-  <div className="pb-2">
+  <div className="pb-2 px-6">
     <div className="flex items-start justify-between mb-3">
       <div className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
         Teacher's ERP
@@ -167,7 +167,7 @@ const Sideprojects = ({ isDark }) => {
   return (
     
     <div className="w-full">
-      <h2 className={`text-2xl underline underline-offset-4 font-medium mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+      <h2 className={`text-2xl px-6 underline underline-offset-4 font-medium mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
         Projects
       </h2>
       
@@ -177,7 +177,7 @@ const Sideprojects = ({ isDark }) => {
         <VynixProject isDark={isDark} />
         <Teachers_ERP isDark={isDark} />
       </div>
-      <div className='pt-10 text-xs text-gray-400 flex justify-between items-center w-full'>
+      <div className={`pt-10 border-t border-gray-800 ${isDark ? 'border-gray-800' : 'border-neutral-200'} px-2 text-xs text-gray-400 flex justify-between items-center w-full`}>
     <div>
       @my-portfolio
     </div>
