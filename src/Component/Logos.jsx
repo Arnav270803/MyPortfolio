@@ -29,28 +29,6 @@ const Logos = ({ isDark }) => {
       </span>
 
       <span className="cursor-pointer">
-        <a href="https://x.com/Bokinsha">
-          {isDark ? (
-            <lord-icon
-              src="https://cdn.lordicon.com/yizwahhw.json"
-              trigger="hover"
-              stroke="bold"
-              colors="primary:#ffffff,secondary:#08a88a"
-              style={{ width: '20px', height: '20px' }} 
-            ></lord-icon>
-          ) : (
-            <lord-icon
-                src="https://cdn.lordicon.com/yizwahhw.json"
-                trigger="hover"
-                colors="primary:#242424,secondary:#08a88a"
-                style={{ width: '20px', height: '20px' }}>
-              </lord-icon>
-
-          )}
-        </a>
-      </span>
-
-      <span className="cursor-pointer">
         <a href="https://github.com/Arnav270803">
           {isDark ? (
             <lord-icon
