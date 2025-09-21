@@ -23,7 +23,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
         rel="stylesheet"
       />
       
-      <div className={`border-b border-t ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
+      <div className={` border-t ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
         <div className='flex justify-between items-center px-6 pt-2 w-full'>
           {/* Left side - Name with icon */}
           <div className='flex items-center'>
@@ -46,8 +46,8 @@ const Navbar = ({ isDark, toggleTheme }) => {
             </a>
           </div>
 
-          {/* Right side - Twitter and Theme toggle */}
-          <div className='flex items-center '>
+          {/* Right side - Twitter, LinkedIn, GitHub and Theme toggle */}
+          <div className='flex items-center gap-1'>
             {/* Twitter Icon */}
             <a 
               href="https://x.com/Bokinsha" 
@@ -72,7 +72,55 @@ const Navbar = ({ isDark, toggleTheme }) => {
               )}
             </a>
 
-            
+            {/* LinkedIn Icon */}
+            <a 
+              href="https://www.linkedin.com/in/arnav-sharma2708/"
+              className="flex items-center justify-center w-9 h-9 cursor-pointer hover:opacity-80 transition-opacity"
+              aria-label="LinkedIn Profile"
+            >
+              {isDark ? (
+                <lord-icon
+                  src="https://cdn.lordicon.com/qgebwute.json"
+                  trigger="hover"
+                  stroke="bold"
+                  colors="primary:#b4b4b4,secondary:#08a88a"
+                  style={{ width: '20px', height: '20px' }} 
+                ></lord-icon>
+              ) : (
+                <lord-icon
+                  src="https://cdn.lordicon.com/qgebwute.json"
+                  trigger="hover"
+                  stroke="bold"
+                  colors="primary:#545454,secondary:#08a88a"
+                  style={{ width: '20px', height: '20px' }} 
+                ></lord-icon>
+              )}
+            </a>
+
+            {/* GitHub Icon */}
+            <a 
+              href="https://github.com/Arnav270803"
+              className="flex items-center justify-center w-9 h-9 cursor-pointer hover:opacity-80 transition-opacity"
+              aria-label="GitHub Profile"
+            >
+              {isDark ? (
+                <lord-icon
+                  src="https://cdn.lordicon.com/jjxzcivr.json"
+                  trigger="hover"
+                  stroke="bold"
+                  colors="primary:#ffffff,secondary:#08a88a"
+                  style={{ width: '20px', height: '20px' }} 
+                ></lord-icon>
+              ) : (
+                <lord-icon
+                  src="https://cdn.lordicon.com/jjxzcivr.json"
+                  trigger="hover"
+                  stroke="bold"
+                  colors="primary:#545454,secondary:#08a88a"
+                  style={{ width: '20px', height: '20px' }} 
+                ></lord-icon>
+              )}
+            </a>
 
             {/* Theme Toggle Button */}
             <button

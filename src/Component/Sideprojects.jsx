@@ -4,7 +4,7 @@ import React from 'react';
 const RVisionProject = ({ isDark }) => (
   <div className={`pb-2 px-6 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
     <div className="flex items-start justify-between mb-3">
-      <div className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+      <div className={`text-lg font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>
         R-Vision
       </div>
       <div className="flex items-center gap-4">
@@ -33,19 +33,19 @@ const RVisionProject = ({ isDark }) => (
 const WhisperFlixProject = ({ isDark }) => (
   <div className={`pb-2 px-6 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
     <div className="flex items-start justify-between mb-3">
-      <div className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+      <div className={`text-lg font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>
         WhisperFlix
       </div>
       
       <div className="flex items-center gap-4">
-        <div className={`text-sm transition-colors hover:text-red-500 animate-pulse text-red-500 ${
+        <div className={` hover:underline text-sm transition-colors hover:text-red-500 animate-pulse text-red-500 ${
           isDark ? '' : ''}`}>
             Ongoing
         </div>
         <div>
           <a
             href="https://whisper-flix.vercel.app/"
-            className={`text-sm transition-colors ${
+            className={`hover:underline text-sm transition-colors ${
               isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
             }`}
           >
