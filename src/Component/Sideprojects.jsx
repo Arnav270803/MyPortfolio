@@ -201,28 +201,42 @@ const VynixProject = ({ isDark }) => (
         <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
           •
           <span className='px-2'>
-            AI-Powered Text-to-Video Generator
+            AI-powered text-to-video generator for education.
           </span>
         </p>
 
-        <p className={`text-sm mb-1 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+        <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
           •
           <span className='px-2'>
-            Built with MERN and Vite
+            Converts study prompts into animated learning videos.
           </span>
         </p>
 
-        <p className={`text-sm mb-1 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+        <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
           •
           <span className='px-2'>
-            Modern UI/UX with Tailwind & Motion
+           Uses LLM to generate Manim-based Python scripts.
           </span>
         </p>
 
-        <p className={`text-sm mb-4 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+        <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
           •
           <span className='px-2'>
-            Secure Auth using JWT & MongoDB
+            Automates video creation with FFmpeg integration.
+          </span>
+        </p>
+
+        <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          •
+          <span className='px-2'>
+            Designed for students and teachers’ learning needs.
+          </span>
+        </p>
+
+        <p className={`text-sm mb-3 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          •
+          <span className='px-2'>
+            Simplifies complex topics through visual explanations.
           </span>
         </p>
       </div>
@@ -277,37 +291,38 @@ const TeachersERP = ({ isDark }) => (
       </div>
     </div>
     <div className={`mb-3 px-6 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-      Better solution for teachers than regular ERP systems
-    </div>
+ERP system with admin, teacher, and student interfaces.    </div>
 
     <div className='py-2 px-6'>
       <div className='px-3'>
         <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
           •
           <span className='px-2'>
-            Modern Teacher Management System
-          </span>
+Admin has complete authority over all data.          </span>
         </p>
 
-        <p className={`text-sm mb-1 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+        <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
           •
           <span className='px-2'>
-            Built with React and SQL
-          </span>
+Teachers can view and manage student information.          </span>
         </p>
 
-        <p className={`text-sm mb-1 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+        <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
           •
           <span className='px-2'>
-            Modern UI/UX with Shadcn & Tailwind
-          </span>
+Students can securely access their personal records.          </span>
         </p>
 
-        <p className={`text-sm mb-4 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+        <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
           •
           <span className='px-2'>
-            Secure Database with Prisma ORM
-          </span>
+Built with React, Express, and MySQL database.          </span>
+        </p>
+
+        <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          •
+          <span className='px-2'>
+Streamlines data access and management for education.</span>
         </p>
       </div>
     </div>
