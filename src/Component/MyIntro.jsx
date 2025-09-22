@@ -34,7 +34,7 @@ const MyIntro = ({ isDark }) => {
      
       <div className="w-full">
         {/* Main Container with Border */}
-        <div className={`border ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
+        <div className={`border  ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
           
           {/* Layout Container - Image and Rectangles Side by Side */}
           <div className="flex">
@@ -70,7 +70,7 @@ const MyIntro = ({ isDark }) => {
                   className={`text-4xl  cursor-pointer hover:underline font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}
                   style={{fontFamily: 'Caveat, cursive'}}
                 >
-                  hay, I'm Arnav
+                  hey, I'm Arnav
                 </h1>
               </div>
               

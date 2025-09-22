@@ -2,12 +2,17 @@ import React from 'react';
 
 // R-Vision Project
 const RVisionProject = ({ isDark }) => (
-  <div className={`pb-2 px-6 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-    <div className="flex items-start justify-between mb-3">
-      <div className={`text-lg font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>
-        R-Vision
+  <div className={`pb-2  border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
+    <div className={`flex items-start border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'} justify-between mb-3`}>
+      <div className="px-6">
+        <div className={`text-xl font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>
+          R-Vision
+        </div>
+        <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          02.2025 - 04.2025
+        </div>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex  items-center gap-4">
         <div>
           <a
             href="https://github.com/Arnav270803/Rvision"
@@ -20,25 +25,37 @@ const RVisionProject = ({ isDark }) => (
         </div>
       </div>
     </div>
-    <div className={`mb-3 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-      AI Text to image generation place
+    <div className={`mb-3 px-6 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+      Text to image generator which generates beautiful images build using clipdrop API 
     </div>
-    <div className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
+
+    
+    <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
       vite / React / Tailwind CSS / Node.js / MongoDB / Express / motion.dev / lordicon / Clipdrop API / JWT
+    </div>
+    <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
+
     </div>
   </div>
 );
 
+
+
 // WhisperFlix Project
 const WhisperFlixProject = ({ isDark }) => (
-  <div className={`pb-2 px-6 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-    <div className="flex items-start justify-between mb-3">
+  <div className={`pb-2  border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
+    <div className={`flex items-start justify-between mb-3 border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
+      <div className='px-6'>
       <div className={`text-lg font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>
         WhisperFlix
       </div>
+        <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          02.2025 - 04.2025
+        </div>
+      </div>
       
-      <div className="flex items-center gap-4">
-        <div className={` hover:underline text-sm transition-colors hover:text-red-500 animate-pulse text-red-500 ${
+      <div className="flex items-center  gap-4">
+        <div className={` hover:underline  text-sm transition-colors hover:text-red-500 animate-pulse text-red-500 ${
           isDark ? '' : ''}`}>
             Ongoing
         </div>
@@ -64,21 +81,32 @@ const WhisperFlixProject = ({ isDark }) => (
         </div>
       </div>
     </div>
-    <div className={`mb-3 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+    <div className={`mb-3 px-6 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
       An underrated Binge-watching that genuinely shows you underrated old cinema
     </div>
-    <div className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-      React / Tailwind CSS / motion.dev / lordicon
+    <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
+      React / Tailwind CSS / motion.dev / lordicon / Express / Node.js / MongoDB / JWT / Vite
+    </div>
+    <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
+            
     </div>
   </div>
 );
 
+
+
+
 // Vynix Project
 const VynixProject = ({ isDark }) => (
-  <div className="pb-2 px-6">
-    <div className="flex items-start justify-between mb-3">
+  <div className={`pb-2  border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
+    <div className={`flex items-start justify-between mb-3 border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
+      <div className='px-6'>
       <div className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
         Vynix
+      </div>
+        <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          02.2025 - 04.2025
+        </div>
       </div>
       <div className="flex items-center gap-4">
         <div className={`text-sm transition-colors hover:text-red-500 animate-pulse text-red-500 ${
@@ -108,21 +136,32 @@ const VynixProject = ({ isDark }) => (
         </div>
       </div>
     </div>
-    <div className={`mb-3 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+    <div className={`mb-3 px-6 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
       Text to video generator using manim and LLM's
     </div>
-    <div className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
+    <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
       React / Node.js / Express.js
+    </div>
+     <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
+            
     </div>
   </div>
 );
 
 
+
+
+
 const Teachers_ERP = ({ isDark }) => (
-  <div className="pb-2 px-6">
-    <div className="flex items-start justify-between mb-3">
+  <div className={`pb-2  border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
+    <div className={`flex items-start justify-between mb-3 border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
+      <div className='px-6'>
       <div className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
         Teacher's ERP
+      </div>
+        <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          02.2025 - 04.2025
+        </div>
       </div>
       <div className="flex items-center gap-4">
         <div className={`text-sm transition-colors hover:text-red-500 animate-pulse text-red-500 ${
@@ -152,10 +191,10 @@ const Teachers_ERP = ({ isDark }) => (
         </div>
       </div>
     </div>
-    <div className={`mb-3 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+    <div className={`mb-3 px-6 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
       Better solution for teachers then regular ERP
     </div>
-    <div className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
+    <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
       React / Tailwind / Node.js / SQL / Shadcn / Prisma
     </div>
   </div>
@@ -167,9 +206,9 @@ const Sideprojects = ({ isDark }) => {
   return (
     
     <div className="w-full">
-      <h2 className={`text-2xl px-6 underline underline-offset-4 font-medium mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+      <div className={`text-3xl px-6 underline border-b pb-3 underline-offset-4 font-medium mb-4 ${isDark ? 'text-white border-gray-800' : 'text-gray-900 border-neutral-200'}`}>
         Projects
-      </h2>
+      </div>
       
       <div className="space-y-4">
         <RVisionProject isDark={isDark} />
