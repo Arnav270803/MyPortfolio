@@ -42,7 +42,7 @@ const MyIntro = ({ isDark }) => {
             {/* Left Side - Profile Image */}
             <div className={`w-[180px] h-[180px] border-r ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
               <img
-                src="../public/cropped_circle_image.png"
+                src="/cropped_circle_image.png"
                 width="180"
                 height="180"
                 className="w-full h-full object-cover"
