@@ -333,7 +333,7 @@ Streamlines data access and management for education.</span>
 );
 
 // Main Component
-const Sideprojects = ({ isDark = false }) => {
+const Sideprojects = ({ isDark }) => {
   return (
     <div className={`w-full min-h-screen ${isDark ? 'bg-neutral-900 ' : 'bg-zinc-50'}`}>
       <div className={`text-3xl px-6 underline border-b pb-3 underline-offset-4 font-medium mb-4 ${isDark ? 'text-white border-gray-800' : 'text-gray-900 border-neutral-200'}`}>
@@ -346,14 +346,7 @@ const Sideprojects = ({ isDark = false }) => {
         <VynixProject isDark={isDark} />
         <TeachersERP isDark={isDark} />
       </div>
-      <div className={`pt-10 border-t ${isDark ? 'border-gray-800' : 'border-neutral-200'} px-2 text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'} flex justify-between items-center w-full`}>
-        <div>
-          @my-portfolio
-        </div>
-        <div>
-          Built in React
-        </div>
-      </div>
+
     </div>
   );
 };

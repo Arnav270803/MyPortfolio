@@ -3,6 +3,7 @@ import Navbar from './Component/Navbar'
 import MyIntro from './Component/MyIntro'
 import Sideprojects from './Component/Sideprojects'
 import Logos from './Component/Logos'
+import TechStack from './Component/TechStack'
 
 const App = () => {
   const [isDark, setIsDark] = useState(true);
@@ -24,8 +25,10 @@ const App = () => {
           <div className='mt-6'>
             <Sideprojects isDark={isDark} />
           </div>
-                    </div>
-
+          <div className='mt-6'>
+            <TechStack />
+          </div>
+            </div>
         </div>
       </div>
     </div>
