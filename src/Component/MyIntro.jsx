@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Code, Database, Users, TrendingUp, Handshake } from 'lucide-react';
+import Footer from './Footer';
 
 const MyIntro = ({ isDark }) => {
   // Animation texts that will cycle through
@@ -140,7 +141,7 @@ const MyIntro = ({ isDark }) => {
         {/* Bottom Divider */}
         <div className={`border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'} py-3`}>
         </div>
-        
+
       </div>
     </>
   );

@@ -48,6 +48,11 @@ const TechStack = ({ isDark }) => {
       icon: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg"
     },
     {
+      name: "Python",
+      href: "https://www.python.org",
+      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
+    },
+    {
       name: "React",
       href: "https://reactjs.org/",
       icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg"
@@ -61,14 +66,14 @@ const TechStack = ({ isDark }) => {
 
   return (
     <div className='w-full'>
-      <div className={`border-t border-b ${isDark ? 'border-gray-800' : ' border-neutral-200'}`}>
+      <div className={`border ${isDark ? 'border-gray-600' : 'border-neutral-200'}`}>
         <div className={` text-3xl font-medium pt-4 underline underline-offset-2 px-6 pb-3 `}>
           Stack
         </div>
       </div>
       
       {/* Div for all the icons is here */}
-      <div className={`flex items-center border-b py-3 justify-start px-5 gap-6 pt-4 ${isDark ? 'border-gray-800' : ' border-neutral-200'}`}>
+      <div className={`flex items-center border-b py-3 justify-start px-5 gap-6 pt-4 ${isDark ? 'border-gray-600' : 'border-gray-200'}`}>
         {techItems.map((tech, index) => (
           <div key={index} className="relative group">
             {/* Tooltip */}
