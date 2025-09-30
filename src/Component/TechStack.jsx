@@ -77,9 +77,9 @@ const TechStack = ({ isDark }) => {
         {techItems.map((tech, index) => (
           <div key={index} className="relative group">
             {/* Tooltip */}
-            <div className={`absolute -top-10 left-1/2 transform -translate-x-1/2 px-3 py-1 text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10 ${isDark ? 'bg-gray-700 text-white' : 'bg-gray-800 text-white'}`}>
+            <div className={`absolute -top-10 left-1/2 transform -translate-x-1/2 px-3 py-1 text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap  ${isDark ? 'bg-gray-700 text-white' : 'bg-gray-800 text-white'}`}>
               {tech.name}
-              <div className={`absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent ${isDark ? 'border-t-gray-700' : 'border-t-gray-800'}`}></div>
+              <div className={`absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l border-r-4 border-t-4 border-transparent ${isDark ? 'border-t-gray-700' : 'border-t-gray-800'}`}></div>
             </div>
             
             {/* Icon */}

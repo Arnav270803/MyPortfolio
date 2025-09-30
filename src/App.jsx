@@ -27,7 +27,7 @@ const App = () => {
             <Sideprojects isDark={isDark} />
           </div>
           <div className='mt-6'>
-            <TechStack />
+            <TechStack isDark={isDark} />
           </div>
         <div>
           <Footer />
