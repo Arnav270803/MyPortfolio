@@ -7,7 +7,7 @@ import TechStack from './Component/TechStack'
 import Footer from './Component/Footer'
 
 const App = () => {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
 
   // Toggle theme function
   const toggleTheme = () => {

@@ -66,20 +66,20 @@ const TechStack = ({ isDark }) => {
 
   return (
     <div className='w-full'>
-      <div className={`border ${isDark ? 'border-gray-600' : 'border-neutral-200'}`}>
+      <div className={`border ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
         <div className={` text-3xl font-medium pt-4 underline underline-offset-2 px-6 pb-3 `}>
           Stack
         </div>
       </div>
       
       {/* Div for all the icons is here */}
-      <div className={`flex items-center border-b py-3 justify-start px-5 gap-6 pt-4 ${isDark ? 'border-gray-600' : 'border-gray-200'}`}>
+      <div className={`flex items-center border-b py-3 justify-start px-5 gap-6 pt-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
         {techItems.map((tech, index) => (
           <div key={index} className="relative group">
             {/* Tooltip */}
             <div className={`absolute -top-10 left-1/2 transform -translate-x-1/2 px-3 py-1 text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap  ${isDark ? 'bg-gray-700 text-white' : 'bg-gray-800 text-white'}`}>
               {tech.name}
-              <div className={`absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l border-r-4 border-t-4 border-transparent ${isDark ? 'border-t-gray-700' : 'border-t-gray-800'}`}></div>
+              <div className={`absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l border-r border-t border-transparent ${isDark ? 'border-gray-800' : 'border-gray-800'}`}></div>
             </div>
             
             {/* Icon */}

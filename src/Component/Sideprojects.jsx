@@ -341,9 +341,9 @@ const Sideprojects = ({ isDark }) => {
       </div>
       
       <div className="space-y-4">
-        <RVisionProject isDark={isDark} />
         <WhisperFlixProject isDark={isDark} />
         <VynixProject isDark={isDark} />
+         <RVisionProject isDark={isDark} />
         <TeachersERP isDark={isDark} />
       </div>
 
