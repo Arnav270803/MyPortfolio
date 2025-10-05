@@ -4,10 +4,10 @@ const Socials = ({isDark}) => {
   return (
     <>
       {/* Option 1: Kalam - Clean, professional handwriting */}
-      {/* <link
+       <link
         href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap"
         rel="stylesheet"
-      /> */}
+      /> 
       
       {/* Option 2: Patrick Hand - Designer's own handwriting, clean and professional (RECOMMENDED) */}
       <link
@@ -16,16 +16,16 @@ const Socials = ({isDark}) => {
       />
       
       {/* Option 3: Architects Daughter - Neat architectural handwriting style */}
-      {/* <link
+       <link
         href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
         rel="stylesheet"
-      /> */}
+      /> 
       
       {/* Option 4: Handlee - Modern, legible handwriting */}
-      {/* <link
+     <link
         href="https://fonts.googleapis.com/css2?family=Handlee&display=swap"
         rel="stylesheet"
-      /> */}
+      /> 
 
     <div className='w-full'>
       <div className='m-6'></div>
@@ -48,7 +48,7 @@ const Socials = ({isDark}) => {
               />
               <div className='px-5'>
                 <div className='text-4xl '
-                  style={{fontFamily: 'Patrick Hand, cursive'}}
+                  style={{fontFamily: 'Handlee, cursive'}}
                 >
                   LinkedIn
                 </div>
@@ -75,7 +75,7 @@ const Socials = ({isDark}) => {
               />
               <div className='px-5'>
                 <div className='text-4xl '
-                  style={{fontFamily: 'Patrick Hand, cursive'}}
+                  style={{fontFamily: 'handlee, cursive'}}
                 >
                   X
                 </div>
@@ -100,7 +100,7 @@ const Socials = ({isDark}) => {
               />
               <div className='px-5'>
                 <div className='text-4xl '
-                  style={{fontFamily: 'Patrick Hand, cursive'}}
+                  style={{fontFamily: 'handlee, cursive'}}
                 >
                   Gmail
                 </div>
@@ -127,7 +127,7 @@ const Socials = ({isDark}) => {
               />
               <div className='px-5'>
                 <div className='text-4xl '
-                  style={{fontFamily: 'Patrick Hand, cursive'}}
+                  style={{fontFamily: 'handlee, cursive'}}
                 >
                   GitHub
                 </div>
