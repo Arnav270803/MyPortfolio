@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Code, Database, Users, TrendingUp, Handshake } from 'lucide-react';
-import Footer from './Footer';
-
 const MyIntro = ({ isDark }) => {
   // Animation texts that will cycle through
   const animatedTexts = [

@@ -4,6 +4,8 @@ import MyIntro from './Component/MyIntro'
 import Sideprojects from './Component/Sideprojects'
 import Logos from './Component/Logos'
 import TechStack from './Component/TechStack'
+import Socials from './Component/Socials'
+
 import Footer from './Component/Footer'
 
 const App = () => {
@@ -25,6 +27,9 @@ const App = () => {
 
           <div className='mt-6'>
             <Sideprojects isDark={isDark} />
+          </div>
+          <div>
+            <Socials isDark={isDark} />
           </div>
           <div className='mt-6'>
             <TechStack isDark={isDark} />
