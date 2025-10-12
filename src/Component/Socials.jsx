@@ -3,7 +3,7 @@ import React from 'react'
 const Socials = ({isDark}) => {
   return (
     <>
-      {/* Option 1: Kalam - Clean, professional handwriting */}
+      {/* Option 1: Kalam - Clean, professional handwriti */}
        <link
         href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap"
         rel="stylesheet"
