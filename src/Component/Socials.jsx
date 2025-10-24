@@ -15,7 +15,7 @@ const Socials = ({isDark}) => {
         rel="stylesheet"
       />
       
-      {/* Option 3: Architects Daughter - Neat architectural handwriting style */}
+      {/* Option 3: Architects Daughter - Neat architectural handwriting sle */}
        <link
         href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
         rel="stylesheet"
