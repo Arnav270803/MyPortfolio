@@ -61,6 +61,21 @@ const TechStack = ({ isDark }) => {
       name: "Tailwind CSS",
       href: "https://tailwindcss.com/",
       icon: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
+    },
+    {
+      name: "BeautifulSoup",
+      href: "https://www.crummy.com/software/BeautifulSoup/",
+      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
+    },
+    {
+      name: "RAG",
+      href: "https://en.wikipedia.org/wiki/Prompt_engineering#Retrieval-augmented_generation",
+      icon: "https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg"
+    },
+    {
+      name: "Vector DB",
+      href: "https://www.pinecone.io/",
+      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg"
     }
   ]
 
@@ -72,14 +87,15 @@ const TechStack = ({ isDark }) => {
         </div>
       </div>
       
-      {/* Div for all the icons is here */}
-      <div className={`flex items-center border-b py-3 justify-start px-5 gap-6 pt-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
+      {/* Responsive Grid for all the icons */}
+      <div className={`grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-6 sm:gap-8 md:gap-10 border-b py-6 px-6 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
         {techItems.map((tech, index) => (
-          <div key={index} className="relative group">
+          <div key={index} className="relative group flex justify-center items-center">
             {/* Tooltip */}
-            <div className={`absolute -top-10 left-1/2 transform -translate-x-1/2 px-3 py-1 text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap  ${isDark ? 'bg-gray-700 text-white' : 'bg-gray-800 text-white'}`}>
+            <div className={`absolute -top-10 left-1/2 transform -translate-x-1/2 px-3 py-1 text-xs sm:text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10 ${isDark ? 'bg-gray-700 text-white' : 'bg-gray-800 text-white'}`}>
               {tech.name}
-              <div className={`absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l border-r border-t border-transparent ${isDark ? 'border-gray-800' : 'border-gray-800'}`}></div>
+              {/* Tooltip arrow */}
+              <div className={`absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent ${isDark ? 'border-t-gray-700' : 'border-t-gray-800'}`}></div>
             </div>
             
             {/* Icon */}
@@ -94,7 +110,7 @@ const TechStack = ({ isDark }) => {
                 alt={tech.name.toLowerCase().replace(/[.\s]/g, '')} 
                 width="60" 
                 height="60"
-                className={`${tech.name === 'Express.js' && isDark ? 'filter invert' : ''} ${tech.name === 'Express.js' && !isDark ? 'filter brightness-0' : ''}`}
+                className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain ${tech.name === 'Express.js' && isDark ? 'filter invert' : ''} ${tech.name === 'Express.js' && !isDark ? 'filter brightness-0' : ''}`}
               />
             </a>
           </div>

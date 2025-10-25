@@ -104,6 +104,10 @@ const RVisionProject = ({ isDark }) => {
   );
 };
 
+
+
+
+
 // WhisperFlix Project
 const WhisperFlixProject = ({ isDark }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -213,6 +217,10 @@ const WhisperFlixProject = ({ isDark }) => {
     </div>
   );
 };
+
+
+
+
 
 // Vynix Project
 const VynixProject = ({ isDark }) => {
@@ -342,6 +350,135 @@ const VynixProject = ({ isDark }) => {
   );
 };
 
+
+
+
+
+
+//Capillary Chatbot
+const CapillaryBot = ({ isDark }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
+      <div className={`flex items-start justify-between mb-3 border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
+        <div className='px-6'>
+          <div className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            Capillary Bot
+          </div>
+          <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+             12.09.2025 - 13.09.2025
+          </div>
+        </div>
+        <div className="flex items-center gap-4">
+          <div>
+            <a
+              href=""
+              className={`text-sm transition-colors ${
+                isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Live →
+
+            </a>
+          </div>
+          <div>
+            <a
+              href="https://github.com/Arnav270803/capillary_Bot"
+              className={`text-sm transition-colors ${
+                isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Code →
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div className={`mb-3 px-6 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+        RAG chatbot querying CapillaryTech docs via React frontend, Mistral LLM backend      
+        </div>
+
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className={`flex items-center gap-2 px-6 mb-2 text-sm font-medium transition-colors ${
+          isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+        }`}
+      >
+        {isExpanded ? (
+          <>
+            <ChevronUp className="w-4 h-4" />
+            Hide Details
+          </>
+        ) : (
+          <>
+            <ChevronDown className="w-4 h-4" />
+            Show Details
+          </>
+        )}
+      </button>
+
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+          isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className='py-2 px-6'>
+          <div className='px-3'>
+            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              •
+              <span className='px-2'>
+                React Frontend: Dynamic React + Vite chat app with Axios for backend queries and Tailwind styling.             
+                 </span>
+            </p>
+
+            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              •
+              <span className='px-2'>
+                  Node.js Backend: Express server on port 5000 handling CORS, JSON, and /chat endpoint for RAG processing.              </span>
+            </p>
+
+            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              •
+              <span className='px-2'>
+                Python Scraping Script: scrape_docs.py uses BeautifulSoup to chunk CapillaryTech docs into scraped_docs.json              </span>
+            </p>
+
+            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              •
+              <span className='px-2'>
+                Python Embedding Script: embed_chunks.py applies SentenceTransformer for vector embeddings saved to embedded_docs.json              </span>
+            </p>
+
+            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              •
+              <span className='px-2'>
+                RAG Retrieval System: Keyword similarity search retrieves doc chunks as context for cited LLM responses              </span>
+            </p>
+
+            <p className={`text-sm mb-3 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              •
+              <span className='px-2'>
+                Mistral LLM Integration: OpenRouter's Mistral generates markdown answers from retrieved context for doc expertise              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
+        React / Node.js / Express.js / Python / Vite / Tailwind CSS / Framer Motion / Axios / BeautifulSoup / Sentence Transformers / Math.js / OpenRouter
+      </div>
+      <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
+      </div>
+    </div>
+  );
+};
+
+
+
+
+
+
 // Teacher's ERP Project
 const TeachersERP = ({ isDark }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -461,6 +598,10 @@ const TeachersERP = ({ isDark }) => {
   );
 };
 
+
+
+
+
 // Main Component
 const Sideprojects = ({ isDark }) => {
   return (
@@ -474,6 +615,7 @@ const Sideprojects = ({ isDark }) => {
         <VynixProject isDark={isDark} />
         <RVisionProject isDark={isDark} />
         <TeachersERP isDark={isDark} />
+        <CapillaryBot isDark={isDark} />
       </div>
 
     </div>
