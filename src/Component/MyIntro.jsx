@@ -103,8 +103,10 @@ const MyIntro = ({ isDark }) => {
           
           <p>
             <Code className="inline w-4 h-4 mr-2" />
-            Proficient in <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>C</span> and{' '}
-            <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>C++</span> programming languages
+            Proficient in <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>JavaScript</span>, {' '}
+            <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>C++</span> and 
+            <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}> Python </span>
+            programming languages
           </p>
           
           <p>
@@ -112,17 +114,20 @@ const MyIntro = ({ isDark }) => {
             Full-stack <span className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>MERN</span> developer 
             with hands-on project experience
           </p>
+
+          <p>
+            <Users className="inline w-4 h-4 mr-2" />
+              Built<span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}> AI agents </span>  
+              powered by Retrieval-Augmented Generation <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>(RAG)</span> techniques.         
+          </p>
           
           <p>
             <Database className="inline w-4 h-4 mr-2" />
-            Skilled in both <span className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>SQL</span> and{' '}
-            <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>NoSQL</span> database systems
+            Hands-on experience with both <span className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>NOSQL</span> and{' '}
+            <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>Vector Database</span> systems
           </p>
           
-          <p>
-            <Users className="inline w-4 h-4 mr-2" />
-            Strong leadership abilities and team collaboration mindset
-          </p>
+
           
           <p>
             <TrendingUp className="inline w-4 h-4 mr-2" />

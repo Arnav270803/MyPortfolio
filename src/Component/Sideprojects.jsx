@@ -614,8 +614,8 @@ const Sideprojects = ({ isDark }) => {
         <WhisperFlixProject isDark={isDark} />
         <VynixProject isDark={isDark} />
         <RVisionProject isDark={isDark} />
-        <TeachersERP isDark={isDark} />
         <CapillaryBot isDark={isDark} />
+        <TeachersERP isDark={isDark} />
       </div>
 
     </div>
