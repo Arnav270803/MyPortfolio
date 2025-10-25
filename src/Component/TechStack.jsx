@@ -76,6 +76,11 @@ const TechStack = ({ isDark }) => {
       name: "Vector DB",
       href: "https://www.pinecone.io/",
       icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg"
+    },
+    {
+      name: "OpenRouter",
+      href: "https://openrouter.ai/",
+      icon: "https://www.vectorlogo.zone/logos/json/json-icon.svg"
     }
   ]
 
