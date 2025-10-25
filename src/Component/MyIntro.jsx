@@ -7,7 +7,8 @@ const MyIntro = ({ isDark }) => {
     "Frontend enthusiast",
     "Full stack developer", 
     "Open source contributor",
-    "Create minimalist designs"
+    "Create minimalist designs",
+    "Build AI Agents"
   ];
   
   // State to track which text is currently showing
@@ -111,7 +112,7 @@ const MyIntro = ({ isDark }) => {
           
           <p>
             <Database className="inline w-4 h-4 mr-2" />
-            Full-stack <span className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>MERN</span> developer 
+            Full-stack <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>MERN</span> developer 
             with hands-on project experience
           </p>
 
@@ -123,7 +124,7 @@ const MyIntro = ({ isDark }) => {
           
           <p>
             <Database className="inline w-4 h-4 mr-2" />
-            Hands-on experience with both <span className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>NOSQL</span> and{' '}
+            Hands-on experience with both <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>NOSQL</span> and{' '}
             <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>Vector Database</span> systems
           </p>
           
@@ -131,7 +132,9 @@ const MyIntro = ({ isDark }) => {
           
           <p>
             <TrendingUp className="inline w-4 h-4 mr-2" />
-            Practical marketing skills from running a SaaS service
+            Practical marketing skills from running a 
+            <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}> SaaS </span> 
+            service
           </p>
           
           <p>
