@@ -112,7 +112,7 @@ const MyIntro = ({ isDark }) => {
           
           <p>
             <Database className="inline w-4 h-4 mr-2" />
-            Full-stack <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>MERN</span> developer 
+            Full-stack <span className={`font-medium hover:underline  ${isDark ? 'text-white' : 'text-gray-900'}`}>MERN</span> developer 
             with hands-on project experience
           </p>
 
@@ -141,9 +141,10 @@ const MyIntro = ({ isDark }) => {
             <Handshake className="inline w-4 h-4 mr-2" />
             Let's collaborate and build something impactful together
           </p>
-          
+      
         </div>
         
+
         {/* Bottom Divider */}
         <div className={`border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'} py-3`}>
         </div>

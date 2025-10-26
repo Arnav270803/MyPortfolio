@@ -108,7 +108,7 @@ const TechStack = ({ isDark }) => {
               href={tech.href} 
               target="_blank" 
               rel="noreferrer"
-              className="block transition-transform duration-300 hover:scale-125"
+              className="block transition-transform duration-250 hover:scale-125"
             >
               <img 
                 src={tech.icon} 

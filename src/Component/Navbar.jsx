@@ -13,7 +13,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
   // Wrap toggleTheme to play sound on click
   const handleToggleTheme = () => {
     audioRef.current.play(); // Play the sound when the button is clicked
-    toggleTheme(); // Call the original toggleTheme function
+    toggleTheme(); // Call the original toggleTheme function 
   };
 
   return (
