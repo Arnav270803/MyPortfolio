@@ -355,7 +355,7 @@ const VynixProject = ({ isDark }) => {
 
 
 
-//Capillary Chatbot
+//Capillary Chatbot.
 const CapillaryBot = ({ isDark }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
