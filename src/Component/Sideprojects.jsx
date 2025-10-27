@@ -372,15 +372,7 @@ const CapillaryBot = ({ isDark }) => {
         </div>
         <div className="flex items-center gap-4">
           <div>
-            <a
-              href=""
-              className={`text-sm transition-colors ${
-                isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Live →
 
-            </a>
           </div>
           <div>
             <a
