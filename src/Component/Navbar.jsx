@@ -36,14 +36,16 @@ const Navbar = ({ isDark, toggleTheme }) => {
             </span>
             <a href="/" rel="noopener noreferrer">
               <span
-                className={`text-lg font-medium cursor-pointer transition-colors duration-200 ${
+                className={` font-semibold cursor-pointer px-1  hover:underline transition-colors duration-200 ${
                   isDark ? 'text-white hover:text-gray-300' : 'text-zinc-900 hover:text-gray-600'
-                }`}
-                style={{fontFamily: 'Caveat, cursive'}}
-              >
-                Arnav
+                }`}              >
+                Work
               </span>
             </a>
+
+            <span className='font-semibold px-1 text-s hover:underline cursor-pointer  '>
+              Blog
+            </span>
           </div>
 
           {/* Right side - Twitter, LinkedIn, GitHub and Theme toggle */}

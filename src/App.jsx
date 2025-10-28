@@ -6,9 +6,9 @@ import BlogPage from './pages/BlogPage'
 const App = () => {
     const [isDark, setIsDark] = useState(false);
 
-
-  
-
+  const toggleTheme = () => {
+  setIsDark(!isDark);
+  };
 
   // Toggle theme function
 
@@ -17,7 +17,7 @@ const App = () => {
     <div className=''>
 
       <Routes>
-        <Route path='/' element={<Homee />} />
+        <Route path='/' element={<Homee isDark={isDark} toggleTheme={toggleTheme}/>} />
         <Route path='/bblog' element={<BlogPage />} />
       </Routes>
       
