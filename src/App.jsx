@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Routes,Route } from 'react-router-dom'
 import Homee from './pages/Homee'
 import BlogPage from './pages/BlogPage'
+import ResumePage from './pages/ResumePage'
 
 const App = () => {
     const [isDark, setIsDark] = useState(false);
@@ -19,6 +20,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Homee isDark={isDark} toggleTheme={toggleTheme}/>} />
         <Route path='/bblog' element={<BlogPage />} />
+        <Route path='/resume' element={<ResumePage />} />
       </Routes>
       
       {/* <div className={`${isDark ? 'bg-neutral-900 text-white' : 'bg-zinc-50 text-gray-900'} min-h-screen transition-colors duration-300`}>
