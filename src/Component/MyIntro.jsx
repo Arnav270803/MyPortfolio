@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Code, Database, Users, TrendingUp, Handshake } from 'lucide-react';
+
 const MyIntro = ({ isDark }) => {
   // Animation texts that will cycle through
   const animatedTexts = [
@@ -25,6 +26,7 @@ const MyIntro = ({ isDark }) => {
     // Cleanup interval when component unmounts
     return () => clearInterval(interval);
   }, [animatedTexts.length]);
+
   return (
     <>
       <link
@@ -65,13 +67,24 @@ const MyIntro = ({ isDark }) => {
               </div>
               
               {/* Rectangle 2 - Middle Section (Name text - 50px height) */}
-              <div className={`border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'} h-[50px] p-4 flex items-center justify-start`}>
+              <div className={`border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'} h-[50px] p-4 flex items-center justify-between`}>
                 <h1 
-                  className={`text-4xl  cursor-pointer hover:underline font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}
+                  className={`text-4xl cursor-pointer hover:underline font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}
                   style={{fontFamily: 'Caveat, cursive'}}
                 >
                   hey, I'm Arnav
                 </h1>
+                
+                {/* Resume and cv button */}
+                {/* Resume and cv button */}
+              <button 
+                className={`px-6 py-2 rounded-md border-2 border-dashed font-semibold text-sm transition-all duration-300 hover:scale-105 shadow-lg ${
+                isDark? 'border-gray-600 text-gray-300 hover:bg-white hover:text-black hover:border-white shadow-gray-900/50 hover:shadow-white/20' : 'border-gray-400 text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 shadow-gray-400/30 hover:shadow-gray-900/40' }`}
+                onClick={() => {
+                  console.log("Resume button clicked");
+                }}>
+                  Resume / CV
+                </button>
               </div>
               
               {/* Rectangle 3 - Bottom Section with Animated Text (30px height) */}
@@ -128,8 +141,6 @@ const MyIntro = ({ isDark }) => {
             <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>Vector Database</span> systems
           </p>
           
-
-          
           <p>
             <TrendingUp className="inline w-4 h-4 mr-2" />
             Practical marketing skills from running a 
@@ -144,7 +155,6 @@ const MyIntro = ({ isDark }) => {
       
         </div>
         
-
         {/* Bottom Divider */}
         <div className={`border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'} py-3`}>
         </div>

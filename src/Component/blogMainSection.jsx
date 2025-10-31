@@ -1,9 +1,11 @@
 import React from 'react'
 
-const blogMainSection = () => {
+const BlogMainSection = () => {
   return (
-    <div>blogMainSection</div>
+    <div>
+        
+    </div>
   )
 }
 
-export default blogMainSection
+export default BlogMainSection

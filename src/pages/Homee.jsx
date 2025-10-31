@@ -5,7 +5,7 @@ import TechStack from '../Component/TechStack';
 import Footer from '../Component/Footer';
 import MyIntro from '../Component/MyIntro';
 
-const Homee = ({isDark  , toggleTheme}) => {
+const Homee = ({isDark  , toggleTheme ,setIsDark }) => {
   
 
   
