@@ -1,7 +1,6 @@
 import React from 'react'
 import Navbar from '../Component/Navbar'
 import Bloging from '../Component/Bloging'
-import BlogMainSection from '../Component/BlogMainSection'
 
 const BlogPage = ({isDark , setIsDark}) => {
       const toggleTheme = () => {
@@ -21,9 +20,6 @@ const BlogPage = ({isDark , setIsDark}) => {
 
           </div>
 
-          <div className='mt-4'>
-            <BlogMainSection  isDark={isDark}/>
-          </div>
 
         </div>
       </div>
