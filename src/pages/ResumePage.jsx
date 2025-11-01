@@ -1,7 +1,5 @@
 import React from 'react'
 import Navbar from '../Component/Navbar'
-import Bloging from '../Component/Bloging'
-import BlogMainSection from '../Component/BlogMainSection'
 import Resumee from '../Component/Resumee'
 
 const ResumePage = ({isDark , toggleTheme}) => {
