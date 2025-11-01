@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Code, Database, Users, TrendingUp, Handshake } from 'lucide-react';
 
 const MyIntro = ({ isDark }) => {
+  const navigate = useNavigate();
+  
   // Animation texts that will cycle through
   const animatedTexts = [
     "Frontend enthusiast",
@@ -76,13 +79,11 @@ const MyIntro = ({ isDark }) => {
                 </h1>
                 
                 {/* Resume and cv button */}
-                {/* Resume and cv button */}
-              <button 
-                className={`px-6 py-2 rounded-md border-2 border-dashed font-semibold text-sm transition-all duration-300 hover:scale-105 shadow-lg ${
-                isDark? 'border-gray-600 text-gray-300 hover:bg-white hover:text-black hover:border-white shadow-gray-900/50 hover:shadow-white/20' : 'border-gray-400 text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 shadow-gray-400/30 hover:shadow-gray-900/40' }`}
-                onClick={() => {
-                  console.log("Resume button clicked");
-                }}>
+                <button 
+                  className={`px-6 py-2 rounded-md border-2 border-dashed cursor-pointer font-semibold text-sm transition-all duration-300 hover:scale-105 shadow-lg ${
+                  isDark? 'border-gray-600 text-gray-300 hover:bg-white hover:text-black hover:border-white shadow-gray-900/50 hover:shadow-white/20' : 'border-gray-400 text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 shadow-gray-400/30 hover:shadow-gray-900/40' }`}
+                  onClick={() => navigate('/resume')}
+                >
                   Resume / CV
                 </button>
               </div>
