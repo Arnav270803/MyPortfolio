@@ -1,11 +1,10 @@
 import React from 'react'
 import Navbar from '../Component/Navbar'
 import Bloging from '../Component/Bloging'
+import BlogSection from '../Component/BlogSection';
 
-const BlogPage = ({isDark , setIsDark}) => {
-      const toggleTheme = () => {
-    setIsDark(!isDark);
-  };
+const BlogPage = ({isDark , toggleTheme}) => {
+
   return (
     <div>
       <div className={`${isDark ? 'bg-neutral-900 text-white' : 'bg-zinc-50 text-gray-900'} min-h-screen transition-colors duration-300`}>
@@ -17,9 +16,11 @@ const BlogPage = ({isDark , setIsDark}) => {
 
           <div className='mt-4'>
             <Bloging isDark={isDark}/>
-
           </div>
 
+          <div className='mt-4'>
+            <BlogSection isDark={isDark}/>
+          </div>
 
         </div>
       </div>

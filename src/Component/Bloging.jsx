@@ -2,9 +2,13 @@ import React from 'react'
 
 const bloging = ({isDark}) => {
   return (
+    <>
+       <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <div>
     <div className='flex items-center justify-center mt-16'>
-      <div className='font-semibold text-5xl '>
+      <div className='font-semibold text-5xl '
+      style={{fontFamily: 'Space Grotesk, sans-serif'}}
+      >
         Blogs
       </div>
       
@@ -18,6 +22,7 @@ const bloging = ({isDark}) => {
 
        </div>
     </div>
+     </>
   )
 }
 
