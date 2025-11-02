@@ -9,7 +9,10 @@ const BlogSection = ({isDark, setIsDark}) => {
         <div className={`font-semibold px-2 text-2xl mb-8 ${isDark ? 'text-white' : 'text-black'}`}
           style={{fontFamily:'Space Grotesk, sans-serif'}}
         >
-          Latest Blog
+          Latest Blog  
+        <span className='text-red-500 px-3'>
+             (Ongoing)
+        </span>
         </div>
 
         {/* Simple Card */}
@@ -20,12 +23,11 @@ const BlogSection = ({isDark, setIsDark}) => {
         }`}>
           
           <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-neutral-600'}`}>
-            Create Amazing Videos with AI
+            My Winter Arc
           </h3>
           
           <p className={`text-sm max-w-sm mt-2 ${isDark ? 'text-neutral-300' : 'text-neutral-500'}`}>
-            Transform your ideas into stunning animated educational videos
-          </p>
+            My Winter Life Transformation: A Seasonal Journey Unveiled          </p>
           
           <div className="w-full mt-4">
             <img
@@ -40,9 +42,9 @@ const BlogSection = ({isDark, setIsDark}) => {
           <div className="flex justify-between items-center mt-20">
             <a
               href="#"
-              className={`px-4 py-2 rounded-xl text-xs font-normal ${isDark ? 'text-white' : 'text-black'}`}
+              className={`px-4 font-semibold py-2 rounded-xl text-xs font-normal ${isDark ? 'text-zinc' : 'text-gray-500'}`}
             >
-              date
+              Nov. 02-2025
             </a>
             
             <button
