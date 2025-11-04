@@ -15,8 +15,7 @@ const WinterArc = ({isDark}) => {
 
   // Common button classes
   const buttonClasses = `
-    px-2 sm:px-4 md:px-6 py-1 sm:py-2 rounded-md cursor-pointer font-semibold 
-    text-xs sm:text-sm transition-all duration-300 hover:scale-105 whitespace-nowrap
+    px-2 sm:px-4 md:px-6 py-1 sm:py-2 rounded-md cursor-pointer font-semibold text-xs sm:text-sm transition-all duration-300 hover:scale-105 whitespace-nowrap
     ${isDark 
       ? 'border border-gray-800/30 text-gray-300 hover:bg-white hover:text-black hover:border-white/50' 
       : 'border border-gray-300/30 text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900/50'
@@ -31,6 +30,9 @@ const WinterArc = ({isDark}) => {
       : 'border border-gray-300/30 text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900/50'
     }
   `;
+
+  const goalItemClasses = `
+    ml-6 mt-3 text-sm sm:text-base leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'} `;
 
   return (
 
@@ -76,6 +78,7 @@ const WinterArc = ({isDark}) => {
                 </button>
               </div>
 
+
               {/* Title */}
               <div 
                 className={`mt-8 font-bold text-3xl sm:text-4xl md:text-5xl ${isDark ? 'text-white' : 'text-gray-900'}`}
@@ -86,12 +89,61 @@ const WinterArc = ({isDark}) => {
 
               {/* Description */}
               <div className={`mt-4 text-sm sm:text-base max-w-2xl ${isDark ? 'text-gray-400' : 'text-gray-600'}`}> 
-                This blog is all about my winter progress and good content from my twitter.
+                This blog is all about my winter progress and growth content from my twitter.
               </div>
 
               <div className='mt-5 text-lg'>
                 November 5, 2025
               </div>
+
+
+              {/*this section is my daily template */}
+              <div className={`border-t mt-6 ${isDark? 'border-zinc-600' : 'border-neutral-400'}`} >
+                
+                <div className={`mt-4 font-bold text-3xl sm:text-3xl md:text-3xl ${isDark ? 'text-white' : 'text-gray-900'}`}
+                  style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+
+                >
+                  Hey, Welcome to my Winter Arc ❄️
+                </div>
+
+                <div className={`mt-10 font-bold text-2xl ${isDark ? 'text-white' : 'text-gray-900'}`}
+                  style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                >
+                  Goals:
+                </div>
+
+                <div className={goalItemClasses}>
+                  • Learn Python | Learn RAG along with Langchain | Build 1-2 AI Agents Completely
+                </div>
+
+                <div className={goalItemClasses}>
+                  • Backend Focused | Complete Vynix Project as a whole
+                </div>
+
+                <div className={goalItemClasses}>
+                  • Get a Placement
+                </div>
+
+                <div className={goalItemClasses}>
+                  • Improve English speaking fluency and accent/certain pronunciation 
+                </div>
+
+                <div className={goalItemClasses}>
+                  • Get to 240+ Twitter Followers
+                </div>
+
+                <div className={goalItemClasses}>
+                  • Get comfortable with - System Design, OOPs, DBMS, Computer Networks, SQL
+                </div>
+           
+                <div className={goalItemClasses}>
+                  • Daily DSA streak till the end + DP and Graph Along With Complete Neetcode
+                </div>
+
+              </div>
+
+
 
             </div>
           </div>
