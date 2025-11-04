@@ -1,33 +1,38 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const BlogSection = ({isDark, setIsDark}) => {
+const BlogSection = ({isDark}) => {
+  const Navigate = useNavigate();
   return (
     <>
       <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
       
-      <div className='mt-16 px-4'>
+      <div className='mt-16 px-4 cursor-pointer '>
         <div className={`font-semibold px-2 text-2xl mb-8 ${isDark ? 'text-white' : 'text-black'}`}
           style={{fontFamily:'Space Grotesk, sans-serif'}}
         >
           Latest Blog  
-        <span className='text-red-500 px-3'>
-             (Ongoing)
-        </span>
         </div>
 
         {/* Simple Card */}
-        <div className={`w-auto sm:w-[30rem] h-auto rounded-xl p-6 border ${
+        <div className={`w-auto sm:w-[30rem] h-auto rounded-xl p-6 border hover:hover:scale-105 transition-all duration-300 ${
           isDark 
             ? 'bg-black border-white/[0.2]' 
             : 'bg-gray-50 border-black/[0.1]'
-        }`}>
+        }`}
+        onClick={() => Navigate('/WinterArc')}
+        >
           
-          <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-neutral-600'}`}>
+          <h3 className={`text-xl font-bold  ${isDark ? 'text-white' : 'text-neutral-600'}`}>
             My Winter Arc
+              <span className='text-red-500 px-3 font-semibold '>
+                (Ongoing)
+              </span>
           </h3>
           
           <p className={`text-sm max-w-sm mt-2 ${isDark ? 'text-neutral-300' : 'text-neutral-500'}`}>
-            My Winter Life Transformation: A Seasonal Journey Unveiled          </p>
+              My Winter Life Transformation: A Seasonal Journey Unveiled      
+          </p>
           
           <div className="w-full mt-4">
             <img
@@ -48,7 +53,7 @@ const BlogSection = ({isDark, setIsDark}) => {
             </a>
             
             <button
-              className={`px-4 py-2 rounded-xl cursor-pointer text-xs font-bold ${
+              className={`px-4 py-2 rounded-xl cursor-pointer text-xs font-bold hover:scale-115 duration-400  ${
                 isDark 
                   ? 'bg-white text-black' 
                   : 'bg-black text-white'
