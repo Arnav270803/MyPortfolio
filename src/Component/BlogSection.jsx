@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Calendar } from 'lucide-react'
 
 const BlogSection = ({isDark}) => {
   const Navigate = useNavigate();
@@ -15,7 +16,7 @@ const BlogSection = ({isDark}) => {
         </div>
 
         {/* Simple Card */}
-        <div className={`w-auto sm:w-[30rem] h-auto rounded-xl p-6 border hover:hover:scale-105 transition-all duration-300 ${
+        <div className={`w-auto sm:w-[30rem] h-auto rounded-xl p-6 border hover:scale-105 transition-all duration-300 ${
           isDark 
             ? 'bg-black border-white/[0.2]' 
             : 'bg-gray-50 border-black/[0.1]'
@@ -36,21 +37,19 @@ const BlogSection = ({isDark}) => {
           
           <div className="w-full mt-4">
             <img
-              src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3"
+              src="https://images.unsplash.com/photo-1477346611705-65d1883cee1e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3"
               height="1000"
               width="1000"
               className="h-60 w-full object-cover rounded-xl"
-              alt="thumbnail"
+              alt="Pine trees near water with fog"
             />
           </div>
           
           <div className="flex justify-between items-center mt-20">
-            <a
-              href="#"
-              className={`px-4 font-semibold py-2 rounded-xl text-xs font-normal ${isDark ? 'text-zinc' : 'text-gray-500'}`}
-            >
-              Nov. 02-2025
-            </a>
+            <div className={`flex items-center gap-2 px-4 font-semibold py-2 rounded-xl text-sm ${isDark ? 'text-zinc-300' : 'text-gray-600'}`}>
+              <Calendar size={18} />
+              <span>Nov. 02-2025</span>
+            </div>
             
             <button
               className={`px-4 py-2 rounded-xl cursor-pointer text-xs font-bold hover:scale-115 duration-400  ${
