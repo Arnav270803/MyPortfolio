@@ -131,7 +131,7 @@ const WhisperFlixProject = ({ isDark }) => {
           </div>
           <div>
             <a
-              href="https://whisper-flix.vercel.app/"
+              href="https://whisperslix.vercel.app/"
               className={`hover:underline text-sm transition-colors ${
                 isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
               }`}
@@ -242,16 +242,6 @@ const VynixProject = ({ isDark }) => {
             isDark ? '' : ''
           }`}>
             Ongoing
-          </div>
-          <div>
-            <a
-              href="https://vynix-wnyp.vercel.app/"
-              className={`text-sm transition-colors ${
-                isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Live →
-            </a>
           </div>
           <div>
             <a
