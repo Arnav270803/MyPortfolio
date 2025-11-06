@@ -1,6 +1,7 @@
 import React from 'react'
 import WinterArc from '../Component/WinterArc'
 import Navbar from '../Component/Navbar'
+import Footer from '../Component/Footer'
 
 const WinterArcPage = ({isDark , toggleTheme}) => {
   return (
@@ -13,6 +14,12 @@ const WinterArcPage = ({isDark , toggleTheme}) => {
             <div className='mt-4'>
         <WinterArc isDark={isDark}/>
             </div>
+
+        <div className='mt-4'>
+        <Footer isDark={isDark}/>
+        </div>
+
+
         </div>
     </div>
   )

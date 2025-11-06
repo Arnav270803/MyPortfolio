@@ -28,7 +28,7 @@ const WinterArc = ({isDark}) => {
   `;
 
   const tagButtonClasses = `
-    px-3 sm:px-4 py-1.5 sm:py-2 rounded-md font-semibold 
+    px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-md font-semibold 
     text-xs sm:text-sm transition-all duration-300 hover:scale-105 whitespace-nowrap
     ${isDark 
       ? 'border border-gray-800/30 text-gray-300 hover:bg-white hover:text-black hover:border-white/50' 
@@ -36,8 +36,11 @@ const WinterArc = ({isDark}) => {
     }
   `;
 
+  // Added font-medium, tracking-wide for texture and boldness
   const goalItemClasses = `
-    ml-6 mt-3 text-sm sm:text-base leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`;
+    ml-3 sm:ml-6 mt-2 sm:mt-3 text-[9px] sm:text-[10px] md:text-[11px] leading-relaxed 
+    font-medium tracking-wide antialiased
+    ${isDark ? 'text-gray-400' : 'text-gray-600'}`;
 
   return (
     <>
@@ -45,7 +48,7 @@ const WinterArc = ({isDark}) => {
       
       <div className="min-h-screen">
         {/* Back Button */}
-        <div className="mt-10 ml-6">
+        <div className="mt-6 sm:mt-8 md:mt-10 ml-3 sm:ml-4 md:ml-6">
           <button 
             className={`flex items-center gap-2 ${buttonClasses}`}
             style={{ boxShadow: getButtonShadow() }}
@@ -57,9 +60,9 @@ const WinterArc = ({isDark}) => {
         </div>
 
         {/* Main Content Container */}
-        <div className="mt-12 px-4 sm:px-6 lg:px-8">
+        <div className="mt-6 sm:mt-8 md:mt-12 px-3 sm:px-4 md:px-6 lg:px-8">
           {/* Hero Image */}
-          <div className="relative w-full h-[40vh] sm:h-[53vh] rounded-2xl overflow-hidden">
+          <div className="relative w-full h-[30vh] sm:h-[40vh] md:h-[53vh] rounded-xl sm:rounded-2xl overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1477346611705-65d1883cee1e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3"
               alt="Winter arc image"
@@ -68,7 +71,7 @@ const WinterArc = ({isDark}) => {
           </div>
 
           {/* Tags */}
-          <div className="flex items-center mt-6 gap-2">
+          <div className="flex items-center flex-wrap mt-4 sm:mt-6 gap-2">
             <button 
               className={tagButtonClasses}
               style={{ boxShadow: getButtonShadow() }}
@@ -85,33 +88,35 @@ const WinterArc = ({isDark}) => {
 
           {/* Title */}
           <div 
-            className={`mt-8 font-bold text-3xl sm:text-4xl md:text-5xl ${isDark ? 'text-white' : 'text-gray-900'}`}
+            className={`mt-6 sm:mt-8 font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl ${isDark ? 'text-white' : 'text-gray-900'}`}
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}
           >
             My Winter Arc
           </div>
 
-          {/* Description */}
-          <div className={`mt-4 text-sm sm:text-base max-w-2xl ${isDark ? 'text-gray-400' : 'text-gray-600'}`}> 
+          {/* Description - Textured and bolder */}
+          <div className={`mt-3 sm:mt-4 text-[9px] sm:text-[10px] md:text-[11px] max-w-2xl 
+            font-medium tracking-wide antialiased
+            ${isDark ? 'text-gray-400' : 'text-gray-600'}`}> 
             This blog is all about my winter progress and growth content from my twitter.
           </div>
 
           {/* Date */}
-          <div className="mt-5 text-lg">
+          <div className="mt-3 sm:mt-4 md:mt-5 text-sm sm:text-base md:text-lg">
             November 6, 2025
           </div>
 
           {/* Goals Section */}
-          <div className={`border-t mt-6 pt-6 ${isDark ? 'border-zinc-600' : 'border-neutral-400'}`}>
+          <div className={`border-t mt-5 sm:mt-6 pt-4 sm:pt-6 ${isDark ? 'border-zinc-600' : 'border-neutral-400'}`}>
             <div 
-              className={`font-bold text-3xl ${isDark ? 'text-white' : 'text-gray-900'}`}
+              className={`font-bold text-xl sm:text-2xl md:text-3xl ${isDark ? 'text-white' : 'text-gray-900'}`}
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
               Hey, Welcome to my Winter Arc ❄️
             </div>
 
             <div 
-              className={`mt-10 font-bold text-2xl ${isDark ? 'text-white' : 'text-gray-900'}`}
+              className={`mt-6 sm:mt-8 md:mt-10 font-bold text-lg sm:text-xl md:text-2xl ${isDark ? 'text-white' : 'text-gray-900'}`}
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
               Goals:
@@ -146,14 +151,11 @@ const WinterArc = ({isDark}) => {
             </div>
           </div>
 
-
-
-
-{/*---------------------------------------------------day1------------------------------------------------------------------------------- */}
+          {/*---------------------------------------------------day1------------------------------------------------------------------------------- */}
           {/* Day-1 Section */}
-          <div className={`border-t mt-10 pt-6 ${isDark ? 'border-zinc-600' : 'border-neutral-400'}`}>
+          <div className={`border-t mt-6 sm:mt-8 md:mt-10 pt-4 sm:pt-6 ${isDark ? 'border-zinc-600' : 'border-neutral-400'}`}>
             <div 
-              className={`font-bold text-2xl ${isDark ? 'text-white' : 'text-gray-900'}`}
+              className={`font-bold text-lg sm:text-xl md:text-2xl ${isDark ? 'text-white' : 'text-gray-900'}`}
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
               Day-1
@@ -177,12 +179,12 @@ const WinterArc = ({isDark}) => {
           </div>
 
 
-          
+
 
           {/*----------------------------------------------- Twitter Post Section ------------------------------------------------------*/}
-          <div className="mt-8 flex flex-wrap gap-4 pb-10">
+          <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4 pb-8 sm:pb-10">
             {/* Twitter Card */}
-            <div className={`relative w-full lg:w-[48%] xl:w-[45%] rounded-xl p-4 border
+            <div className={`relative w-full lg:w-[48%] xl:w-[45%] rounded-lg sm:rounded-xl p-3 sm:p-4 border
               ${isDark 
                 ? 'bg-gray-900/50 border-gray-800 shadow-lg' 
                 : 'bg-white border-gray-200 shadow-md'
@@ -193,37 +195,39 @@ const WinterArc = ({isDark}) => {
                 href="https://x.com/Bokinsha/status/1986362685240582611" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute top-4 right-4 hover:opacity-70 transition-opacity"
+                className="absolute top-3 right-3 sm:top-4 sm:right-4 hover:opacity-70 transition-opacity"
               >
                 <lord-icon
                   src="https://cdn.lordicon.com/yizwahhw.json"
                   trigger="hover"
                   stroke="bold"
                   colors={colors.twitter}
-                  style={{ width: '20px', height: '20px' }}>
+                  style={{ width: '18px', height: '18px' }}>
                 </lord-icon>
               </a>
 
               {/* Profile Header */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 <img 
                   src="/cropped_circle_image.png" 
                   alt="Profile" 
-                  className="w-12 h-12 rounded-full"
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full"
                 />
                 <div>
-                  <h3 className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                  <h3 className={`font-semibold text-sm sm:text-base ${isDark ? 'text-white' : 'text-gray-900'}`}>
                     Arnav Sharma
                   </h3>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-xs sm:text-sm text-gray-500">
                     @<span className="text-blue-500">Bokinsha</span> · 1h
                   </p>
                 </div>
               </div>
 
-              {/* Post Content */}
-              <div className={`mt-3 ${isDark ? 'text-gray-300' : 'text-gray-800'}`}>
-                <p className="font-semibold mb-2">Today's work</p>
+              {/* Post Content - Textured and bolder */}
+              <div className={`mt-2 sm:mt-3 text-[9px] sm:text-[10px] md:text-[11px]
+                font-medium tracking-wide antialiased
+                ${isDark ? 'text-gray-300' : 'text-gray-800'}`}>
+                <p className="font-semibold mb-1 sm:mb-2">Today's work</p>
                 <p>- give placement test .</p>
                 <p>- Start blog</p>
                 <p>- dsa ( bit and dp) -2 questions each .</p>
@@ -231,7 +235,7 @@ const WinterArc = ({isDark}) => {
               </div>
 
               {/* Post Image */}
-              <div className="mt-3 rounded-xl overflow-hidden">
+              <div className="mt-2 sm:mt-3 rounded-lg sm:rounded-xl overflow-hidden">
                 <img 
                   src="/Deepwork.jpg"
                   alt="Deep Work"
@@ -240,24 +244,24 @@ const WinterArc = ({isDark}) => {
               </div>
 
               {/* Engagement Buttons */}
-              <div className="flex items-center justify-around mt-4 pt-2 border-t border-gray-700/30">
-                <button className="flex items-center gap-2 text-gray-500 hover:text-blue-500 transition-colors">
-                  <MessageCircle size={18} />
-                  <span className="text-sm">12</span>
+              <div className="flex items-center justify-around mt-3 sm:mt-4 pt-2 border-t border-gray-700/30">
+                <button className="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-blue-500 transition-colors">
+                  <MessageCircle size={16} className="sm:w-[18px] sm:h-[18px]" />
+                  <span className="text-xs sm:text-sm">12</span>
                 </button>
                 
-                <button className="flex items-center gap-2 text-gray-500 hover:text-green-500 transition-colors">
-                  <Repeat2 size={18} />
-                  <span className="text-sm">8</span>
+                <button className="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-green-500 transition-colors">
+                  <Repeat2 size={16} className="sm:w-[18px] sm:h-[18px]" />
+                  <span className="text-xs sm:text-sm">8</span>
                 </button>
                 
-                <button className="flex items-center gap-2 text-gray-500 hover:text-red-500 transition-colors">
-                  <Heart size={18} />
-                  <span className="text-sm">45</span>
+                <button className="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-red-500 transition-colors">
+                  <Heart size={16} className="sm:w-[18px] sm:h-[18px]" />
+                  <span className="text-xs sm:text-sm">45</span>
                 </button>
                 
-                <button className="flex items-center gap-2 text-gray-500 hover:text-blue-500 transition-colors">
-                  <Share size={18} />
+                <button className="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-blue-500 transition-colors">
+                  <Share size={16} className="sm:w-[18px] sm:h-[18px]" />
                 </button>
               </div>
             </div>
@@ -265,10 +269,10 @@ const WinterArc = ({isDark}) => {
             {/* Add more cards here - they'll wrap automatically */}
             
           </div>
-      {/*-------------------------------------Day1 and twitter card ends here -------------------------------------------------------------------- */}
-      
-
-
+          {/*-------------------------------------Day1 and twitter card ends here -------------------------------------------------------------------- */}
+       
+       
+       
         </div>
       </div>
     </>

@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../Component/Navbar'
 import Bloging from '../Component/Bloging'
 import BlogSection from '../Component/BlogSection';
+import Footer from '../Component/Footer';
 
 const BlogPage = ({isDark , toggleTheme}) => {
 
@@ -21,6 +22,11 @@ const BlogPage = ({isDark , toggleTheme}) => {
           <div className='mt-4'>
             <BlogSection isDark={isDark}/>
           </div>
+
+          <div className='mt-4'>
+            <Footer isDark={isDark} />
+          </div>
+
 
         </div>
       </div>
