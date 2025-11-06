@@ -274,7 +274,7 @@ const VynixProject = ({ isDark }) => {
         ) : (
           <>
             <ChevronDown className="w-4 h-4" />
-            Show Details
+            Show Details 
           </>
         )}
       </button>
