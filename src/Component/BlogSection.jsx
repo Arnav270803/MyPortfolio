@@ -48,7 +48,7 @@ const BlogSection = ({isDark}) => {
           <div className="flex justify-between items-center mt-20">
             <div className={`flex items-center gap-2 px-4 font-semibold py-2 rounded-xl text-sm ${isDark ? 'text-zinc-300' : 'text-gray-600'}`}>
               <Calendar size={18} />
-              <span>Nov. 02-2025</span>
+              <span>Nov. 06-2025</span>
             </div>
             
             <button
