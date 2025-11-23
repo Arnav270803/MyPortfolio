@@ -26,6 +26,15 @@ const MyIntro = ({ isDark }) => {
     return () => clearInterval(interval);
   }, [animatedTexts.length]);
 
+
+
+
+const BtDesign = `px-3 py-1 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
+  ${isDark 
+    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'  // here the shadow code is like this because i wanted to be surround the button completely
+    : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
+  }
+  active:scale-100`
   return (
     <>
       <link
@@ -112,34 +121,34 @@ const MyIntro = ({ isDark }) => {
           
           <p>
             <Code className="inline w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-            Proficient in <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>JavaScript</span>, {' '}
-            <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>C++</span> and 
-            <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}> Python </span>
-            programming languages
+            Proficient in <span className={BtDesign}>JavaScript</span>{' '}, {' '}
+            <span className={BtDesign}>C++</span> and {' '}
+            <span className={BtDesign}> Python{' '} </span>
+           programming languages
           </p>
           
           <p>
             <Database className="inline w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-            Full-stack <span className={`font-medium hover:underline  ${isDark ? 'text-white' : 'text-gray-900'}`}>MERN</span> developer 
+            Full-stack <span className={BtDesign}>MERN</span> developer 
             with hands-on project experience
           </p>
 
           <p>
             <Users className="inline w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-              Built<span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}> AI agents </span>  
-              powered by Retrieval-Augmented Generation <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>(RAG)</span> techniques.         
+              Built<span className={BtDesign}> AI agents </span>  
+              powered by Retrieval-Augmented Generation <span className={BtDesign}>RAG</span> techniques .         
           </p>
           
           <p>
             <Database className="inline w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-            Hands-on experience with both <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>NOSQL</span> and{' '}
-            <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>Vector Database</span> systems
+            Hands-on experience with both <span className={BtDesign}>NOSQL</span> and{' '}
+            <span className={BtDesign}>SQL</span> Databases
           </p>
           
           <p>
             <TrendingUp className="inline w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
             Practical marketing skills from running a 
-            <span className={`font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}> SaaS </span> 
+            <span className={BtDesign}> SaaS </span> 
             service
           </p>
           
