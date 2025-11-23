@@ -5,6 +5,13 @@ import { Sparkles, Layers, Paintbrush2, Lock, ChevronDown, ChevronUp } from 'luc
 const RVisionProject = ({ isDark }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
+const BtDesign = `px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
+  ${isDark 
+    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'  // here the shadow code is like this because i wanted to be surround the button completely
+    : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
+  }
+  active:scale-100`
+
   return (
     <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
       <div className={`flex items-start border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'} justify-between mb-3`}>
@@ -96,7 +103,7 @@ const RVisionProject = ({ isDark }) => {
       </div>
       
       <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-        vite / React / Tailwind CSS / Node.js / MongoDB / Express / motion.dev / lordicon / Clipdrop API / JWT
+       <span className={BtDesign}>vite </span>|<span className={BtDesign}>React</span>|<span className={BtDesign}>Tailwind CSS</span>|<span className={BtDesign}>Node.js</span>|<span className={BtDesign}>MongoDB</span>|<span className={BtDesign}>Express</span>|<span className={BtDesign}>motion.dev</span>|<span className={BtDesign}>lordicon</span>|<sspan className={BtDesign}>Clipdrop API</sspan>|<span className={BtDesign}>JWT</span> 
       </div>
       <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
       </div>
