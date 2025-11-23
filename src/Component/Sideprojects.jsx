@@ -119,6 +119,13 @@ const BtDesign = `px-2 py-0.5 border border-dashed rounded-md cursor-pointer tra
 const WhisperFlixProject = ({ isDark }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  const BtDesign = `px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
+  ${isDark 
+    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'  // here the shadow code is like this because i wanted to be surround the button completely
+    : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
+  }
+  active:scale-100`
+
   return (
     <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
       <div className={`flex items-start justify-between mb-3 border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
@@ -217,7 +224,7 @@ const WhisperFlixProject = ({ isDark }) => {
       </div>
 
       <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-        React / Tailwind CSS / motion.dev / lordicon / Express / Node.js / MongoDB / JWT / Vite
+        <span className={BtDesign}>React</span> | <span className={BtDesign}>Tailwind CSS</span> | <span className={BtDesign}>motion.dev</span> | <span className={BtDesign}>lordicon</span> | <span className={BtDesign}>Express</span> | <span className={BtDesign}>Node.js</span> | <span className={BtDesign}>MongoDB</span> | <span className={BtDesign}>JWT</span> | <span className={BtDesign}>Vite</span>
       </div>
       <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
       </div>
@@ -232,6 +239,13 @@ const WhisperFlixProject = ({ isDark }) => {
 // Vynix Project
 const VynixProject = ({ isDark }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const BtDesign = `px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
+  ${isDark 
+    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'  // here the shadow code is like this because i wanted to be surround the button completely
+    : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
+  }
+  active:scale-100`
 
   return (
     <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
@@ -339,7 +353,7 @@ const VynixProject = ({ isDark }) => {
       </div>
 
       <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-        React / Node.js / Express.js / MongoDB / Manim / Python / OpenAI
+         <span className={BtDesign}>React</span> | <span className={BtDesign}>Node.js</span> | <span className={BtDesign}>Express.js</span> | <span className={BtDesign}>MongoDB</span> | <span className={BtDesign}>Manim</span> | <span className={BtDesign}>Python</span> | <span className={BtDesign}>OpenAI</span>
       </div>
       <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
       </div>
@@ -355,6 +369,13 @@ const VynixProject = ({ isDark }) => {
 //Capillary Chatbot.
 const CapillaryBot = ({ isDark }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const BtDesign = `px-2  border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
+  ${isDark 
+    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'  // here the shadow code is like this because i wanted to be surround the button completely
+    : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
+  }
+  active:scale-100`
 
   return (
     <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
@@ -454,8 +475,8 @@ const CapillaryBot = ({ isDark }) => {
         </div>
       </div>
 
-      <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-        React / Node.js / Express.js / Python / Vite / Tailwind CSS / Framer Motion / Axios / BeautifulSoup / Sentence Transformers / Math.js / OpenRouter
+   <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
+        <span className={BtDesign}>React</span> | <span className={BtDesign}>Node.js</span> | <span className={BtDesign}>Express.js</span> | <span className={BtDesign}>Python</span> | <span className={BtDesign}>Vite</span> | <span className={BtDesign}>Mistral LLm</span>|<span className={BtDesign}>Framer Motion</span>| <span className={BtDesign}>BeautifulSoup</span> | <span className={BtDesign}>OpenRouter</span>
       </div>
       <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
       </div>
@@ -471,6 +492,13 @@ const CapillaryBot = ({ isDark }) => {
 // Teacher's ERP Project
 const TeachersERP = ({ isDark }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+
+    const BtDesign = `px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
+  ${isDark 
+    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'  // here the shadow code is like this because i wanted to be surround the button completely
+    : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
+  }
+  active:scale-100`
 
   return (
     <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
@@ -581,7 +609,7 @@ const TeachersERP = ({ isDark }) => {
       </div>
 
       <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-        React / Tailwind / Node.js / SQL / Shadcn / Prisma
+        <span className={BtDesign}>React</span>|<span className={BtDesign}>Tailwind</span>|<span className={BtDesign}>Node.js</span>|<span className={BtDesign}>SQL</span>|<span className={BtDesign}>Shadcn</span>|<span className={BtDesign}>Prisma</span> 
       </div>
     </div>
   );
