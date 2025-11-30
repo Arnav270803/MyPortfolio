@@ -2674,10 +2674,114 @@ const WinterArc = ({isDark}) => {
                 font-medium tracking-wide antialiased
                 ${isDark ? 'text-gray-300' : 'text-gray-800'}`}>
                 <p className="font-semibold mb-1 sm:mb-2">Today's work</p>
-                <p>- Give GoDaddy Assessment .</p>
-               <p>- Give Routing & Switching Exam </p> 
-               <p>- Update Portfolio Blog </p>
-               <p>- Understand Compiler Design</p>
+                <p>- Attend Placement Drive For Josh Technology for Software Developer role </p>
+               <p>- Prepare for Compiler Design exam </p> 
+               <p>- Update daily blog at <span className='text-blue-500'>http://hayarnav.xyz</span> </p>
+              </div>
+
+
+              {/* Engagement Buttons */}
+              <div className="flex items-center justify-around mt-3 sm:mt-4 pt-2 border-t border-gray-700/30">
+                <button className="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-blue-500 transition-colors">
+                  <MessageCircle size={16} className="sm:w-[18px] sm:h-[18px]" />
+                  <span className="text-xs sm:text-sm">3</span>
+                </button>
+                
+                <button className="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-green-500 transition-colors">
+                  <Repeat2 size={16} className="sm:w-[18px] sm:h-[18px]" />
+                  <span className="text-xs sm:text-sm"></span>
+                </button>
+                
+                <button className="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-red-500 transition-colors">
+                  <Heart size={16} className="sm:w-[18px] sm:h-[18px]" />
+                  <span className="text-xs sm:text-sm">5</span>
+                </button>
+                
+                <button className="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-blue-500 transition-colors">
+                  <Share size={16} className="sm:w-[18px] sm:h-[18px]" />
+                </button>
+              </div>
+            </div>
+
+            {/* Add more cards here - they'll wrap automatically */}
+            
+          </div>
+
+
+
+
+                    {/*--------------------------------------------------------------day-22-------------------------------------------------------------------- */}
+
+          {/* Day-21 Section */}
+          <div className={`border-t mt-6 sm:mt-8 md:mt-10 pt-4 sm:pt-6 ${isDark ? 'border-zinc-600' : 'border-neutral-400'}`}>
+            <div 
+              className={`font-bold text-lg sm:text-xl md:text-2xl ${isDark ? 'text-white' : 'text-gray-900'}`}
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+            >
+              Day-22
+            </div>
+
+            <div className={goalItemClasses}>
+              • Give last exam of Compiler design  
+            </div>      
+                
+            <div className={goalItemClasses}>
+              • Take a good sleep (much needed) .
+            </div>  
+
+            
+          </div>
+
+          {/*----------------------------------------------- Twitter Post Section ------------------------------------------------------*/}
+          <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4 pb-8 sm:pb-10">
+            {/* Twitter Card */}
+            <div className={`relative w-full lg:w-[48%] xl:w-[45%] rounded-lg sm:rounded-xl p-3 sm:p-4 border
+              ${isDark 
+                ? 'bg-gray-900/50 border-gray-800 shadow-lg' 
+                : 'bg-white border-gray-200 shadow-md'
+              }`}
+            >
+              {/* X Logo - Top Right */}
+              <a 
+                href="https://x.com/Bokinsha/status/1994622491726393474" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-3 right-3 sm:top-4 sm:right-4 hover:opacity-70 transition-opacity"
+              >
+                <lord-icon
+                  src="https://cdn.lordicon.com/yizwahhw.json"
+                  trigger="hover"
+                  stroke="bold"
+                  colors={colors.twitter}
+                  style={{ width: '18px', height: '18px' }}>
+                </lord-icon>
+              </a>
+
+              {/* Profile Header */}
+              <div className="flex items-center gap-2 sm:gap-3">
+                <img 
+                  src="/cropped_circle_image.png" 
+                  alt="Profile" 
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full"
+                />
+                <div>
+                  <h3 className={`font-semibold text-sm sm:text-base ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    Arnav Sharma
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-500">
+                    @<span className="text-blue-500">Bokinsha</span> · 1h
+                  </p>
+                </div>
+              </div>
+
+              {/* Post Content - Textured and bolder */}
+              <div className={`mt-2 sm:mt-3 text-[9px] sm:text-[10px] md:text-[11px]
+                font-medium tracking-wide antialiased
+                ${isDark ? 'text-gray-300' : 'text-gray-800'}`}>
+                <p className="font-semibold mb-1 sm:mb-2">Today's work</p>
+                <p>- final preparation and give my last Compiler Design exam of my last semester.</p>
+               <p>- workout  </p> 
+               <p>- Take a good sleep (much needed) .</p>
               </div>
 
 
@@ -2696,6 +2800,129 @@ const WinterArc = ({isDark}) => {
                 <button className="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-red-500 transition-colors">
                   <Heart size={16} className="sm:w-[18px] sm:h-[18px]" />
                   <span className="text-xs sm:text-sm">4</span>
+                </button>
+                
+                <button className="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-blue-500 transition-colors">
+                  <Share size={16} className="sm:w-[18px] sm:h-[18px]" />
+                </button>
+              </div>
+            </div>
+
+            {/* Add more cards here - they'll wrap automatically */}
+            
+          </div>
+
+
+
+
+
+
+
+                   {/*--------------------------------------------------------------day-23-------------------------------------------------------------------- */}
+
+          {/* Day-23 Section */}
+          <div className={`border-t mt-6 sm:mt-8 md:mt-10 pt-4 sm:pt-6 ${isDark ? 'border-zinc-600' : 'border-neutral-400'}`}>
+            <div 
+              className={`font-bold text-lg sm:text-xl md:text-2xl ${isDark ? 'text-white' : 'text-gray-900'}`}
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+            >
+              Day-23
+            </div>
+
+            <div className={goalItemClasses}>
+              • Exam is over and i have took a good rest which is a coverup of wasting a day to be honest
+            </div>      
+                
+            <div className={goalItemClasses}>
+              •  Solve 3+2+2 of Leetcode SQL , Codeforces , leetcode DSA. 
+            </div>  
+
+            <div className={goalItemClasses}>
+              • Listen to podcast of elon musk and nikhil kamath 
+            </div>
+
+          </div>
+
+
+
+
+          {/*----------------------------------------------- Twitter Post Section ------------------------------------------------------*/}
+          <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4 pb-8 sm:pb-10">
+            {/* Twitter Card */}
+            <div className={`relative w-full lg:w-[48%] xl:w-[45%] rounded-lg sm:rounded-xl p-3 sm:p-4 border
+              ${isDark 
+                ? 'bg-gray-900/50 border-gray-800 shadow-lg' 
+                : 'bg-white border-gray-200 shadow-md'
+              }`}
+            >
+              {/* X Logo - Top Right */}
+              <a 
+                href="https://x.com/Bokinsha/status/1995139149595377690" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-3 right-3 sm:top-4 sm:right-4 hover:opacity-70 transition-opacity"
+              >
+                <lord-icon
+                  src="https://cdn.lordicon.com/yizwahhw.json"
+                  trigger="hover"
+                  stroke="bold"
+                  colors={colors.twitter}
+                  style={{ width: '18px', height: '18px' }}>
+                </lord-icon>
+              </a>
+
+              {/* Profile Header */}
+              <div className="flex items-center gap-2 sm:gap-3">
+                <img 
+                  src="/cropped_circle_image.png" 
+                  alt="Profile" 
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full"
+                />
+                <div>
+                  <h3 className={`font-semibold text-sm sm:text-base ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    Arnav Sharma
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-500">
+                    @<span className="text-blue-500">Bokinsha</span> · 1h
+                  </p>
+                </div>
+              </div>
+
+              {/* Post Content - Textured and bolder */}
+              <div className={`mt-2 sm:mt-3 text-[9px] sm:text-[10px] md:text-[11px]
+                font-medium tracking-wide antialiased
+                ${isDark ? 'text-gray-300' : 'text-gray-800'}`}>
+                <p className="font-semibold mb-1 sm:mb-2">Today's work</p>
+                <p>Exam is over and i have took a good rest which is a coverup of wasting a day to be honest  </p>
+                <p>- Solve 3+2+2 of Leetcode SQL , Codeforces , leetcode DSA. </p>
+               <p>- Listen to this</p> 
+
+              </div>
+
+              {/* Post Image */}
+              <div className="mt-2 sm:mt-3 rounded-lg sm:rounded-xl overflow-hidden">
+                <img 
+                  src="/pp.png"
+                  alt="Deep Work"
+                  className="w-full object-cover"
+                />
+              </div>
+
+              {/* Engagement Buttons */}
+              <div className="flex items-center justify-around mt-3 sm:mt-4 pt-2 border-t border-gray-700/30">
+                <button className="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-blue-500 transition-colors">
+                  <MessageCircle size={16} className="sm:w-[18px] sm:h-[18px]" />
+                  <span className="text-xs sm:text-sm">1</span>
+                </button>
+                
+                <button className="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-green-500 transition-colors">
+                  <Repeat2 size={16} className="sm:w-[18px] sm:h-[18px]" />
+                  <span className="text-xs sm:text-sm"></span>
+                </button>
+                
+                <button className="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-red-500 transition-colors">
+                  <Heart size={16} className="sm:w-[18px] sm:h-[18px]" />
+                  <span className="text-xs sm:text-sm">1</span>
                 </button>
                 
                 <button className="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-blue-500 transition-colors">
