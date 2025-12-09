@@ -5,12 +5,13 @@ import { Sparkles, Layers, Paintbrush2, Lock, ChevronDown, ChevronUp } from 'luc
 const RVisionProject = ({ isDark }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-const BtDesign = `px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
+const BtDesign = `inline-block mr-1 mb-1 px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
   ${isDark 
-    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'  // here the shadow code is like this because i wanted to be surround the button completely
+    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'  
     : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
   }
   active:scale-100`
+
 
   return (
     <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
@@ -103,7 +104,16 @@ const BtDesign = `px-2 py-0.5 border border-dashed rounded-md cursor-pointer tra
       </div>
       
       <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-       <span className={BtDesign}>vite </span>|<span className={BtDesign}>React</span>|<span className={BtDesign}>Tailwind CSS</span>|<span className={BtDesign}>Node.js</span>|<span className={BtDesign}>MongoDB</span>|<span className={BtDesign}>Express</span>|<span className={BtDesign}>motion.dev</span>|<span className={BtDesign}>lordicon</span>|<sspan className={BtDesign}>Clipdrop API</sspan>|<span className={BtDesign}>JWT</span> 
+        <span className={BtDesign}>vite</span>
+        <span className={BtDesign}>React</span>
+        <span className={BtDesign}>Tailwind CSS</span>
+        <span className={BtDesign}>Node.js</span>
+        <span className={BtDesign}>MongoDB</span>
+        <span className={BtDesign}>Express</span>
+        <span className={BtDesign}>motion.dev</span>
+        <span className={BtDesign}>lordicon</span>
+        <span className={BtDesign}>Clipdrop API</span>
+        <span className={BtDesign}>JWT</span>
       </div>
       <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
       </div>
@@ -111,20 +121,16 @@ const BtDesign = `px-2 py-0.5 border border-dashed rounded-md cursor-pointer tra
   );
 };
 
-
-
-
-
 // WhisperFlix Project
 const WhisperFlixProject = ({ isDark }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const BtDesign = `px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
+  const BtDesign = `inline-block mr-1 mb-1 px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
   ${isDark 
-    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'  // here the shadow code is like this because i wanted to be surround the button completely
+    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'
     : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
   }
-  active:scale-100`
+  active:scale-100`;
 
   return (
     <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
@@ -139,8 +145,7 @@ const WhisperFlixProject = ({ isDark }) => {
         </div>
         
         <div className="flex items-center gap-4">
-          <div className={`hover:underline text-sm transition-colors hover:text-red-500 animate-pulse text-red-500 ${
-            isDark ? '' : ''}`}>
+          <div className={`hover:underline text-sm transition-colors hover:text-red-500 animate-pulse text-red-500`}>
             Ongoing
           </div>
           <div>
@@ -224,7 +229,15 @@ const WhisperFlixProject = ({ isDark }) => {
       </div>
 
       <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-        <span className={BtDesign}>React</span> | <span className={BtDesign}>Tailwind CSS</span> | <span className={BtDesign}>motion.dev</span> | <span className={BtDesign}>lordicon</span> | <span className={BtDesign}>Express</span> | <span className={BtDesign}>Node.js</span> | <span className={BtDesign}>MongoDB</span> | <span className={BtDesign}>JWT</span> | <span className={BtDesign}>Vite</span>
+        <span className={BtDesign}>React</span>
+        <span className={BtDesign}>Tailwind CSS</span>
+        <span className={BtDesign}>motion.dev</span>
+        <span className={BtDesign}>lordicon</span>
+        <span className={BtDesign}>Express</span>
+        <span className={BtDesign}>Node.js</span>
+        <span className={BtDesign}>MongoDB</span>
+        <span className={BtDesign}>JWT</span>
+        <span className={BtDesign}>Vite</span>
       </div>
       <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
       </div>
@@ -232,20 +245,16 @@ const WhisperFlixProject = ({ isDark }) => {
   );
 };
 
-
-
-
-
 // Vynix Project
 const VynixProject = ({ isDark }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const BtDesign = `px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
+  const BtDesign = `inline-block mr-1 mb-1 px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
   ${isDark 
-    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'  // here the shadow code is like this because i wanted to be surround the button completely
+    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'
     : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
   }
-  active:scale-100`
+  active:scale-100`;
 
   return (
     <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
@@ -259,9 +268,7 @@ const VynixProject = ({ isDark }) => {
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <div className={`text-sm transition-colors hover:text-red-500 animate-pulse text-red-500 ${
-            isDark ? '' : ''
-          }`}>
+          <div className={`text-sm transition-colors hover:text-red-500 animate-pulse text-red-500`}>
             Ongoing
           </div>
           <div>
@@ -353,7 +360,13 @@ const VynixProject = ({ isDark }) => {
       </div>
 
       <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-         <span className={BtDesign}>React</span> | <span className={BtDesign}>Node.js</span> | <span className={BtDesign}>Express.js</span> | <span className={BtDesign}>MongoDB</span> | <span className={BtDesign}>Manim</span> | <span className={BtDesign}>Python</span> | <span className={BtDesign}>OpenAI</span>
+        <span className={BtDesign}>React</span>
+        <span className={BtDesign}>Node.js</span>
+        <span className={BtDesign}>Express.js</span>
+        <span className={BtDesign}>MongoDB</span>
+        <span className={BtDesign}>Manim</span>
+        <span className={BtDesign}>Python</span>
+        <span className={BtDesign}>OpenAI</span>
       </div>
       <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
       </div>
@@ -361,21 +374,16 @@ const VynixProject = ({ isDark }) => {
   );
 };
 
-
-
-
-
-
-//Capillary Chatbot.
+// Capillary Chatbot
 const CapillaryBot = ({ isDark }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const BtDesign = `px-2  border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
+  const BtDesign = `inline-block mr-1 mb-1 px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
   ${isDark 
-    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'  // here the shadow code is like this because i wanted to be surround the button completely
+    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'
     : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
   }
-  active:scale-100`
+  active:scale-100`;
 
   return (
     <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
@@ -389,9 +397,6 @@ const CapillaryBot = ({ isDark }) => {
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <div>
-
-          </div>
           <div>
             <a
               href="https://github.com/Arnav270803/capillary_Bot"
@@ -407,7 +412,7 @@ const CapillaryBot = ({ isDark }) => {
       
       <div className={`mb-3 px-6 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
         RAG chatbot querying CapillaryTech docs via React frontend, Mistral LLM backend      
-        </div>
+      </div>
 
       <button
         onClick={() => setIsExpanded(!isExpanded)}
@@ -439,52 +444,63 @@ const CapillaryBot = ({ isDark }) => {
               •
               <span className='px-2'>
                 React Frontend: Dynamic React + Vite chat app with Axios for backend queries and Tailwind styling.             
-                 </span>
+              </span>
             </p>
 
             <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               •
               <span className='px-2'>
-                  Node.js Backend: Express server on port 5000 handling CORS, JSON, and /chat endpoint for RAG processing.              </span>
+                Node.js Backend: Express server on port 5000 handling CORS, JSON, and /chat endpoint for RAG processing.
+              </span>
             </p>
 
             <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               •
               <span className='px-2'>
-                Python Scraping Script: scrape_docs.py uses BeautifulSoup to chunk CapillaryTech docs into scraped_docs.json              </span>
+                Python Scraping Script: scrape_docs.py uses BeautifulSoup to chunk CapillaryTech docs into scraped_docs.json
+              </span>
             </p>
 
             <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               •
               <span className='px-2'>
-                Python Embedding Script: embed_chunks.py applies SentenceTransformer for vector embeddings saved to embedded_docs.json              </span>
+                Python Embedding Script: embed_chunks.py applies SentenceTransformer for vector embeddings saved to embedded_docs.json
+              </span>
             </p>
 
             <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               •
               <span className='px-2'>
-                RAG Retrieval System: Keyword similarity search retrieves doc chunks as context for cited LLM responses              </span>
+                RAG Retrieval System: Keyword similarity search retrieves doc chunks as context for cited LLM responses
+              </span>
             </p>
 
             <p className={`text-sm mb-3 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               •
               <span className='px-2'>
-                Mistral LLM Integration: OpenRouter's Mistral generates markdown answers from retrieved context for doc expertise              </span>
+                Mistral LLM Integration: OpenRouter's Mistral generates markdown answers from retrieved context for doc expertise
+              </span>
             </p>
           </div>
         </div>
       </div>
 
-   <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-        <span className={BtDesign}>React</span> | <span className={BtDesign}>Node.js</span> | <span className={BtDesign}>Express.js</span> | <span className={BtDesign}>Python</span> | <span className={BtDesign}>Vite</span> | <span className={BtDesign}>Mistral LLm</span>|<span className={BtDesign}>Framer Motion</span>| <span className={BtDesign}>BeautifulSoup</span> | <span className={BtDesign}>OpenRouter</span>
+      <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
+        <span className={BtDesign}>React</span>
+        <span className={BtDesign}>Node.js</span>
+        <span className={BtDesign}>Express.js</span>
+        <span className={BtDesign}>Python</span>
+        <span className={BtDesign}>Vite</span>
+        <span className={BtDesign}>Mistral LLm</span>
+        <span className={BtDesign}>Framer Motion</span>
+        <span className={BtDesign}>BeautifulSoup</span>
+        <span className={BtDesign}>OpenRouter</span>
       </div>
       <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
       </div>
     </div>
   );
 };
-
-
 
 
 
