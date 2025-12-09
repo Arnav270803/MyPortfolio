@@ -43,20 +43,27 @@ const navigate = useNavigate();
         </div>
       </div>
 
-      {/* Fixed icon button - outside blur effect */}
       <div className='fixed bottom-4 right-4 z-50 flex gap-2 cursor-pointer hover:scale-105 transition-transform'
         onClick={() => setBot(!bot)}
       >
-        <lord-icon
-          src="https://cdn.lordicon.com/uyxrgiem.json"
-          trigger="loop"
-          state="loop-cycle"
-          colors={isDark ? "primary:#b4b4b4,secondary:#ffffff" : "primary:#b4b4b4,secondary:#000000"}
-          style={{width: '60px', height: '60px'}}>
-        </lord-icon>
+        {!bot ? (
+          <lord-icon
+            src="https://cdn.lordicon.com/uyxrgiem.json"
+            trigger="loop"
+            state="loop-cycle"
+            colors={isDark ? "primary:#b4b4b4,secondary:#ffffff" : "primary:#b4b4b4,secondary:#000000"}
+            style={{width: '60px', height: '60px'}}>
+          </lord-icon>
+        ) : (
+          <lord-icon
+            src="https://cdn.lordicon.com/nqtddedc.json"
+            trigger="hover"
+            colors={isDark ? "primary:#b4b4b4,secondary:#ffffff" : "primary:#b4b4b4,secondary:#000000"}
+            style={{width: '60px', height: '60px'}}>
+          </lord-icon>
+        )}
       </div>
 
-      {/* MyAgent overlay - shows when bot is true */}
       {bot && (
         <div className='fixed inset-0 z-40 flex items-center justify-center p-4 pointer-events-none'>
           <div className='pointer-events-auto'>

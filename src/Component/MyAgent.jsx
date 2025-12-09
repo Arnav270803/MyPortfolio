@@ -7,7 +7,7 @@ const MyAgent = ({ isDark }) => {
       style={{ minHeight: '20vh' }}
     >
       <h2 className={`text-xl font-semibold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-        My Agent
+        Arnav's Portfolio Assesstent 
       </h2>
       <div className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
         {/* Add your agent features here */}
