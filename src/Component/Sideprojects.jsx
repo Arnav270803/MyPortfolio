@@ -528,10 +528,10 @@ const TeachersERP = ({ isDark }) => {
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <div className={`text-sm transition-colors hover:text-red-500 animate-pulse text-red-500 ${
+          <div className={`text-sm transition-colors hover:text-yellow-500 animate-pulse text-yellow-700 ${
             isDark ? '' : ''
           }`}>
-            Ongoing
+            Paused
           </div>
           <div>
             <a
