@@ -3600,27 +3600,27 @@ const WinterArc = ({isDark}) => {
 
 
 
-          {/*--------------------------------------------------------------day-28-------------------------------------------------------------------- */}
+          {/*--------------------------------------------------------------day-30-------------------------------------------------------------------- */}
 
-          {/* Day-28 Section */}
+          {/* Day-30 Section */}
           <div className={`border-t mt-6 sm:mt-8 md:mt-10 pt-4 sm:pt-6 ${isDark ? 'border-zinc-600' : 'border-neutral-400'}`}>
             <div 
               className={`font-bold text-lg sm:text-xl md:text-2xl ${isDark ? 'text-white' : 'text-gray-900'}`}
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
-              Day-28
+              Day-30
             </div>
 
             <div className={goalItemClasses}>
-              •4 dsa problem 
+              •3+3+3 codeforces , leetcode , sql 
             </div>      
                 
             <div className={goalItemClasses}>
-              • Workout 
+              • UPDATE BLOG
             </div>  
 
             <div className={goalItemClasses}>
-              • Update blog 
+              • work on vynix backend bugs    
             </div>  
 
             
@@ -3637,7 +3637,7 @@ const WinterArc = ({isDark}) => {
             >
               {/* X Logo - Top Right */}
               <a 
-                href="https://x.com/Bokinsha/status/1997382873931006157" 
+                href="https://x.com/Bokinsha/status/1997951804601258414" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute top-3 right-3 sm:top-4 sm:right-4 hover:opacity-70 transition-opacity"
@@ -3672,10 +3672,12 @@ const WinterArc = ({isDark}) => {
               <div className={`mt-2 sm:mt-3 text-[9px] sm:text-[10px] md:text-[11px]
                 font-medium tracking-wide antialiased
                 ${isDark ? 'text-gray-300' : 'text-gray-800'}`}>
-                <p className="font-semibold mb-1 sm:mb-2">Today's completed work </p>
-                <p>- 3+3 codeforces and leetcode  </p>
-               <p>- SQL leetcode practice </p> 
-               <p>- Update Blog at <span className='text-blue-400'>hayarnav.xyz</span>.</p>
+                <p className="font-semibold mb-1 sm:mb-2">Today's work </p>
+                <p>--3+3 codeforces and leetcode</p>
+               <p>- update blog at <span className='text-blue-400'>hayarnav.xyz</span> </p> 
+               <p>- 4hr session (work on vynix backend bugs )  .</p>
+               <p>- express and javascript (backend interview practice ) </p>
+               <p>- if time left (work on my chat bot ).</p>
               </div>
 
 
@@ -3693,7 +3695,7 @@ const WinterArc = ({isDark}) => {
                 
                 <button className="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-red-500 transition-colors">
                   <Heart size={16} className="sm:w-[18px] sm:h-[18px]" />
-                  <span className="text-xs sm:text-sm">3</span>
+                  <span className="text-xs sm:text-sm">5</span>
                 </button>
                 
                 <button className="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-blue-500 transition-colors">
