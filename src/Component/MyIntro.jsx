@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code, Database, Users, TrendingUp, Handshake } from 'lucide-react';
+import { Code, Database, Users, TrendingUp, Handshake, MapPin } from 'lucide-react';
 
 const MyIntro = ({ isDark }) => {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const MyIntro = ({ isDark }) => {
 
 const BtDesign = `px-3 py-1 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
   ${isDark 
-    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'  // here the shadow code is like this because i wanted to be surround the button completely
+    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'
     : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
   }
   active:scale-100`
@@ -91,23 +91,31 @@ const BtDesign = `px-3 py-1 border border-dashed rounded-md cursor-pointer trans
                 </button>
               </div>
               
-              {/* Smaller bottom section on mobile */}
-              <div className="h-[15px] sm:h-[30px] flex items-center px-2 sm:px-4 justify-start overflow-hidden">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={currentTextIndex}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ 
-                      duration: 0.5,
-                      ease: "easeInOut"
-                    }}
-                    className={`text-[10px] sm:text-sm hover:underline font-medium ${isDark ? 'text-gray-500' : 'text-gray-400'}`}
-                  >
-                    {animatedTexts[currentTextIndex]}
-                  </motion.span>
-                </AnimatePresence>
+              {/* Smaller bottom section with animation on left and location on right */}
+              <div className="h-[15px] sm:h-[30px] flex items-center px-2 sm:px-4 justify-between overflow-hidden">
+                {/* Animated text on the left */}
+                <div className="overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={currentTextIndex}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ 
+                        duration: 0.5,
+                        ease: "easeInOut"
+                      }}
+                      className={`text-[10px] sm:text-sm hover:underline font-medium ${isDark ? 'text-gray-500' : 'text-gray-400'}`}
+                    >
+                      {animatedTexts[currentTextIndex]}
+                    </motion.span>
+                  </AnimatePresence>
+                </div>
+                
+                <div className={`flex items-center gap-1 text-[10px] sm:text-sm font-medium ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                  <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <span>Delhi, India</span>
+                </div>
               </div>
               
             </div>
