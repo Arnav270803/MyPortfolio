@@ -14,7 +14,7 @@ const navigate = useNavigate();
   
   return (
     <div className='relative'>
-      <div className={`${isDark ? 'bg-neutral-900 text-white' : 'bg-zinc-50 text-gray-900'} min-h-screen transition-colors duration-300 ${bot ? 'blur-sm' : ''}`}>
+      <div className={`${isDark ? 'bg-neutral-900 text-white' : 'bg-zinc-50 text-gray-900'} min-h-screen transition-colors duration-300 `}>
       
       {/* Main content */}
       <div className={`max-w-3xl border-l border-r ${isDark ? 'border-gray-800' : 'border-neutral-200'} mx-auto  py-5`}>
@@ -65,7 +65,7 @@ const navigate = useNavigate();
       </div>
 
       {bot && (
-        <div className='fixed inset-0 z-40 flex items-center justify-center p-4 pointer-events-none'>
+        <div className='fixed right-4 inset-0 z-40 flex items-center justify-end  pointer-events-none'>
           <div className='pointer-events-auto'>
             <MyAgent isDark={isDark} />
           </div>
