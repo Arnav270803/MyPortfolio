@@ -59,12 +59,7 @@ const MyAgent = ({ isDark }) => {
   return (
     <div 
       className={`border-2 ${isDark ? 'border-gray-700 bg-neutral-800' : 'border-neutral-300 bg-white'} rounded-lg shadow-lg flex flex-col`}
-      style={{ 
-        width: '40vw',
-        height: '75vh',
-        minWidth: '400px',
-        minHeight: '500px'
-      }}
+      style={{ width: '40vw',height: '75vh',minWidth: '400px',minHeight: '500px'}}
     >
       {/* Header */}
       <div className={`flex items-center gap-3 border-b px-4 py-3 flex-shrink-0 ${isDark ? 'border-gray-700' : 'border-neutral-300'}`}>
@@ -80,12 +75,12 @@ const MyAgent = ({ isDark }) => {
             <span className='text-sm transition-colors hover:text-red-500 animate-pulse text-red-500'>{" "} BETA</span>
           </div>
 
-          <div className={`flex items-center gap-1.5 text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          <div className={`flex items-center gap-1.5 text-sm font-bold ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-400"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2  bg-red-400"></span>
             </span>
-            Offline
+            Offline <span className='font-normal'>(Actively Working on it)</span> 
           </div>
         </div>
       </div>
