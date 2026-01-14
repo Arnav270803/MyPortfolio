@@ -27,7 +27,7 @@ const BlogSection = ({isDark}) => {
           <h3 className={`text-xl font-bold  ${isDark ? 'text-white' : 'text-neutral-600'}`}>
             My Winter Arc
               <span className='text-red-500 px-3 font-semibold '>
-                (Ongoing)
+                (Finished)
               </span>
           </h3>
           

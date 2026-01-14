@@ -5428,9 +5428,21 @@ const WinterArc = ({isDark}) => {
             
           </div>
 
-
-
-
+          {/* New Update Section */}
+          <div className={`border-t mt-6 sm:mt-8 md:mt-10 pt-4 sm:pt-6 ${isDark ? 'border-zinc-600' : 'border-neutral-400'}`}>
+            <div className="mt-3 sm:mt-4 md:mt-5 text-sm sm:text-base md:text-lg">
+              January 5, 2026
+            </div>
+            <div 
+              className={`font-bold text-lg sm:text-xl md:text-2xl ${isDark ? 'text-white' : 'text-gray-900'}`}
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+            >
+              Joined Boock.ai as a Founding Full Stack Engineer
+            </div>
+            <div className={goalItemClasses}>
+              Completed the most important goal which is to get placed which i achieve so for now the winter arc is finished till next year.
+            </div>
+          </div>
 
         </div>
       </div>
