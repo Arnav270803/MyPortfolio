@@ -1,15 +1,30 @@
 import React, { useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Sun, Moon } from 'lucide-react';
 import toggleSound from '../assets/context/select-button-ui-395763.mp3';
 
 const Navbar = ({ isDark, toggleTheme }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const audioRef = useRef(new Audio(toggleSound));
 
   useEffect(() => {
     audioRef.current.volume = 0.5;
   }, []);
+
+  // Handle navigation to sections with smart scroll logic
+  const handleSectionNavigation = (sectionId) => {
+    if (location.pathname === '/') {
+      // Already on home page, just scroll to section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else {
+      // On different page, navigate to home with hash
+      navigate('/', { state: { scrollTo: sectionId } });
+    }
+  };
 
   const handleToggleTheme = () => {
     audioRef.current.play();
@@ -17,15 +32,15 @@ const Navbar = ({ isDark, toggleTheme }) => {
   };
 
   const iconColors = {
-    dark: { 
-      twitter: "primary:#ffffff,secondary:#08a88a", 
+    dark: {
+      twitter: "primary:#ffffff,secondary:#08a88a",
       linkedin: "primary:#b4b4b4,secondary:#08a88a",
-      github: "primary:#ffffff,secondary:#08a88a" 
+      github: "primary:#ffffff,secondary:#08a88a"
     },
-    light: { 
+    light: {
       twitter: "primary:#242424,secondary:#08a88a",
-      linkedin: "primary:#545454,secondary:#08a88a", 
-      github: "primary:#545454,secondary:#08a88a" 
+      linkedin: "primary:#545454,secondary:#08a88a",
+      github: "primary:#545454,secondary:#08a88a"
     }
   };
 
@@ -33,37 +48,44 @@ const Navbar = ({ isDark, toggleTheme }) => {
 
   return (
     <>
-      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-      <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-      
+      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
       <div className={`border-t ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
         <div className='flex justify-between items-center px-6 pt-2 w-full'>
-          
+
           <div className='flex items-center'>
-            <span>
+            <a href="/" rel="noopener noreferrer" className="cursor-pointer hover:opacity-80 transition-opacity">
               <lord-icon
                 src="https://cdn.lordicon.com/jeuxydnh.json"
                 trigger="hover"
                 colors="primary:#b4b4b4,secondary:#08a88a">
               </lord-icon>
-            </span>
-            
-            <a href="/" rel="noopener noreferrer">
-              <span className={`font-medium cursor-pointer px-2 hover:underline transition-colors duration-200 ${isDark ? 'text-white hover:text-gray-300' : 'text-zinc-900 hover:text-gray-600'}`}
-                style={{fontFamily: 'Space Grotesk, sans-serif'}}>
-                Work
-              </span>
             </a>
+
+
 
             <span onClick={() => navigate('/bblog')}
               className='font-medium px-2 hover:underline cursor-pointer transition-colors duration-200'
-              style={{fontFamily: 'Space Grotesk, sans-serif'}}>
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Blog
+            </span>
+
+            <span onClick={() => handleSectionNavigation('experience-section')}
+              className='font-medium px-2 hover:underline cursor-pointer transition-colors duration-200'
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              Experience
+            </span>
+
+            <span onClick={() => handleSectionNavigation('projects-section')}
+              className='font-medium px-2 hover:underline cursor-pointer transition-colors duration-200'
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              Projects
             </span>
           </div>
 
           <div className='flex items-center gap-1'>
-            <a href="https://x.com/Bokinsha" 
+            <a href="https://x.com/Bokinsha"
               className="flex items-center justify-center w-9 h-9 cursor-pointer hover:opacity-80 transition-opacity">
               <lord-icon
                 src="https://cdn.lordicon.com/yizwahhw.json"
