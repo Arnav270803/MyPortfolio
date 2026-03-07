@@ -7,6 +7,8 @@ import Footer from '../Component/Footer';
 import MyIntro from '../Component/MyIntro';
 import { Navigate, useNavigate, useLocation } from 'react-router-dom';
 import MyAgent from '../Component/MyAgent';
+import MVP from '../Component/MVP';
+
 
 const Homee = ({ isDark, toggleTheme, setIsDark }) => {
   const [bot, setBot] = useState(false);
@@ -44,6 +46,10 @@ const Homee = ({ isDark, toggleTheme, setIsDark }) => {
 
           <div id="experience-section" className='mt-6'>
             <Experience isDark={isDark} />
+          </div>
+
+          <div id="experience-section" className='mt-6'>
+            <MVP isDark={isDark} />
           </div>
 
           <div id="projects-section" className='mt-6'>
