@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../Component/Navbar'
 import Experience from '../Component/Experience';
 import Sideprojects from '../Component/Sideprojects';
@@ -6,12 +6,10 @@ import TechStack from '../Component/TechStack';
 import Footer from '../Component/Footer';
 import MyIntro from '../Component/MyIntro';
 import { Navigate, useNavigate, useLocation } from 'react-router-dom';
-import MyAgent from '../Component/MyAgent';
 import MVP from '../Component/MVP';
 
 
 const Homee = ({ isDark, toggleTheme, setIsDark }) => {
-  const [bot, setBot] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -68,34 +66,6 @@ const Homee = ({ isDark, toggleTheme, setIsDark }) => {
         </div>
       </div>
 
-      <div className='fixed bottom-4 right-4 z-50 flex gap-2 cursor-pointer hover:scale-105 transition-transform'
-        onClick={() => setBot(!bot)}
-      >
-        {!bot ? (
-          <lord-icon
-            src="https://cdn.lordicon.com/uyxrgiem.json"
-            trigger="loop"
-            state="loop-cycle"
-            colors={isDark ? "primary:#b4b4b4,secondary:#ffffff" : "primary:#b4b4b4,secondary:#000000"}
-            style={{ width: '60px', height: '60px' }}>
-          </lord-icon>
-        ) : (
-          <lord-icon
-            src="https://cdn.lordicon.com/nqtddedc.json"
-            trigger="hover"
-            colors={isDark ? "primary:#b4b4b4,secondary:#ffffff" : "primary:#b4b4b4,secondary:#000000"}
-            style={{ width: '60px', height: '60px' }}>
-          </lord-icon>
-        )}
-      </div>
-
-      {bot && (
-        <div className='fixed right-4 inset-0 z-40 flex items-center justify-end  pointer-events-none'>
-          <div className='pointer-events-auto'>
-            <MyAgent isDark={isDark} />
-          </div>
-        </div>
-      )}
     </div>
   )
 }
