@@ -16,7 +16,7 @@ const ProcesGExperience = ({ isDark }) => {
       <div className={`flex items-start border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'} justify-between mb-3`}>
         <div className="px-6">
           <div className={`text-xl font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            Full-Stack Engineer
+            Founding Engineer
           </div>
           <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
             ProcesG
@@ -123,7 +123,7 @@ const AevoraExperience = ({ isDark }) => {
       <div className={`flex items-start border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'} justify-between mb-3`}>
         <div className="px-6">
           <div className={`text-xl font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            Founding Engineer
+            Founder
           </div>
           <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
             Aevora
