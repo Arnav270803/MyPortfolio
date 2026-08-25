@@ -1,128 +1,142 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { Code2, PanelTop, Server, Database, Wrench, Plus, Info } from 'lucide-react';
 
-const TechStack = ({ isDark }) => {
-  const techItems = [
-    {
-      name: "C++",
-      href: "https://www.w3schools.com/cpp/",
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg"
-    },
-    {
-      name: "CSS3",
-      href: "https://www.w3schools.com/css/",
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg"
-    },
-    {
-      name: "Express.js",
-      href: "https://expressjs.com",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-    },
-    {
-      name: "Git",
-      href: "https://git-scm.com/",
-      icon: "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg"
-    },
-    {
-      name: "HTML5",
-      href: "https://www.w3.org/html/",
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg"
-    },
-    {
-      name: "JavaScript",
-      href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
-    },
-    {
-      name: "MongoDB",
-      href: "https://www.mongodb.com/",
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg"
-    },
-    {
-      name: "Node.js",
-      href: "https://nodejs.org",
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg"
-    },
-    {
-      name: "Postman",
-      href: "https://postman.com",
-      icon: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg"
-    },
-    {
-      name: "Python",
-      href: "https://www.python.org",
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
-    },
-    {
-      name: "React",
-      href: "https://reactjs.org/",
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg"
-    },
-    {
-      name: "Tailwind CSS",
-      href: "https://tailwindcss.com/",
-      icon: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
-    },
-    {
-      name: "BeautifulSoup",
-      href: "https://www.crummy.com/software/BeautifulSoup/",
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
-    },
-    {
-      name: "RAG",
-      href: "https://en.wikipedia.org/wiki/Prompt_engineering#Retrieval-augmented_generation",
-      icon: "https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg"
-    },
-    {
-      name: "Vector DB",
-      href: "https://www.pinecone.io/",
-      icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg"
-    },
-    {
-      name: "OpenRouter",
-      href: "https://openrouter.ai/",
-      icon: "https://www.vectorlogo.zone/logos/json/json-icon.svg"
-    }
-  ]
+/* 04 / CORE STACK — grouped tool index plus Fig. 05, the capability matrix. */
 
+const GROUPS = [
+  { Icon: Code2, label: 'Languages', tools: ['C++', 'JavaScript', 'TypeScript', 'Python'] },
+  { Icon: PanelTop, label: 'Interface', tools: ['HTML5', 'CSS3', 'React', 'Tailwind CSS', 'Vite', 'Framer Motion'] },
+  { Icon: Server, label: 'Backend', tools: ['Node.js', 'Express.js', 'REST APIs'] },
+  { Icon: Database, label: 'Data', tools: ['MongoDB', 'PostgreSQL', 'Prisma', 'Vector DB', 'RAG'] },
+  { Icon: Wrench, label: 'Tooling', tools: ['Git', 'Postman', 'Google OAuth', 'OpenRouter'] },
+];
+
+const GLOSSARY = { RAG: 'Retrieval-Augmented Generation' };
+
+const COLUMNS = ['UI', 'API', 'AI', 'DATA'];
+
+const MATRIX = [
+  { project: 'WhisperFlix', has: [true, true, false, true] },
+  { project: 'Vynix', has: [false, false, true, false] },
+  { project: 'ProcesG', has: [true, true, false, true] },
+  { project: 'Capillary Bot', has: [false, true, true, true] },
+  { project: 'Aevora', has: [true, true, true, false] },
+];
+
+const TOOL_COUNT = GROUPS.reduce((n, g) => n + g.tools.length, 0);
+
+/* the only tool that needs unpacking gets an inline gloss */
+const Glossed = (props) => {
+  const [shown, setShown] = useState(false);
   return (
-    <div className='w-full'>
-      <div className={`border ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
-        <div className={` text-3xl font-medium pt-4 underline underline-offset-2 px-6 pb-3 `}>
-          Stack
-        </div>
-      </div>
-      
-      {/* Responsive Grid for all the icons */}
-      <div className={`grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-6 sm:gap-8 md:gap-10 border-b py-6 px-6 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-        {techItems.map((tech, index) => (
-          <div key={index} className="relative group flex justify-center items-center">
-            {/* Tooltip */}
-            <div className={`absolute -top-10 left-1/2 transform -translate-x-1/2 px-3 py-1 text-xs sm:text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-10 ${isDark ? 'bg-gray-700 text-white' : 'bg-gray-800 text-white'}`}>
-              {tech.name}
-              {/* Tooltip arrow */}
-              <div className={`absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent ${isDark ? 'border-t-gray-700' : 'border-t-gray-800'}`}></div>
-            </div>
-            
-            {/* Icon */}
-            <a 
-              href={tech.href} 
-              target="_blank" 
-              rel="noreferrer"
-              className="block transition-transform duration-250 hover:scale-125"
-            >
-              <img 
-                src={tech.icon} 
-                alt={tech.name.toLowerCase().replace(/[.\s]/g, '')} 
-                width="60" 
-                height="60"
-                className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain ${tech.name === 'Express.js' && isDark ? 'filter invert' : ''} ${tech.name === 'Express.js' && !isDark ? 'filter brightness-0' : ''}`}
-              />
-            </a>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
+    <span className="relative flex items-center gap-1.5">
+      <button
+        type="button"
+        aria-label={`What is ${props.term}?`}
+        onMouseEnter={() => setShown(true)}
+        onMouseLeave={() => setShown(false)}
+        onFocus={() => setShown(true)}
+        onBlur={() => setShown(false)}
+        onClick={() => setShown((v) => !v)}
+        className="text-cobalt cursor-pointer"
+      >
+        <Info className="w-[15px] h-[15px]" strokeWidth={1.7} />
+      </button>
+      {shown && (
+        <span
+          role="tooltip"
+          className="absolute top-[26px] right-0 z-10 whitespace-nowrap rounded-[4px] bg-ink px-2.5 py-1.5 text-[11px] text-paper shadow-sm"
+        >
+          {GLOSSARY[props.term]}
+        </span>
+      )}
+    </span>
+  );
+};
 
-export default TechStack
+const TechStack = () => (
+  <section className="font-mono">
+    <div className="hatch h-2.5 border-y border-rule" />
+
+    <div className="px-5 sm:px-6 pt-5 pb-4 border-b border-rule flex items-start justify-between gap-4">
+      <div>
+        <h2 className="text-[15px] tracking-[0.06em] text-ink">
+          <span className="text-cobalt">04</span>
+          <span className="text-graphite"> / </span>
+          CORE STACK
+        </h2>
+        <p className="mt-1.5 text-[11px] tracking-[0.08em] text-graphite">{TOOL_COUNT} TOOLS</p>
+      </div>
+      <Plus className="w-5 h-5 text-rule shrink-0" strokeWidth={1.4} aria-hidden="true" />
+    </div>
+
+    {GROUPS.map((group, i) => {
+      const Icon = group.Icon;
+      return (
+        <div key={group.label} className="flex items-stretch border-b border-rule">
+          <div className="w-[46px] sm:w-[52px] shrink-0 border-r border-rule flex items-center justify-center py-3">
+            <span className="text-[12px] text-graphite">{String(i + 1).padStart(2, '0')}</span>
+          </div>
+
+          <div className="w-[120px] sm:w-[150px] shrink-0 border-r border-rule flex items-center gap-2.5 px-3 sm:px-4 py-3">
+            <Icon className="w-[17px] h-[17px] text-ink shrink-0" strokeWidth={1.5} />
+            <span className="text-[13px] text-ink truncate">{group.label}</span>
+          </div>
+
+          <div className="flex-1 min-w-0 px-3 sm:px-4 py-3 flex flex-wrap items-center gap-2">
+            {group.tools.map((tool) => (
+              <span
+                key={tool}
+                className="px-2.5 py-1 border border-rule rounded-[4px] text-[11.5px] text-ink"
+              >
+                {tool}
+              </span>
+            ))}
+            {group.tools.some((t) => GLOSSARY[t]) && (
+              <Glossed term={group.tools.find((t) => GLOSSARY[t])} />
+            )}
+          </div>
+        </div>
+      );
+    })}
+
+    {/* Fig. 05 — capability matrix */}
+    <div className="overflow-x-auto border-b border-rule">
+      <table className="w-full min-w-[520px] border-collapse text-[12.5px]">
+        <thead>
+          <tr className="border-b border-rule">
+            <th className="w-[34%] border-r border-rule px-5 sm:px-6 py-2.5" />
+            {COLUMNS.map((col) => (
+              <th key={col} className="border-r border-rule last:border-r-0 px-3 py-2.5 font-normal text-ink text-center">
+                {col}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {MATRIX.map((row) => (
+            <tr key={row.project} className="border-b border-rule last:border-b-0">
+              <td className="border-r border-rule px-5 sm:px-6 py-2.5 text-ink whitespace-nowrap">{row.project}</td>
+              {row.has.map((yes, i) => (
+                <td key={COLUMNS[i]} className="border-r border-rule last:border-r-0 px-3 py-2.5 text-center">
+                  {yes ? (
+                    <span className="inline-block w-[7px] h-[7px] rounded-full bg-ink align-middle" />
+                  ) : (
+                    <span className="text-graphite">–</span>
+                  )}
+                  <span className="sr-only">
+                    {row.project} {COLUMNS[i]}: {yes ? 'yes' : 'no'}
+                  </span>
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <p className="px-5 sm:px-6 py-4 text-[11.5px] text-graphite">Fig. 05 — Stack capabilities by project.</p>
+  </section>
+);
+
+export default TechStack;

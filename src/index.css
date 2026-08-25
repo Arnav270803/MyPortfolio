@@ -1,1 +1,39 @@
 @import "tailwindcss";
+
+@theme {
+  --color-paper: #FAF9F4;
+  --color-ink: #111318;
+  --color-graphite: #9299A1;
+  --color-rule: #D9DDE1;
+  --color-cobalt: #315E9C;
+  --color-live: #238857;
+
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-grotesk: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-hand: "Caveat", ui-rounded, cursive;
+}
+
+/* 12 / VARIABLE MODE — dark canvas + dark surface */
+.theme-dark {
+  --color-paper: #07090B;
+  --color-ink: #E8EAED;
+  --color-graphite: #6C737C;
+  --color-rule: #1D2227;
+  --color-cobalt: #4C86E0;
+  --color-live: #2FA96D;
+}
+
+/* 15 / SEPARATORS — hatch rule */
+.hatch {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--color-rule) 0 1px,
+    transparent 1px 5px
+  );
+}
+
+/* 07 / ACCESSIBILITY — focus ring: 2px ring with 2px offset */
+.blueprint :focus-visible {
+  outline: 2px solid var(--color-cobalt);
+  outline-offset: 2px;
+}

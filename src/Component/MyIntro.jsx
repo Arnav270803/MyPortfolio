@@ -1,177 +1,270 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Code, Database, Users, TrendingUp, Handshake, MapPin } from 'lucide-react';
+import { AnimatePresence, motion as Motion, useReducedMotion } from 'motion/react';
+import {
+  Volume2,
+  VolumeX,
+  Briefcase,
+  Code2,
+  TerminalSquare,
+  MapPin,
+  Clock,
+  Mail,
+  Link2,
+  Github,
+  Linkedin,
+  FileText,
+} from 'lucide-react';
+import SystemStack from './SystemStack';
+import ActivityGraph from './ActivityGraph';
 
-const MyIntro = ({ isDark }) => {
-  const navigate = useNavigate();
-  
-  const animatedTexts = [
-    "Frontend enthusiast",
-    "Full stack developer", 
-    "Open source contributor",
-    "Create minimalist designs",
-    "Build AI Agents"
-  ];
-  
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  
+const ROLES = [
+  { Icon: Briefcase, label: 'Founding Agentic Engineer — Boock.ai' },
+  { Icon: Code2, label: 'Founding Engineer — ProcesG' },
+  { Icon: TerminalSquare, label: 'Founder — Aevora' },
+  { Icon: MapPin, label: 'Delhi, India' },
+];
+
+const CONTACT = [
+  { Icon: Clock, label: 'Local time — IST' },
+  { Icon: Mail, label: 'arnavsharma2708@gmail.com', href: 'mailto:arnavsharma2708@gmail.com' },
+  { Icon: Link2, label: 'heyarnav.com', href: 'https://heyarnav.com' },
+];
+
+const XMark = (props) => (
+  <svg viewBox="0 0 24 24" {...props} fill="currentColor" stroke="none">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
+
+const SOCIALS = [
+  { Icon: XMark, href: 'https://x.com/Bokinsha', label: 'X' },
+  { Icon: Github, href: 'https://github.com/Arnav270803', label: 'GitHub' },
+  { Icon: Linkedin, href: 'https://www.linkedin.com/in/arnav-sharma2708/', label: 'LinkedIn' },
+  { Icon: Mail, href: 'mailto:arnavsharma2708@gmail.com', label: 'Email' },
+];
+
+const Plus = ({ className }) => (
+  <span aria-hidden="true" className={`hidden sm:block absolute w-3 h-3 text-rule ${className}`}>
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1">
+      <path d="M6 0v12M0 6h12" />
+    </svg>
+  </span>
+);
+
+const TAGLINES = [
+  'Full-Stack Engineer · Product Builder',
+  'Agentic AI Engineer',
+  'Chess Player',
+  'Ultra Running Enthusiast',
+  'Building Product by Heart',
+];
+
+/* mono type sets on a fixed grid, so the line reads best printed a glyph at a
+   time — like the system writing itself out. 240ms matches the motion tokens. */
+const RotatingTagline = () => {
+  const [index, setIndex] = useState(0);
+  const reduced = useReducedMotion();
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTextIndex((prevIndex) => 
-        prevIndex === animatedTexts.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 3000);
-    
-    return () => clearInterval(interval);
-  }, [animatedTexts.length]);
+    const id = setInterval(() => setIndex((n) => (n + 1) % TAGLINES.length), 3000);
+    return () => clearInterval(id);
+  }, []);
 
+  const text = TAGLINES[index];
 
-
-
-const BtDesign = `px-3 py-1 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
-  ${isDark 
-    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'
-    : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
-  }
-  active:scale-100`
   return (
-    <>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
+    <p className="mt-1 h-[19px] flex items-center text-[13px] text-graphite" aria-live="polite">
+      <span className="sr-only">{text}</span>
+
+      <AnimatePresence mode="wait">
+        <Motion.span
+          key={index}
+          aria-hidden="true"
+          className="inline-flex"
+          initial="hidden"
+          animate="shown"
+          exit="done"
+          variants={{
+            shown: { transition: { staggerChildren: reduced ? 0 : 0.016 } },
+            done: {
+              opacity: 0,
+              y: reduced ? 0 : -4,
+              filter: reduced ? 'blur(0px)' : 'blur(2px)',
+              transition: { duration: 0.2, ease: 'easeIn' },
+            },
+          }}
+        >
+          {text.split('').map((char, i) => (
+            <Motion.span
+              key={i}
+              className="whitespace-pre"
+              variants={{
+                hidden: reduced
+                  ? { opacity: 0 }
+                  : { opacity: 0, y: 5, filter: 'blur(4px)' },
+                shown: {
+                  opacity: 1,
+                  y: 0,
+                  filter: 'blur(0px)',
+                  transition: { duration: 0.24, ease: [0.22, 0.61, 0.36, 1] },
+                },
+              }}
+            >
+              {char}
+            </Motion.span>
+          ))}
+        </Motion.span>
+      </AnimatePresence>
+
+      {/* terminal caret — anchors the line as the text length changes */}
+      <Motion.span
+        aria-hidden="true"
+        className="ml-1.5 w-[2px] h-[13px] shrink-0 bg-cobalt"
+        animate={reduced ? { opacity: 1 } : { opacity: [1, 1, 0, 0] }}
+        transition={{ duration: 1.1, repeat: Infinity, ease: 'linear', times: [0, 0.45, 0.55, 1] }}
       />
-     
-      <div className="w-full">
-        <div className={`border ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
-          
-          <div className="flex">
-            
-            {/* Smaller profile image on mobile */}
-            <div className={`w-[100px] sm:w-[180px] h-[100px] sm:h-[180px] border-r ${isDark ? 'border-gray-800' : 'border-neutral-200'} flex-shrink-0`}>
-              <img
-                src="/cropped_circle_image.png"
-                width="180"
-                height="180"
-                className="w-full h-full object-cover"
-                alt="Arnav's profile"
-              />
-            </div>
-            
-            <div className="flex-1 flex flex-col min-w-0">
-              
-              {/* Smaller top rectangle on mobile */}
-              <div 
-                className={`border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'} h-[50px] sm:h-[100px]`}
-                style={{
-                  backgroundImage: `radial-gradient(${isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'} 1px, transparent 1px)`,
-                  backgroundSize: '10px 10px'
-                }}
+    </p>
+  );
+};
+
+const IconCell = (props) => {
+  const Icon = props.icon;
+  return (
+    <span className="w-[24px] h-[24px] shrink-0 border border-rule rounded-[4px] flex items-center justify-center text-ink">
+      <Icon className="w-[13px] h-[13px]" strokeWidth={1.6} />
+    </span>
+  );
+};
+
+const greeting = () => {
+  const h = new Date().getHours();
+  if (h < 12) return 'Good morning';
+  if (h < 17) return 'Good afternoon';
+  return 'Good evening';
+};
+
+const MyIntro = ({ ambientOn, toggleAmbient }) => {
+  const navigate = useNavigate();
+  const reduced = useReducedMotion();
+
+  return (
+    <section className="font-mono">
+      {/* Fig. 01 — the exploded system, with the identity block resting on it */}
+      <div className="px-5 sm:px-6 pt-4 relative">
+        <Plus className="left-4 top-3" />
+        <Plus className="right-4 top-3" />
+        <Plus className="left-4 bottom-[132px]" />
+        <SystemStack />
+
+        <div className="flex items-end gap-4 sm:gap-5 -mt-8 sm:-mt-14 pb-5 relative">
+          <img
+            src="/cropped_circle_image.png"
+            width="110"
+            height="110"
+            alt="Arnav Sharma"
+            className="w-[84px] h-[84px] sm:w-[110px] sm:h-[110px] rounded-full border border-rule object-cover bg-paper shrink-0"
+          />
+          <div className="min-w-0 pb-1">
+            <div className="flex items-center gap-3">
+              <h1 className="text-[26px] sm:text-[32px] leading-[36px] text-ink truncate">Arnav Sharma</h1>
+              <Motion.button
+                onClick={toggleAmbient}
+                aria-pressed={ambientOn}
+                title={ambientOn ? 'Mute the lofi' : 'Play the lofi'}
+                aria-label={ambientOn ? 'Mute the background lofi' : 'Play the background lofi'}
+                className={`cursor-pointer hover:opacity-100 transition-colors shrink-0 ${ambientOn ? 'text-ink' : 'text-graphite'}`}
+                animate={ambientOn && !reduced ? { opacity: [1, 0.55, 1] } : { opacity: 1 }}
+                transition={ambientOn && !reduced ? { duration: 2.8, repeat: Infinity, ease: 'easeInOut' } : { duration: 0.2 }}
               >
-              </div>
-              
-              {/* Smaller middle section on mobile */}
-              <div className={`border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'} h-[35px] sm:h-[50px] px-2 sm:px-4 py-1 sm:py-2 flex items-center justify-between gap-2`}>
-                {/* Smaller heading on mobile */}
-                <h1 
-                  className={`text-lg sm:text-3xl md:text-4xl cursor-pointer hover:underline font-medium ${isDark ? 'text-white' : 'text-gray-900'} whitespace-nowrap`}
-                  style={{fontFamily: 'Caveat, cursive'}}
-                >
-                  hey, I'm Arnav
-                </h1>
-                
-                {/* Smaller button on mobile */}
-                <button 
-                  className={`px-2 sm:px-4 md:px-6 py-1 sm:py-2 rounded-md border-2 border-dashed cursor-pointer font-semibold text-[10px] sm:text-sm transition-all duration-300 hover:scale-105 shadow-lg whitespace-nowrap ${
-                  isDark? 'border-gray-600 text-gray-300 hover:bg-white hover:text-black hover:border-white shadow-gray-900/50 hover:shadow-white/20' : 'border-gray-400 text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 shadow-gray-400/30 hover:shadow-gray-900/40' }`}
-                  onClick={() => navigate('/resume')}
-                >
-                  <span className="hidden sm:inline">Resume / CV</span>
-                  <span className="sm:hidden">Resume</span>
-                </button>
-              </div>
-              
-              {/* Smaller bottom section with animation on left and location on right */}
-              <div className="h-[15px] sm:h-[30px] flex items-center px-2 sm:px-4 justify-between overflow-hidden">
-                {/* Animated text on the left */}
-                <div className="overflow-hidden">
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={currentTextIndex}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ 
-                        duration: 0.5,
-                        ease: "easeInOut"
-                      }}
-                      className={`text-[10px] sm:text-sm hover:underline font-medium ${isDark ? 'text-gray-500' : 'text-gray-400'}`}
-                    >
-                      {animatedTexts[currentTextIndex]}
-                    </motion.span>
-                  </AnimatePresence>
-                </div>
-                
-                <div className={`flex items-center gap-1 text-[10px] sm:text-sm font-medium ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
-                  <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
-                  <span>Delhi, India</span>
-                </div>
-              </div>
-              
+                {ambientOn ? (
+                  <Volume2 className="w-[17px] h-[17px]" strokeWidth={1.7} />
+                ) : (
+                  <VolumeX className="w-[17px] h-[17px]" strokeWidth={1.7} />
+                )}
+              </Motion.button>
+              <span className="w-[11px] h-[11px] rounded-full bg-live shrink-0" title="Available for work" />
             </div>
-            
+            <RotatingTagline />
           </div>
-          
         </div>
-        
-        {/* Smaller description text and spacing on mobile */}
-        <div className={`space-y-2 sm:space-y-3 px-3 sm:px-6 mt-4 sm:mt-6 text-xs sm:text-base leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-          
-          <p>
-            <Code className="inline w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-            Proficient in <span className={BtDesign}>JavaScript</span>{' '}, {' '}
-            <span className={BtDesign}>C++</span> and {' '}
-            <span className={BtDesign}> Python{' '} </span>
-           programming languages
-          </p>
-          
-          <p>
-            <Database className="inline w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-            Full-stack <span className={BtDesign}>MERN</span> developer 
-            with hands-on project experience
-          </p>
-
-          <p>
-            <Users className="inline w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-              Built<span className={BtDesign}> AI agents </span>  
-              powered by Retrieval-Augmented Generation <span className={BtDesign}>RAG</span> techniques .         
-          </p>
-          
-          <p>
-            <Database className="inline w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-            Hands-on experience with both <span className={BtDesign}>NOSQL</span> and{' '}
-            <span className={BtDesign}>SQL</span> Databases
-          </p>
-          
-          <p>
-            <TrendingUp className="inline w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-            Practical marketing skills from running a 
-            <span className={BtDesign}> SaaS </span> 
-            service
-          </p>
-          
-          <p>
-            <Handshake className="inline w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-            Let's collaborate and build something impactful together
-          </p>
-      
-        </div>
-        
-        <div className={`border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'} py-2 sm:py-3`}>
-        </div>
-
       </div>
-    </>
+
+      <div className="hatch h-2.5 border-y border-rule" />
+
+      {/* roles + contact ledger */}
+      <div className="grid grid-cols-1 md:grid-cols-2 border-b border-rule">
+        <div className="px-5 sm:px-6 py-5 space-y-2 md:border-r md:border-dashed md:border-rule">
+          {ROLES.map((row) => (
+            <div key={row.label} className="flex items-center gap-2.5 text-[12.5px] text-ink">
+              <IconCell icon={row.Icon} />
+              <span className="truncate">{row.label}</span>
+            </div>
+          ))}
+        </div>
+        <div className="px-5 sm:px-6 py-5 space-y-2 border-t md:border-t-0 border-rule">
+          {CONTACT.map((row) => (
+            <div key={row.label} className="flex items-center gap-2.5 text-[12.5px] text-ink">
+              <IconCell icon={row.Icon} />
+              {row.href ? (
+                <a href={row.href} className="truncate hover:underline underline-offset-4">
+                  {row.label}
+                </a>
+              ) : (
+                <span className="truncate">{row.label}</span>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 16 / social buttons */}
+      <div className="border-b border-rule py-4 flex items-center justify-center gap-3">
+        {SOCIALS.map((s) => (
+          <a
+            key={s.label}
+            href={s.href}
+            target={s.href.startsWith('http') ? '_blank' : undefined}
+            rel="noopener noreferrer"
+            aria-label={s.label}
+            className="w-9 h-9 border border-rule rounded-[5px] flex items-center justify-center text-ink hover:border-ink transition-colors"
+          >
+            <s.Icon
+              className="w-[17px] h-[17px]"
+              strokeWidth={s.label === 'GitHub' ? 0 : 1.7}
+              fill={s.label === 'GitHub' ? 'currentColor' : 'none'}
+            />
+          </a>
+        ))}
+        <button
+          onClick={() => navigate('/resume')}
+          aria-label="Resume"
+          className="w-9 h-9 border border-rule rounded-[5px] flex items-center justify-center text-ink hover:border-ink transition-colors cursor-pointer"
+        >
+          <FileText className="w-[17px] h-[17px]" strokeWidth={1.7} />
+        </button>
+      </div>
+
+      <ActivityGraph />
+
+      <div className="hatch h-2.5 border-y border-rule" />
+
+      <div className="px-5 sm:px-6 py-5">
+        <h2 className="font-hand text-[24px] leading-none text-ink">{greeting()}</h2>
+        <ul className="mt-3 space-y-1.5 text-[13px] text-ink">
+          {[
+            'I build full-stack products and AI agents.',
+            'I turn complex data into clear workflows.',
+            'I care about small details and reliable systems.',
+          ].map((line) => (
+            <li key={line} className="flex gap-2.5">
+              <span className="text-graphite">•</span>
+              <span>{line}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   );
 };
 

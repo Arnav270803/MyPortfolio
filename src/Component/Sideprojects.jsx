@@ -1,657 +1,254 @@
 import React, { useState } from 'react';
-import { Sparkles, Layers, Paintbrush2, Lock, ChevronDown, ChevronUp } from 'lucide-react';
+import { Film, SquarePlay, Briefcase, Bot, Rocket, Plus, ChevronDown, ArrowUpRight } from 'lucide-react';
 
-// R-Vision Project
-const RVisionProject = ({ isDark }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+/* 03 / SELECTED PROJECTS — indexed ledger. Rows carrying a role reuse the
+   elbow connector from the experience section. */
 
-const BtDesign = `inline-block mr-1 mb-1 px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
-  ${isDark 
-    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'  
-    : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
-  }
-  active:scale-100`
+const PROJECTS = [
+  {
+    id: 'whisperflix',
+    Icon: Film,
+    title: 'WhisperFlix',
+    summary: 'An underrated binge-watching platform for hidden old cinema.',
+    status: 'Ongoing',
+    tone: 'live',
+    dotFirst: true,
+    live: 'https://whisperslix.vercel.app/',
+    code: 'https://github.com/Arnav270803/WhisperFlix',
+    points: [
+      'Discover hidden movie gems instantly.',
+      'Sleek UI/UX with smooth animations.',
+      'Powered by JWT auth and MongoDB.',
+    ],
+    tags: ['React', 'Tailwind CSS', 'motion.dev', 'lordicon', 'Express', 'Node.js', 'MongoDB', 'Vite'],
+  },
+  {
+    id: 'vynix',
+    Icon: SquarePlay,
+    title: 'Vynix',
+    summary: 'Text-to-video generator using Manim and LLMs.',
+    status: 'Ongoing',
+    tone: 'live',
+    dotFirst: true,
+    code: 'https://github.com/Arnav270803/Vynix',
+    points: [
+      'AI-powered text-to-video generator for education.',
+      'Converts study prompts into animated learning videos.',
+      'Uses an LLM to generate Manim-based Python scripts.',
+      'Automates video creation with FFmpeg integration.',
+      'Simplifies complex topics through visual explanations.',
+    ],
+    tags: ['React', 'Node.js', 'Express.js', 'MongoDB', 'Manim', 'Python', 'OpenAI'],
+  },
+  {
+    id: 'procesg',
+    Icon: Briefcase,
+    title: 'ProcesG',
+    status: 'LIVE',
+    tone: 'live',
+    role: {
+      title: 'Founding Engineer',
+      meta: 'Current · ESG / BRSR platform',
+      Icon: Briefcase,
+    },
+    points: [
+      'Built company onboarding and Google authentication.',
+      'Created reporting-year-specific BRSR and GHG configurations.',
+      'Implemented role-based access for administrators and employees.',
+      'Designed ESG data-entry, emissions-calculation, and audit-history workflows.',
+      'Developed the responsive frontend, REST APIs, and relational database architecture.',
+    ],
+    tags: [
+      'React',
+      'TypeScript',
+      'Node.js',
+      'Express',
+      'PostgreSQL',
+      'Prisma',
+      'REST APIs',
+      'Tailwind CSS',
+      'Google OAuth',
+    ],
+  },
+  {
+    id: 'capillary',
+    Icon: Bot,
+    title: 'Capillary Bot',
+    summary: 'RAG chatbot for querying CapillaryTech documentation.',
+    code: 'https://github.com/Arnav270803/capillary_Bot',
+    points: [
+      'React + Vite chat app with Axios queries and Tailwind styling.',
+      'Express server handling CORS, JSON, and the /chat RAG endpoint.',
+      'BeautifulSoup script chunking CapillaryTech docs into JSON.',
+      'SentenceTransformer embeddings for vector search.',
+      "Mistral via OpenRouter generating cited answers from retrieved context.",
+    ],
+    tags: ['React', 'Node.js', 'Express.js', 'Python', 'Vite', 'Mistral LLM', 'Framer Motion', 'BeautifulSoup', 'OpenRouter'],
+  },
+  {
+    id: 'aevora',
+    Icon: Rocket,
+    title: 'Aevora',
+    status: 'BUILDING',
+    tone: 'cobalt',
+    role: {
+      title: 'Founder',
+      meta: 'Current · AI video ads for D2C brands',
+      Icon: Rocket,
+    },
+    points: [
+      'Designed a mobile-first landing page with glassmorphism UI, waitlist email collection, and live signup counter.',
+      'Architecting a video pipeline that generates script, scenes, voiceover, music, and subtitles from a single product image.',
+      'Targeting Indian D2C brands with Hindi voiceovers, festival templates, and platform-ready exports for Instagram, YouTube, and Facebook.',
+    ],
+    tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Generative AI'],
+  },
+];
 
+const TONE = { live: 'text-live', cobalt: 'text-cobalt' };
+const DOT = { live: 'bg-live', cobalt: 'bg-cobalt' };
+
+const Chip = ({ children }) => (
+  <span className="px-2.5 py-1 border border-rule rounded-[4px] text-[12px] text-ink">{children}</span>
+);
+
+const ExternalLink = ({ href, children }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={(e) => e.stopPropagation()}
+    className="flex items-center gap-1 text-[12.5px] text-cobalt hover:underline underline-offset-4"
+  >
+    {children}
+    <ArrowUpRight className="w-[13px] h-[13px]" strokeWidth={1.8} />
+  </a>
+);
+
+const Project = (props) => {
+  const p = props.project;
+  const Icon = p.Icon;
+  const RoleIcon = p.role ? p.role.Icon : null;
+  const open = props.open;
 
   return (
-    <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-      <div className={`flex items-start border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'} justify-between mb-3`}>
-        <div className="px-6">
-          <div className={`text-xl font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            R-Vision
-          </div>
-          <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-            02.2025 - 04.2025
-          </div>
-        </div>
-        <div className="flex items-center gap-4">
-          <div>
-            <a
-              href="https://github.com/Arnav270803/Rvision"
-              className={`text-sm transition-colors ${
-                isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Code →
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <div className={`mb-3 px-6 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-        Text to image generator which generates beautiful images built using clipdrop API 
+    <div className="flex border-b border-rule">
+      {/* index gutter */}
+      <div className="w-[46px] sm:w-[52px] shrink-0 border-r border-rule pt-5 flex justify-center">
+        <span className="text-[12px] text-graphite underline underline-offset-[3px]">{p.index}</span>
       </div>
 
-      <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className={`flex items-center gap-2 px-6 mb-2 text-sm font-medium transition-colors ${
-          isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-        }`}
-      >
-        {isExpanded ? (
-          <>
-            <ChevronUp className="w-4 h-4" />
-            Hide Details
-          </>
-        ) : (
-          <>
-            <ChevronDown className="w-4 h-4" />
-            Show Details
-          </>
+      <div className="flex-1 min-w-0 px-4 sm:px-5 py-4">
+        <button
+          onClick={props.onToggle}
+          aria-expanded={open}
+          className="w-full flex items-start gap-4 cursor-pointer text-left"
+        >
+          <span className="w-11 h-11 shrink-0 border border-rule rounded-[5px] flex items-center justify-center text-ink">
+            <Icon className="w-[21px] h-[21px]" strokeWidth={1.5} />
+          </span>
+
+          <span className="min-w-0 flex-1">
+            <span className="block text-[16px] font-semibold text-ink">{p.title}</span>
+            {p.summary && <span className="block text-[12.5px] text-graphite mt-1 leading-[1.5]">{p.summary}</span>}
+          </span>
+
+          <span className="flex items-center gap-4 shrink-0 pt-1">
+            {p.status && (
+              <span className={`flex items-center gap-2 text-[12.5px] ${TONE[p.tone]}`}>
+                {p.dotFirst && <span className={`w-[7px] h-[7px] rounded-full ${DOT[p.tone]}`} />}
+                {p.status}
+                {!p.dotFirst && <span className={`w-[7px] h-[7px] rounded-full ${DOT[p.tone]}`} />}
+              </span>
+            )}
+            {p.live && <ExternalLink href={p.live}>Live</ExternalLink>}
+            {p.code && <ExternalLink href={p.code}>Code</ExternalLink>}
+            <ChevronDown
+              className={`w-5 h-5 text-ink transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+              strokeWidth={1.6}
+            />
+          </span>
+        </button>
+
+        {open && (
+          <div className="relative pt-3 pl-0">
+            {p.role && (
+              <>
+                <span className="absolute left-[22px] top-0 h-[26px] w-px bg-rule" aria-hidden="true" />
+                <span
+                  className="absolute left-[22px] top-[26px] w-[30px] sm:w-[42px] border-t border-dashed border-rule"
+                  aria-hidden="true"
+                />
+                <div className="flex items-start gap-4 pl-[52px] sm:pl-[64px]">
+                  <span className="w-7 h-7 shrink-0 border border-ink rounded-[5px] flex items-center justify-center text-ink">
+                    <RoleIcon className="w-[15px] h-[15px]" strokeWidth={1.6} />
+                  </span>
+                  <div className="min-w-0">
+                    <h4 className="text-[14px] font-semibold text-ink">{p.role.title}</h4>
+                    <p className="text-[12.5px] text-graphite mt-0.5">{p.role.meta}</p>
+                  </div>
+                </div>
+              </>
+            )}
+
+            <ul className={`space-y-2 text-[12.5px] text-ink ${p.role ? 'mt-4 pl-[52px] sm:pl-[64px]' : 'mt-1'}`}>
+              {p.points.map((point) => (
+                <li key={point} className="flex gap-3">
+                  <span className="text-graphite shrink-0">•</span>
+                  <span className="leading-[1.6]">{point}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              {p.tags.map((tag) => (
+                <Chip key={tag}>{tag}</Chip>
+              ))}
+            </div>
+          </div>
         )}
-      </button>
-
-      <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className='py-2 px-6'>
-          <div className='px-3'>
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                <Sparkles className={`w-4 h-4 inline mr-3 ${isDark ? 'text-blue-400' : 'text-blue-500'}`} />
-                AI-Powered Text-to-Image Generator
-              </span>
-            </p>
-
-            <p className={`text-sm mb-1 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                <Layers className={`w-4 h-4 inline mr-3 ${isDark ? 'text-green-400' : 'text-green-500'}`} />
-                Built with MERN and Vite
-              </span>
-            </p>
-
-            <p className={`text-sm mb-1 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                <Paintbrush2 className={`w-4 h-4 inline mr-3 ${isDark ? 'text-purple-400' : 'text-purple-500'}`} />
-                Modern UI/UX with Tailwind & Motion
-              </span>
-            </p>
-
-            <p className={`text-sm mb-4 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                <Lock className={`w-4 h-4 inline mr-3 ${isDark ? 'text-orange-400' : 'text-orange-500'}`} />
-                Secure Auth using JWT & MongoDB
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
-      
-      <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-        <span className={BtDesign}>vite</span>
-        <span className={BtDesign}>React</span>
-        <span className={BtDesign}>Tailwind CSS</span>
-        <span className={BtDesign}>Node.js</span>
-        <span className={BtDesign}>MongoDB</span>
-        <span className={BtDesign}>Express</span>
-        <span className={BtDesign}>motion.dev</span>
-        <span className={BtDesign}>lordicon</span>
-        <span className={BtDesign}>Clipdrop API</span>
-        <span className={BtDesign}>JWT</span>
-      </div>
-      <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
       </div>
     </div>
   );
 };
 
-// WhisperFlix Project
-const WhisperFlixProject = ({ isDark }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+const Sideprojects = () => {
+  const [openIds, setOpenIds] = useState(['procesg', 'aevora']);
 
-  const BtDesign = `inline-block mr-1 mb-1 px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
-  ${isDark 
-    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'
-    : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
-  }
-  active:scale-100`;
+  const toggle = (id) =>
+    setOpenIds((ids) => (ids.includes(id) ? ids.filter((x) => x !== id) : ids.concat(id)));
 
   return (
-    <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-      <div className={`flex items-start justify-between mb-3 border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
-        <div className='px-6'>
-          <div className={`text-lg font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            WhisperFlix
-          </div>
-          <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-            02.2025 - 04.2025
-          </div>
+    <section className="font-mono">
+      <div className="hatch h-2.5 border-y border-rule" />
+
+      <div className="px-5 sm:px-6 pt-5 pb-4 border-b border-rule flex items-start justify-between gap-4">
+        <div>
+          <h2 className="text-[15px] tracking-[0.06em] text-ink">
+            <span className="text-cobalt">03</span>
+            <span className="text-graphite"> / </span>
+            SELECTED PROJECTS
+          </h2>
+          <p className="mt-1.5 text-[11px] tracking-[0.08em] text-graphite">
+            PROJECT INDEX · {String(PROJECTS.length).padStart(2, '0')}
+          </p>
         </div>
-        
-        <div className="flex items-center gap-4">
-          <div className={`hover:underline text-sm transition-colors hover:text-red-500 animate-pulse text-red-500`}>
-            Ongoing
-          </div>
-          <div>
-            <a
-              href="https://whisperslix.vercel.app/"
-              className={`hover:underline text-sm transition-colors ${
-                isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Live →
-            </a>
-          </div>
-          <div>
-            <a
-              href="https://github.com/Arnav270803/WhisperFlix"
-              className={`text-sm transition-colors ${
-                isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Code →
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <div className={`mb-3 px-6 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-        An underrated binge-watching platform that genuinely shows you underrated old cinema
+        <Plus className="w-5 h-5 text-rule shrink-0" strokeWidth={1.4} aria-hidden="true" />
       </div>
 
-      <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className={`flex items-center gap-2 px-6 mb-2 text-sm font-medium transition-colors ${
-          isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-        }`}
-      >
-        {isExpanded ? (
-          <>
-            <ChevronUp className="w-4 h-4" />
-            Hide Details
-          </>
-        ) : (
-          <>
-            <ChevronDown className="w-4 h-4" />
-            Show Details
-          </>
-        )}
-      </button>
+      {PROJECTS.map((project, i) => (
+        <Project
+          key={project.id}
+          project={{ ...project, index: String(i + 1).padStart(2, '0') }}
+          open={openIds.includes(project.id)}
+          onToggle={() => toggle(project.id)}
+        />
+      ))}
 
-      <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className='py-2 px-6'>
-          <div className='px-3'>
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                <Sparkles className={`w-4 h-4 inline mr-3 ${isDark ? 'text-blue-400' : 'text-blue-500'}`} />
-                Discover Hidden Movie Gems Instantly
-              </span>
-            </p>
-
-            <p className={`text-sm mb-1 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                <Layers className={`w-4 h-4 inline mr-3 ${isDark ? 'text-green-400' : 'text-green-500'}`} />
-                Sleek UI/UX with Smooth Animations
-              </span>
-            </p>
-
-            <p className={`text-sm mb-4 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                <Lock className={`w-4 h-4 inline mr-3 ${isDark ? 'text-orange-400' : 'text-orange-500'}`} />
-                Powered by JWT Auth and MongoDB
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-        <span className={BtDesign}>React</span>
-        <span className={BtDesign}>Tailwind CSS</span>
-        <span className={BtDesign}>motion.dev</span>
-        <span className={BtDesign}>lordicon</span>
-        <span className={BtDesign}>Express</span>
-        <span className={BtDesign}>Node.js</span>
-        <span className={BtDesign}>MongoDB</span>
-        <span className={BtDesign}>JWT</span>
-        <span className={BtDesign}>Vite</span>
-      </div>
-      <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-      </div>
-    </div>
-  );
-};
-
-// Vynix Project
-const VynixProject = ({ isDark }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const BtDesign = `inline-block mr-1 mb-1 px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
-  ${isDark 
-    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'
-    : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
-  }
-  active:scale-100`;
-
-  return (
-    <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-      <div className={`flex items-start justify-between mb-3 border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
-        <div className='px-6'>
-          <div className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            Vynix
-          </div>
-          <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-            02.2025 - 04.2025
-          </div>
-        </div>
-        <div className="flex items-center gap-4">
-          <div className={`text-sm transition-colors hover:text-red-500 animate-pulse text-red-500`}>
-            Ongoing
-          </div>
-          <div>
-            <a
-              href="https://github.com/Arnav270803/Vynix"
-              className={`text-sm transition-colors ${
-                isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Code →
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <div className={`mb-3 px-6 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-        Text to video generator using Manim and LLMs
-      </div>
-
-      <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className={`flex items-center gap-2 px-6 mb-2 text-sm font-medium transition-colors ${
-          isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-        }`}
-      >
-        {isExpanded ? (
-          <>
-            <ChevronUp className="w-4 h-4" />
-            Hide Details
-          </>
-        ) : (
-          <>
-            <ChevronDown className="w-4 h-4" />
-            Show Details 
-          </>
-        )}
-      </button>
-
-      <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className='py-2 px-6'>
-          <div className='px-3'>
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                AI-powered text-to-video generator for education.
-              </span>
-            </p>
-
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                Converts study prompts into animated learning videos.
-              </span>
-            </p>
-
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-               Uses LLM to generate Manim-based Python scripts.
-              </span>
-            </p>
-
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                Automates video creation with FFmpeg integration.
-              </span>
-            </p>
-
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                Designed for students and teachers' learning needs.
-              </span>
-            </p>
-
-            <p className={`text-sm mb-3 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                Simplifies complex topics through visual explanations.
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-        <span className={BtDesign}>React</span>
-        <span className={BtDesign}>Node.js</span>
-        <span className={BtDesign}>Express.js</span>
-        <span className={BtDesign}>MongoDB</span>
-        <span className={BtDesign}>Manim</span>
-        <span className={BtDesign}>Python</span>
-        <span className={BtDesign}>OpenAI</span>
-      </div>
-      <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-      </div>
-    </div>
-  );
-};
-
-// Capillary Chatbot
-const CapillaryBot = ({ isDark }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const BtDesign = `inline-block mr-1 mb-1 px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
-  ${isDark 
-    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'
-    : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
-  }
-  active:scale-100`;
-
-  return (
-    <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-      <div className={`flex items-start justify-between mb-3 border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
-        <div className='px-6'>
-          <div className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            Capillary Bot
-          </div>
-          <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-             12.09.2025 - 13.09.2025
-          </div>
-        </div>
-        <div className="flex items-center gap-4">
-          <div>
-            <a
-              href="https://github.com/Arnav270803/capillary_Bot"
-              className={`text-sm transition-colors ${
-                isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Code →
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <div className={`mb-3 px-6 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-        RAG chatbot querying CapillaryTech docs via React frontend, Mistral LLM backend      
-      </div>
-
-      <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className={`flex items-center gap-2 px-6 mb-2 text-sm font-medium transition-colors ${
-          isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-        }`}
-      >
-        {isExpanded ? (
-          <>
-            <ChevronUp className="w-4 h-4" />
-            Hide Details
-          </>
-        ) : (
-          <>
-            <ChevronDown className="w-4 h-4" />
-            Show Details
-          </>
-        )}
-      </button>
-
-      <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className='py-2 px-6'>
-          <div className='px-3'>
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                React Frontend: Dynamic React + Vite chat app with Axios for backend queries and Tailwind styling.             
-              </span>
-            </p>
-
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                Node.js Backend: Express server on port 5000 handling CORS, JSON, and /chat endpoint for RAG processing.
-              </span>
-            </p>
-
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                Python Scraping Script: scrape_docs.py uses BeautifulSoup to chunk CapillaryTech docs into scraped_docs.json
-              </span>
-            </p>
-
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                Python Embedding Script: embed_chunks.py applies SentenceTransformer for vector embeddings saved to embedded_docs.json
-              </span>
-            </p>
-
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                RAG Retrieval System: Keyword similarity search retrieves doc chunks as context for cited LLM responses
-              </span>
-            </p>
-
-            <p className={`text-sm mb-3 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                Mistral LLM Integration: OpenRouter's Mistral generates markdown answers from retrieved context for doc expertise
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-        <span className={BtDesign}>React</span>
-        <span className={BtDesign}>Node.js</span>
-        <span className={BtDesign}>Express.js</span>
-        <span className={BtDesign}>Python</span>
-        <span className={BtDesign}>Vite</span>
-        <span className={BtDesign}>Mistral LLm</span>
-        <span className={BtDesign}>Framer Motion</span>
-        <span className={BtDesign}>BeautifulSoup</span>
-        <span className={BtDesign}>OpenRouter</span>
-      </div>
-      <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-      </div>
-    </div>
-  );
-};
-
-
-
-
-// Teacher's ERP Project
-const TeachersERP = ({ isDark }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-    const BtDesign = `px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
-  ${isDark 
-    ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'  // here the shadow code is like this because i wanted to be surround the button completely
-    : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
-  }
-  active:scale-100`
-
-  return (
-    <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-      <div className={`flex items-start justify-between mb-3 border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
-        <div className='px-6'>
-          <div className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            Teacher's ERP
-          </div>
-          <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-            02.2025 - 04.2025
-          </div>
-        </div>
-        <div className="flex items-center gap-4">
-          <div className={`text-sm transition-colors hover:text-yellow-500 animate-pulse text-yellow-700 ${
-            isDark ? '' : ''
-          }`}>
-            Paused
-          </div>
-          <div>
-            <a
-              href="https://teacher-erp-theta.vercel.app/"
-              className={`text-sm transition-colors ${
-                isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Live →
-            </a>
-          </div>
-          <div>
-            <a
-              href="https://github.com/Arnav270803/Teacher-ERP"
-              className={`text-sm transition-colors ${
-                isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Code →
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <div className={`mb-3 px-6 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-        ERP system with admin, teacher, and student interfaces.
-      </div>
-
-      <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className={`flex items-center gap-2 px-6 mb-2 text-sm font-medium transition-colors ${
-          isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-        }`}
-      >
-        {isExpanded ? (
-          <>
-            <ChevronUp className="w-4 h-4" />
-            Hide Details
-          </>
-        ) : (
-          <>
-            <ChevronDown className="w-4 h-4" />
-            Show Details
-          </>
-        )}
-      </button>
-
-      <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className='py-2 px-6'>
-          <div className='px-3'>
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                Admin has complete authority over all data.
-              </span>
-            </p>
-
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                Teachers can view and manage student information.
-              </span>
-            </p>
-
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                Students can securely access their personal records.
-              </span>
-            </p>
-
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                Built with React, Express, and MySQL database.
-              </span>
-            </p>
-
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='px-2'>
-                Streamlines data access and management for education.
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-        <span className={BtDesign}>React</span>|<span className={BtDesign}>Tailwind</span>|<span className={BtDesign}>Node.js</span>|<span className={BtDesign}>SQL</span>|<span className={BtDesign}>Shadcn</span>|<span className={BtDesign}>Prisma</span> 
-      </div>
-    </div>
-  );
-};
-
-
-
-
-
-// Main Component
-const Sideprojects = ({ isDark }) => {
-  return (
-    <div className={`w-full min-h-screen ${isDark ? 'bg-neutral-900 ' : 'bg-zinc-50'}`}>
-      <div className={`text-3xl px-6 underline border-b pb-3 underline-offset-4 font-medium mb-4 ${isDark ? 'text-white border-gray-800' : 'text-gray-900 border-neutral-200'}`}>
-        Projects
-      </div>
-      
-      <div className="space-y-4">
-        <WhisperFlixProject isDark={isDark} />
-        <VynixProject isDark={isDark} />
-        <RVisionProject isDark={isDark} />
-        <CapillaryBot isDark={isDark} />
-        <TeachersERP isDark={isDark} />
-      </div>
-
-    </div>
+      <p className="px-5 sm:px-6 py-4 text-[11.5px] text-graphite">
+        Fig. 04 — Five selected products and evolving systems.
+      </p>
+    </section>
   );
 };
 

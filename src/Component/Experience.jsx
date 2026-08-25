@@ -1,225 +1,268 @@
 import React, { useState } from 'react';
-import { Briefcase, Code, Palette, Cloud, ChevronDown, ChevronUp, Database, Server } from 'lucide-react';
+import {
+  Workflow,
+  Code2,
+  Briefcase,
+  Rocket,
+  GraduationCap,
+  ChevronDown,
+  ArrowDown,
+  ArrowUp,
+} from 'lucide-react';
 
-// Boock.ai / Smartifyd AI Experience
-const BoockAiExperience = ({ isDark }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+/* 01 / EXPERIENCE — ledger rows, details expand in place.
+   A company spine can fork to more than one role, the way an assembly
+   drawing branches to its sub-parts. */
 
-  const BtDesign = `inline-block mr-1 mb-1 px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
-  ${isDark
-      ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'
-      : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
-    }
-  active:scale-100`;
+const RECORDS = [
+  {
+    id: 'boock',
+    mark: 'B.',
+    company: 'Boock.AI',
+    tenure: '8 mos · India · Remote',
+    status: 'CURRENT',
+    tone: 'live',
+    roles: [
+      {
+        title: 'Founding AI Engineer',
+        meta: 'Full-time · Mar 2026 — Present · 6 mos',
+        Icon: Workflow,
+        points: [
+          "Building Boock.AI's agentic media pipeline — an end-to-end system that transforms books into cinematic audiovisual experiences.",
+          'Spans multimodal AI orchestration, narrative understanding, visual and character consistency, image and video generation, voice and sound production, automated quality control, and scalable cloud infrastructure.',
+        ],
+        tags: ['Agentic AI Development', 'AWS', 'Multimodal AI', 'Video Generation'],
+      },
+      {
+        title: 'Founding Full Stack Engineer',
+        meta: 'Internship · Jan 2026 — Present · 8 mos',
+        Icon: Code2,
+        points: [
+          'Leading frontend and backend integration at Boock.AI.',
+          'Deploying scalable, cloud-based applications with AWS.',
+        ],
+        tags: ['MERN Stack', 'TypeScript', 'Node.js', 'Docker', 'PostgreSQL'],
+      },
+    ],
+  },
+  {
+    id: 'procesg',
+    mark: 'P',
+    company: 'ProcesG',
+    status: 'LIVE',
+    tone: 'live',
+    roles: [
+      {
+        title: 'Founding Engineer',
+        meta: 'Current · ESG / BRSR platform',
+        Icon: Briefcase,
+        points: [
+          'Built company onboarding and Google authentication.',
+          'Created reporting-year-specific BRSR and GHG configurations.',
+          'Implemented role-based access for administrators and employees.',
+          'Designed ESG data-entry, emissions-calculation, and audit-history workflows.',
+          'Developed the responsive frontend, REST APIs, and relational database architecture.',
+        ],
+        tags: [
+          'React',
+          'TypeScript',
+          'Node.js',
+          'Express',
+          'PostgreSQL',
+          'Prisma',
+          'REST APIs',
+          'Tailwind CSS',
+          'Google OAuth',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'aevora',
+    mark: 'A',
+    company: 'Aevora',
+    status: 'BUILDING',
+    tone: 'cobalt',
+    roles: [
+      {
+        title: 'Founder',
+        meta: 'Current · AI video ads for D2C brands',
+        Icon: Rocket,
+        points: [
+          'Designed a mobile-first landing page with glassmorphism UI, waitlist email collection, and live signup counter.',
+          'Architecting a video pipeline that generates script, scenes, voiceover, music, and subtitles from a single product image.',
+          'Targeting Indian D2C brands with Hindi voiceovers, festival templates, and platform-ready exports for Instagram, YouTube, and Facebook.',
+        ],
+        tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Generative AI'],
+      },
+    ],
+  },
+  {
+    id: 'thinknext',
+    mark: 'T',
+    company: 'ThinkNext Technologies',
+    status: 'COMPLETED',
+    tone: 'graphite',
+    roles: [
+      {
+        title: 'Industrial Training — MERN Stack',
+        meta: 'Jul 2023 — Sep 2023 · Mohali, India',
+        Icon: GraduationCap,
+        points: [
+          'Built a full-stack image generation app on the MERN stack.',
+          'Developed REST APIs and integrated AI image services.',
+        ],
+        tags: ['MongoDB', 'Express', 'React', 'Node.js'],
+      },
+    ],
+  },
+];
+
+const TONE = { live: 'text-live', cobalt: 'text-cobalt', graphite: 'text-graphite' };
+const DOT = { live: 'bg-live', cobalt: 'bg-cobalt', graphite: 'bg-graphite' };
+
+/* one branch off the company spine */
+const Role = (props) => {
+  const role = props.role;
+  const Icon = role.Icon;
 
   return (
-    <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-      <div className={`flex items-start border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'} justify-between mb-3`}>
-        <div className="px-6">
-          <div className={`text-xl font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            Founding Full Stack Engineer
-          </div>
-          <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-            Boock.ai / Smartifyd AI Pvt Ltd
-          </div>
-          <div className={`text-sm ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-            Full-Time Internship
+    <div className="relative pt-3">
+      {/* spine runs the full block, except on the last branch where it stops at the stub */}
+      <span
+        className={`absolute left-[17px] top-0 w-px bg-rule ${props.last ? 'h-[26px]' : 'bottom-0'}`}
+        aria-hidden="true"
+      />
+      <span
+        className="absolute left-[17px] top-[26px] w-[25px] sm:w-[42px] border-t border-dashed border-rule"
+        aria-hidden="true"
+      />
+
+      <div className="flex items-start gap-4 sm:gap-6 pl-[42px] sm:pl-[59px]">
+        <span className="w-7 h-7 shrink-0 border border-ink rounded-[5px] flex items-center justify-center text-ink">
+          <Icon className="w-[15px] h-[15px]" strokeWidth={1.6} />
+        </span>
+
+        <div className="min-w-0 flex-1">
+          <h3 className="text-[15px] font-semibold text-ink">{role.title}</h3>
+          <p className="text-[13px] text-graphite mt-0.5">{role.meta}</p>
+
+          {props.open && (
+            <ul className="mt-3 space-y-1.5 text-[13px] text-ink">
+              {role.points.map((point) => (
+                <li key={point} className="flex gap-3">
+                  <span className="text-graphite shrink-0">•</span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <div className="mt-3.5 flex flex-wrap gap-2">
+            {role.tags.map((tag) => (
+              <span key={tag} className="px-2.5 py-1 border border-rule rounded-[4px] text-[12px] text-ink">
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
-        <div className="flex items-center gap-4 pr-6">
-          <div className={`text-sm transition-colors hover:text-green-500 animate-pulse text-green-500`}>
-            Current
-          </div>
-        </div>
-      </div>
-
-      <div className={`mb-3 px-6 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-        Working as a Founding Full Stack Engineer at and building something great with my team.
-      </div>
-
-      <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className={`flex items-center gap-2 px-6 mb-2 text-sm font-medium transition-colors ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-          }`}
-      >
-        {isExpanded ? (
-          <>
-            <ChevronUp className="w-4 h-4" />
-            Hide Details
-          </>
-        ) : (
-          <>
-            <ChevronDown className="w-4 h-4" />
-            Show Details
-          </>
-        )}
-      </button>
-
-      <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-          }`}
-      >
-        <div className='py-2 px-6'>
-          <div className='px-3'>
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='pl-2'>
-                Leading frontend and backend integration at Boock.ai
-              </span>
-            </p>
-
-            <p className={`text-sm mb-1 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='pl-2'>
-                Crafting user-centric interfaces for enhanced experience
-              </span>
-            </p>
-
-            <p className={`text-sm mb-1 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='pl-2'>
-                Building AI video generation pipeline using FFmpeg, Generative AI for cinematic visual storytelling.
-              </span>
-            </p>
-
-            <p className={`text-sm mb-4 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='pl-2'>
-                Deploying scalable, cloud-based applications with AWS
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-        <span className={BtDesign}>React</span>
-        <span className={BtDesign}>TypeScript</span>
-        <span className={BtDesign}>Node.js</span>
-        <span className={BtDesign}>AWS</span>
-        <span className={BtDesign}>UI/UX Design</span>
-        <span className={BtDesign}>Full-Stack</span>
-        <span className={BtDesign}>Cloud Architecture</span>
-        <span className={BtDesign}>Docker</span>
-        <span className={BtDesign}>Python</span>
-        <span className={BtDesign}>PostgreSQL</span>
-      </div>
-      <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
       </div>
     </div>
   );
 };
 
-// ThinkNext Technologies Experience
-const ThinkNextExperience = ({ isDark }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const BtDesign = `inline-block mr-1 mb-1 px-2 py-0.5 border border-dashed rounded-md cursor-pointer transition-all duration-300 font-semibold
-  ${isDark
-      ? 'bg-neutral-800 border-gray-600 text-gray-300 hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.25)] hover:scale-[1.02]'
-      : 'bg-white border-gray-400 text-gray-700 hover:border-gray-900 hover:shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:scale-[1.02]'
-    }
-  active:scale-100`;
+const Record = (props) => {
+  const r = props.record;
+  const open = props.open;
 
   return (
-    <div className={`pb-2 border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-      <div className={`flex items-start justify-between mb-3 border-b ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
-        <div className='px-6'>
-          <div className={`text-lg font-medium hover:underline ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            Industrial Training – MERN Stack
-          </div>
-          <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-            ThinkNext Technologies, Mohali, India
-          </div>
-        </div>
-
-        <div className="flex items-center gap-4 pr-6">
-          <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-            Completed
-          </div>
-        </div>
-      </div>
-
-      <div className={`mb-3 px-6 leading-relaxed text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-        Built full-stack AI image generation application with MERN stack and REST APIs
-      </div>
-
+    <div className="px-5 sm:px-6 py-4 border-b border-rule">
       <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className={`flex items-center gap-2 px-6 mb-2 text-sm font-medium transition-colors ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-          }`}
+        onClick={props.onToggle}
+        aria-expanded={open}
+        className="w-full flex items-center gap-4 cursor-pointer text-left"
       >
-        {isExpanded ? (
-          <>
-            <ChevronUp className="w-4 h-4" />
-            Hide Details
-          </>
-        ) : (
-          <>
-            <ChevronDown className="w-4 h-4" />
-            Show Details
-          </>
-        )}
+        <span className="w-[34px] h-[34px] shrink-0 border-[1.5px] border-ink rounded-[4px] flex items-center justify-center text-[14px] font-semibold text-ink">
+          {r.mark}
+        </span>
+
+        <span className="flex items-baseline gap-3 min-w-0">
+          <span className="text-[17px] font-semibold text-ink truncate">{r.company}</span>
+          {r.tenure && (
+            <span className="hidden md:inline text-[12px] text-graphite whitespace-nowrap">{r.tenure}</span>
+          )}
+        </span>
+
+        <span className="ml-auto flex items-center gap-2.5 shrink-0">
+          {r.roles.length > 1 && (
+            <span className="hidden sm:inline text-[11px] text-graphite tracking-[0.06em] mr-1">
+              {String(r.roles.length).padStart(2, '0')} ROLES
+            </span>
+          )}
+          <span className={`text-[12px] tracking-[0.06em] ${TONE[r.tone]}`}>{r.status}</span>
+          <span className={`w-[8px] h-[8px] rounded-full ${DOT[r.tone]}`} />
+          <ChevronDown
+            className={`w-5 h-5 text-ink ml-1 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+            strokeWidth={1.6}
+          />
+        </span>
       </button>
 
-      <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-          }`}
-      >
-        <div className='py-2 px-6'>
-          <div className='px-3'>
-            <p className={`text-sm mb-2 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='pl-2'>
-                Built a full-stack image generation application using MongoDB, Express, React, and Node.js
-              </span>
-            </p>
-
-            <p className={`text-sm mb-1 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='pl-2'>
-                Developed REST APIs and integrated AI image generation services
-              </span>
-            </p>
-
-            <p className={`text-sm mb-4 font-medium transition duration-200 ease-in-out transform hover:scale-105 hover:text-white hover:underline ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              •
-              <span className='pl-2'>
-                Strengthened skills in full-stack development and real-world project implementation
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className={`text-xs px-6 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-        <span className={BtDesign}>MongoDB</span>
-        <span className={BtDesign}>Express</span>
-        <span className={BtDesign}>React</span>
-        <span className={BtDesign}>Node.js</span>
-        <span className={BtDesign}>REST APIs</span>
-        <span className={BtDesign}>AI Integration</span>
-      </div>
-      <div className={`border-b py-1 mb-4 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-      </div>
+      {r.roles.map((role, i) => (
+        <Role key={role.title} role={role} open={open} last={i === r.roles.length - 1} />
+      ))}
     </div>
   );
 };
 
-// Main Experience Component
-const Experience = ({ isDark }) => {
+const Experience = () => {
+  const [openIds, setOpenIds] = useState(['boock']);
+
+  const toggle = (id) =>
+    setOpenIds((ids) => (ids.includes(id) ? ids.filter((x) => x !== id) : ids.concat(id)));
+
+  const allOpen = openIds.length === RECORDS.length;
+
   return (
-    <div className={`w-full  ${isDark ? 'bg-neutral-900 ' : 'bg-zinc-50'}`}>
-      <div className={`text-3xl px-6 underline border-b pb-3 underline-offset-4 font-medium mb-4 ${isDark ? 'text-white border-gray-800' : 'text-gray-900 border-neutral-200'}`}>
-        Experience
+    <section className="font-mono">
+      <div className="hatch h-2.5 border-y border-rule" />
+
+      <div className="px-5 sm:px-6 pt-5 pb-4 border-b border-rule">
+        <h2 className="text-[15px] tracking-[0.06em] text-ink">
+          <span className="text-cobalt">02</span>
+          <span className="text-graphite"> / </span>
+          EXPERIENCE
+        </h2>
+        <div className="mt-1.5 flex items-end justify-between gap-4 text-[11px] tracking-[0.08em]">
+          <span className="text-graphite">SELECTED ROLES · DETAILS EXPAND IN PLACE</span>
+          <span className="shrink-0">
+            <span className="text-cobalt">{String(RECORDS.length).padStart(2, '0')}</span>
+            <span className="text-ink"> RECORDS</span>
+          </span>
+        </div>
       </div>
 
-      <div className="space-y-4">
-        <BoockAiExperience isDark={isDark} />
-        <ThinkNextExperience isDark={isDark} />
-      </div>
+      {RECORDS.map((record) => (
+        <Record
+          key={record.id}
+          record={record}
+          open={openIds.includes(record.id)}
+          onToggle={() => toggle(record.id)}
+        />
+      ))}
 
-    </div>
+      <div className="hatch h-2.5 border-y border-rule" />
+
+      <div className="py-6 flex justify-center">
+        <button
+          onClick={() => setOpenIds(allOpen ? [] : RECORDS.map((r) => r.id))}
+          className="px-7 py-3 border border-ink rounded-[4px] text-[14px] text-ink flex items-center gap-3 cursor-pointer hover:bg-ink/[0.04] transition-colors"
+        >
+          {allOpen ? 'Show less' : 'Show more'}
+          {allOpen ? <ArrowUp className="w-4 h-4" strokeWidth={1.7} /> : <ArrowDown className="w-4 h-4" strokeWidth={1.7} />}
+        </button>
+      </div>
+    </section>
   );
 };
 

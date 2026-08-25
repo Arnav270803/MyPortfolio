@@ -1,7 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Sun, Moon } from 'lucide-react';
+import { Search, Github, SunMedium, Moon } from 'lucide-react';
 import toggleSound from '../assets/context/select-button-ui-395763.mp3';
+
+const NAV = [
+  { label: 'Work', section: 'current-builds' },
+  { label: 'Experience', section: 'experience-section' },
+  { label: 'Projects', section: 'projects-section' },
+];
 
 const Navbar = ({ isDark, toggleTheme }) => {
   const navigate = useNavigate();
@@ -12,16 +18,13 @@ const Navbar = ({ isDark, toggleTheme }) => {
     audioRef.current.volume = 0.5;
   }, []);
 
-  // Handle navigation to sections with smart scroll logic
   const handleSectionNavigation = (sectionId) => {
     if (location.pathname === '/') {
-      // Already on home page, just scroll to section
       const element = document.getElementById(sectionId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     } else {
-      // On different page, navigate to home with hash
       navigate('/', { state: { scrollTo: sectionId } });
     }
   };
@@ -31,101 +34,60 @@ const Navbar = ({ isDark, toggleTheme }) => {
     toggleTheme();
   };
 
-  const iconColors = {
-    dark: {
-      twitter: "primary:#ffffff,secondary:#08a88a",
-      linkedin: "primary:#b4b4b4,secondary:#08a88a",
-      github: "primary:#ffffff,secondary:#08a88a"
-    },
-    light: {
-      twitter: "primary:#242424,secondary:#08a88a",
-      linkedin: "primary:#545454,secondary:#08a88a",
-      github: "primary:#545454,secondary:#08a88a"
-    }
-  };
-
-  const colors = isDark ? iconColors.dark : iconColors.light;
-
   return (
-    <>
-      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-      <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <header className={`font-mono h-16 border-b border-rule flex items-center justify-between px-4 sm:px-6 ${isDark ? 'theme-dark' : ''}`}>
+      <a
+        href="/"
+        className="font-grotesk font-bold text-ink text-[26px] leading-none tracking-[-0.03em] hover:opacity-70 transition-opacity"
+      >
+        AS
+      </a>
 
-      <div className={`border-t ${isDark ? 'border-gray-800' : 'border-neutral-200'}`}>
-        <div className='flex justify-between items-center px-6 pt-2 w-full'>
+      <nav className="flex items-center gap-4 sm:gap-9 text-[12px] sm:text-[13px] text-ink">
+        {NAV.map((item) => (
+          <button
+            key={item.label}
+            onClick={() => handleSectionNavigation(item.section)}
+            className="cursor-pointer hover:underline underline-offset-[6px] decoration-1 transition-colors"
+          >
+            {item.label}
+          </button>
+        ))}
+      </nav>
 
-          <div className='flex items-center'>
-            <a href="/" rel="noopener noreferrer" className="cursor-pointer hover:opacity-80 transition-opacity">
-              <lord-icon
-                src="https://cdn.lordicon.com/jeuxydnh.json"
-                trigger="hover"
-                colors="primary:#b4b4b4,secondary:#08a88a">
-              </lord-icon>
-            </a>
+      <div className="flex items-center gap-2 sm:gap-2.5">
+        <button
+          aria-label="Search"
+          onClick={() => navigate('/bblog')}
+          className="text-ink cursor-pointer hover:opacity-70 transition-opacity"
+        >
+          <Search className="w-[18px] h-[18px]" strokeWidth={1.7} />
+        </button>
 
-
-
-            <span onClick={() => navigate('/bblog')}
-              className='font-medium px-2 hover:underline cursor-pointer transition-colors duration-200'
-              style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-              Blog
-            </span>
-
-            <span onClick={() => handleSectionNavigation('experience-section')}
-              className='font-medium px-2 hover:underline cursor-pointer transition-colors duration-200'
-              style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-              Experience
-            </span>
-
-            <span onClick={() => handleSectionNavigation('projects-section')}
-              className='font-medium px-2 hover:underline cursor-pointer transition-colors duration-200'
-              style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-              Projects
-            </span>
-          </div>
-
-          <div className='flex items-center gap-1'>
-            <a href="https://x.com/Bokinsha"
-              className="flex items-center justify-center w-9 h-9 cursor-pointer hover:opacity-80 transition-opacity">
-              <lord-icon
-                src="https://cdn.lordicon.com/yizwahhw.json"
-                trigger="hover"
-                stroke="bold"
-                colors={colors.twitter}
-                style={{ width: '20px', height: '20px' }}>
-              </lord-icon>
-            </a>
-
-            <a href="https://www.linkedin.com/in/arnav-sharma2708/"
-              className="flex items-center justify-center w-9 h-9 cursor-pointer hover:opacity-80 transition-opacity">
-              <lord-icon
-                src="https://cdn.lordicon.com/qgebwute.json"
-                trigger="hover"
-                stroke="bold"
-                colors={colors.linkedin}
-                style={{ width: '20px', height: '20px' }}>
-              </lord-icon>
-            </a>
-
-            <a href="https://github.com/Arnav270803"
-              className="flex items-center justify-center w-9 h-9 cursor-pointer hover:opacity-80 transition-opacity">
-              <lord-icon
-                src="https://cdn.lordicon.com/jjxzcivr.json"
-                trigger="hover"
-                stroke="bold"
-                colors={colors.github}
-                style={{ width: '20px', height: '20px' }}>
-              </lord-icon>
-            </a>
-
-            <button onClick={handleToggleTheme}
-              className={`flex items-center justify-center w-9 h-9 rounded-lg cursor-pointer transition-colors ${isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}`}>
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-          </div>
+        <div className="hidden sm:flex items-stretch h-[22px] border border-rule rounded-[3px] text-[11px] text-ink">
+          <kbd className="px-1.5 flex items-center border-r border-rule font-mono">Ctrl</kbd>
+          <kbd className="px-1.5 flex items-center font-mono">K</kbd>
         </div>
+
+        <a
+          href="https://github.com/Arnav270803"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          className="text-ink hover:opacity-70 transition-opacity"
+        >
+          <Github className="w-[19px] h-[19px]" fill="currentColor" strokeWidth={0} />
+        </a>
+
+        <button
+          onClick={handleToggleTheme}
+          aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+          className="text-ink cursor-pointer hover:opacity-70 transition-opacity"
+        >
+          {isDark ? <Moon className="w-[19px] h-[19px]" strokeWidth={1.7} /> : <SunMedium className="w-[19px] h-[19px]" strokeWidth={1.7} />}
+        </button>
       </div>
-    </>
+    </header>
   );
 };
 
