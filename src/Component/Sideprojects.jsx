@@ -46,6 +46,7 @@ const PROJECTS = [
     title: 'ProcesG',
     status: 'LIVE',
     tone: 'live',
+    live: 'https://procesg.com/',
     role: {
       title: 'Founding Engineer',
       meta: 'Current · ESG / BRSR platform',
@@ -91,6 +92,7 @@ const PROJECTS = [
     title: 'Aevora',
     status: 'BUILDING',
     tone: 'cobalt',
+    live: 'https://www.aevora.in/',
     role: {
       title: 'Founder',
       meta: 'Current · AI video ads for D2C brands',

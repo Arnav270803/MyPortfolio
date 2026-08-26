@@ -50,7 +50,7 @@ const BlogPage = ({ isDark, toggleTheme }) => {
         <div className="hatch h-2.5 border-y border-rule" />
 
         <footer className="font-mono h-14 px-5 sm:px-6 flex items-center justify-between text-[12px]">
-          <a href="https://hayarnav.xyz" className="text-ink hover:underline underline-offset-4">@hayarnav.xyz</a>
+          <a href="https://heyarnav.com" className="text-ink hover:underline underline-offset-4">@heyarnav.com</a>
           <span className="hidden sm:block text-graphite">REV. 2026 / DELHI</span>
           <span className="text-ink font-semibold">Built in React</span>
         </footer>
