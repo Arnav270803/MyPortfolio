@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { Routes,Route } from 'react-router-dom'
 import Homee from './pages/Homee'
 import BlogPage from './pages/BlogPage'
@@ -12,6 +12,10 @@ const AMBIENT_KEY = 'ambient-audio';
 const PEAK_VOLUME = 0.22;
 const FADE_IN = 4000;
 const FADE_OUT = 900;
+
+/* Browsers only unlock audio after a real user activation. Scroll is NOT one,
+   so listening for it would burn the unlock without ever starting playback. */
+const ACTIVATION_EVENTS = ['pointerdown', 'keydown', 'touchstart'];
 
 /* ramp the volume rather than cutting it; a later fade supersedes an earlier one */
 const fade = (audio, to, ms, done) => {
@@ -46,21 +50,46 @@ const App = () => {
 
   // Toggle theme function
 
-  const [ambientOn, setAmbientOn] = useState(readPreference);
+  const [ambientOn, setAmbientOn] = useState(readPreference);   // what the visitor wants
+  const [playing, setPlaying] = useState(false);                // what is actually audible
   const audioRef = useRef(null);
+  const wantsRef = useRef(ambientOn);
 
+  useEffect(() => {
+    wantsRef.current = ambientOn;
+  }, [ambientOn]);
+
+  /* one element for the life of the app */
   useEffect(() => {
     const audio = new Audio(TRACK);
     audio.loop = true;
     audio.volume = 0;
     audio.preload = 'auto';
+
+    const onPlay = () => setPlaying(true);
+    const onPause = () => setPlaying(false);
+    audio.addEventListener('play', onPlay);
+    audio.addEventListener('pause', onPause);
     audioRef.current = audio;
-    return () => audio.pause();
+
+    return () => {
+      audio.removeEventListener('play', onPlay);
+      audio.removeEventListener('pause', onPause);
+      audio.pause();
+      audioRef.current = null;
+    };
   }, []);
 
+  const start = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio) return Promise.reject(new Error('no audio'));
+    return audio.play().then(() => fade(audio, PEAK_VOLUME, FADE_IN));
+  }, []);
+
+  /* intent drives playback */
   useEffect(() => {
     const audio = audioRef.current;
-    if (!audio) return undefined;
+    if (!audio) return;
 
     try {
       localStorage.setItem(AMBIENT_KEY, ambientOn ? 'on' : 'off');
@@ -70,34 +99,46 @@ const App = () => {
 
     if (!ambientOn) {
       fade(audio, 0, FADE_OUT, () => audio.pause());
-      return undefined;
+      return;
     }
-
-    const rise = () => fade(audio, PEAK_VOLUME, FADE_IN);
-    let detach = () => {};
-
-    /* browsers refuse to autoplay audio until the visitor has interacted,
-       so fall back to starting on their first gesture */
-    audio.play().then(rise).catch(() => {
-      const events = ['pointerdown', 'keydown', 'scroll', 'touchstart'];
-      const onGesture = () => {
-        detach();
-        audio.play().then(rise).catch(() => {});
-      };
-      events.forEach((e) => window.addEventListener(e, onGesture, { once: true, passive: true }));
-      detach = () => events.forEach((e) => window.removeEventListener(e, onGesture));
+    start().catch(() => {
+      /* autoplay refused; the activation listener below retries */
     });
+  }, [ambientOn, start]);
 
-    return () => detach();
-  }, [ambientOn]);
+  /* Retry on the visitor's first real interaction, and keep listening until a
+     play() actually succeeds. The speaker button is skipped so its own click
+     is handled once, by toggleAmbient, rather than racing with this. */
+  useEffect(() => {
+    const onActivate = (event) => {
+      if (event.target?.closest?.('[data-ambient-toggle]')) return;
+      const audio = audioRef.current;
+      if (!audio || !wantsRef.current || !audio.paused) return;
+      start().then(stopListening).catch(() => {});
+    };
+    const stopListening = () =>
+      ACTIVATION_EVENTS.forEach((e) => window.removeEventListener(e, onActivate));
 
-  const toggleAmbient = () => setAmbientOn((on) => !on);
+    ACTIVATION_EVENTS.forEach((e) => window.addEventListener(e, onActivate, { passive: true }));
+    return stopListening;
+  }, [start]);
+
+  const toggleAmbient = () => {
+    const audio = audioRef.current;
+    /* wanted but silent because autoplay was blocked — this click is the
+       activation, so start it rather than reading the tap as a mute */
+    if (ambientOn && audio && audio.paused) {
+      start().catch(() => {});
+      return;
+    }
+    setAmbientOn((on) => !on);
+  };
 
   return (
     <div className=''>
 
       <Routes>
-        <Route path='/' element={<Homee isDark={isDark} toggleTheme={toggleTheme} ambientOn={ambientOn} toggleAmbient={toggleAmbient}/>} />
+        <Route path='/' element={<Homee isDark={isDark} toggleTheme={toggleTheme} ambientOn={ambientOn && playing} toggleAmbient={toggleAmbient}/>} />
         <Route path='/bblog' element={<BlogPage isDark={isDark} toggleTheme={toggleTheme}/>} />
         <Route path='/resume' element={<ResumePage isDark={isDark} toggleTheme={toggleTheme}/>} />
         <Route path='WinterArc' element={<WinterArcPage isDark={isDark} toggleTheme={toggleTheme}/>} />

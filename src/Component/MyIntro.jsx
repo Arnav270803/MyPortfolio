@@ -170,6 +170,7 @@ const MyIntro = ({ ambientOn, toggleAmbient }) => {
               <h1 className="text-[26px] sm:text-[32px] leading-[36px] text-ink truncate">Arnav Sharma</h1>
               <Motion.button
                 onClick={toggleAmbient}
+                data-ambient-toggle
                 aria-pressed={ambientOn}
                 title={ambientOn ? 'Mute the lofi' : 'Play the lofi'}
                 aria-label={ambientOn ? 'Mute the background lofi' : 'Play the background lofi'}
