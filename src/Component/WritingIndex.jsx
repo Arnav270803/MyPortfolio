@@ -1,151 +1,114 @@
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion as Motion, useReducedMotion } from 'motion/react';
-import { Search, ChevronDown, Calendar, LineChart, ArrowUpRight, Plus } from 'lucide-react';
+import { Search, ChevronDown, Clock, ArrowUpRight } from 'lucide-react';
 import { POSTS, CATEGORIES } from '../data/writing';
 
-/* NOTES / FIELD LOGS — the writing index */
+/* NOTES / FIELD LOGS — the writing index. One card per published post, a
+   hatch band between them so each reads as its own sheet. */
 
+/* OCT 29, 2026 */
 const fmtDate = (iso) =>
-  new Date(`${iso}T00:00:00`).toLocaleDateString('en-US', {
-    month: 'short',
-    day: '2-digit',
-    year: 'numeric',
-  }).replace(/^(\w+)/, '$1.');
+  new Date(`${iso}T00:00:00`)
+    .toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' })
+    .toUpperCase();
 
 const pad = (n) => String(n).padStart(2, '0');
+
+const Cross = () => (
+  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1">
+    <path d="M6 0v12M0 6h12" />
+  </svg>
+);
 
 const CropFrame = ({ children }) => (
   <div className="relative border border-dashed border-rule p-3">
     {['-left-1 -top-1', '-right-1 -top-1', '-left-1 -bottom-1', '-right-1 -bottom-1'].map((pos) => (
       <span key={pos} className={`absolute ${pos} w-2.5 h-2.5 text-graphite`} aria-hidden="true">
-        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1">
-          <path d="M6 0v12M0 6h12" />
-        </svg>
+        <Cross />
       </span>
     ))}
     {children}
   </div>
 );
 
-/* one cell per day; the finished tail is filled */
-const DayStrip = ({ total, done }) => {
-  const ticks = [];
-  for (let n = 1; n <= total; n += 5) ticks.push(n);
-  if (ticks[ticks.length - 1] !== total) ticks.push(total);
+const PostCard = ({ post, onOpen }) => (
+  <div className="px-5 sm:px-6 py-9">
+    <article className="relative mx-auto max-w-[640px] border border-rule rounded-[4px] bg-paper">
+      {['-left-[5px] -top-[5px]', '-right-[5px] -top-[5px]', '-left-[5px] -bottom-[5px]', '-right-[5px] -bottom-[5px]'].map((pos) => (
+        <span key={pos} className={`absolute ${pos} w-2.5 h-2.5 text-graphite`} aria-hidden="true">
+          <Cross />
+        </span>
+      ))}
 
-  return (
-    <div className="mt-4">
-      <p className="text-[12px] font-semibold text-ink">Day</p>
-      <div className="mt-1.5 flex text-[10.5px] text-graphite">
-        {ticks.map((n, i) => (
-          <span key={n} className={`flex-1 ${i === ticks.length - 1 ? 'text-right' : ''}`}>
-            {pad(n)}
-          </span>
-        ))}
-      </div>
-      <div className="mt-1 flex gap-px">
-        {Array.from({ length: total }, (_, i) => (
-          <span
-            key={i}
-            className={`flex-1 h-[15px] border border-rule ${i < done - 1 ? 'bg-transparent' : ''} ${
-              i === total - 1 ? 'bg-live border-live' : ''
-            }`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const PostCard = ({ post, onOpen }) => {
-  /* a post with no artwork gets the full rail rather than an empty column */
-  const hasAside = Boolean(post.figure || post.strip);
-
-  return (
-  <article className="px-5 sm:px-6 py-6 border-b border-rule">
-    <div className={`grid grid-cols-1 gap-6 md:gap-8 ${hasAside ? 'md:grid-cols-[minmax(0,0.62fr)_minmax(0,1fr)]' : ''}`}>
-      <div className="min-w-0">
-        {post.kind && (
-          <p className="text-[11.5px] tracking-[0.08em]">
-            <span className="text-cobalt">{post.index}</span>
-            <span className="text-graphite"> / </span>
-            <span className="text-cobalt">{post.kind}</span>
-          </p>
-        )}
-
-        <h3 className="mt-2.5 text-[22px] sm:text-[25px] leading-[1.15] text-ink">{post.title}</h3>
-
-        {post.status && (
-          <span
-            className={`mt-3 inline-flex items-center gap-2 px-2.5 py-1 border border-rule rounded-[4px] text-[12.5px] ${
-              post.tone === 'cobalt' ? 'text-cobalt' : 'text-live'
-            }`}
-          >
-            <span className={`w-[7px] h-[7px] rounded-full ${post.tone === 'cobalt' ? 'bg-cobalt' : 'bg-live'}`} />
-            {post.status}
-          </span>
-        )}
-
-        {post.summary && <p className="mt-3 text-[12.5px] text-graphite leading-[1.6]">{post.summary}</p>}
-
-        <div className="mt-4 pt-4 border-t border-dashed border-rule space-y-2.5 text-[12.5px] text-ink">
-          <p className="flex items-center gap-2.5">
-            <Calendar className="w-[15px] h-[15px] shrink-0" strokeWidth={1.6} />
-            {fmtDate(post.date)}
-          </p>
-          {post.meta && (
-            <div className="flex items-start gap-2.5">
-              <LineChart className="w-[15px] h-[15px] shrink-0 mt-[3px]" strokeWidth={1.6} />
-              <span className="leading-[1.6]">
-                {post.meta.map((line) => (
-                  <span key={line} className="block">
-                    {line}
-                  </span>
-                ))}
-              </span>
-            </div>
-          )}
-        </div>
-
-        {post.href && (
-          <button
-            onClick={() => onOpen(post.href)}
-            className="mt-4 flex items-center gap-1.5 text-[13px] text-cobalt underline underline-offset-4 cursor-pointer hover:opacity-70 transition-opacity"
-          >
-            {post.cta || 'Read note'}
-            <ArrowUpRight className="w-[14px] h-[14px]" strokeWidth={1.8} />
-          </button>
-        )}
-      </div>
-
-      {hasAside && (
-        <div className="min-w-0">
-          {post.figure && (
-            <figure>
-              <CropFrame>
-                <img src={post.figure.src} alt={post.figure.alt || ''} className="w-full h-auto block" loading="lazy" />
-                <figcaption className="mt-2.5 text-[11.5px] text-graphite">{post.figure.caption}</figcaption>
-              </CropFrame>
-            </figure>
-          )}
-          {post.strip && <DayStrip total={post.strip.total} done={post.strip.done} />}
+      {post.cover && (
+        <div className="p-3 pb-0">
+          <div className="relative aspect-[2.15/1] overflow-hidden rounded-[2px] border border-rule">
+            <img src={post.cover.src} alt={post.cover.alt || ''} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+          </div>
         </div>
       )}
-    </div>
-  </article>
-  );
-};
 
-const DraftRow = ({ post }) => (
-  <div className="h-12 px-5 sm:px-6 border-b border-rule flex items-center gap-4 text-[13px]">
-    <Plus className="w-4 h-4 text-graphite shrink-0" strokeWidth={1.4} aria-hidden="true" />
-    <span className="min-w-0 flex-1 truncate">
-      <span className="text-cobalt">{post.index}</span>
-      <span className="text-graphite"> / </span>
-      <span className="text-ink">{post.title}</span>
-    </span>
-    <span className="text-[11.5px] tracking-[0.08em] text-graphite shrink-0">DRAFT</span>
+      <div className="px-4 sm:px-5 pt-4 pb-4">
+        <div className="flex items-center justify-between gap-4 text-[11px] tracking-[0.08em]">
+          <span className="truncate">
+            <span className="text-cobalt">{post.index}</span>
+            {post.kind && (
+              <>
+                <span className="text-graphite"> / </span>
+                <span className="text-cobalt">{post.kind}</span>
+              </>
+            )}
+          </span>
+          <span className="text-muted shrink-0">{fmtDate(post.date)}</span>
+        </div>
+
+        <h3 className="mt-2.5 text-[22px] sm:text-[24px] leading-[1.2] text-ink">
+          {post.title}
+          {post.titleAccent && (
+            <>
+              {' '}
+              <em className="italic text-key">{post.titleAccent}</em>
+            </>
+          )}
+        </h3>
+
+        {post.summary && <p className="mt-2 text-[13px] leading-[1.6] text-muted">{post.summary}</p>}
+
+        <div className="mt-4 pt-3.5 border-t border-dashed border-rule flex flex-wrap items-center justify-between gap-x-4 gap-y-3 text-[11.5px]">
+          <span className="flex flex-wrap items-center gap-2.5">
+            {post.status && (
+              <span className={`flex items-center gap-1.5 ${post.tone === 'cobalt' ? 'text-cobalt' : 'text-live'}`}>
+                <span className={`w-[7px] h-[7px] rounded-full ${post.tone === 'cobalt' ? 'bg-cobalt' : 'bg-live'}`} />
+                {post.status}
+              </span>
+            )}
+            {post.readTime && (
+              <span className="flex items-center gap-1.5 text-ink">
+                <Clock className="w-[13px] h-[13px]" strokeWidth={1.6} />
+                {post.readTime}
+              </span>
+            )}
+            {post.meta && <span className="text-muted">{post.meta.join(' · ')}</span>}
+            {post.tags?.map((tag) => (
+              <span key={tag} className="px-2 py-[2px] border border-rule rounded-[4px] text-ink">
+                # {tag}
+              </span>
+            ))}
+          </span>
+
+          {post.href && (
+            <button
+              onClick={() => onOpen(post.href)}
+              className="flex items-center gap-1.5 text-[12.5px] text-cobalt underline underline-offset-4 shrink-0 cursor-pointer hover:opacity-70 transition-opacity"
+            >
+              {post.cta || 'Read note'}
+              <ArrowUpRight className="w-[14px] h-[14px]" strokeWidth={1.8} />
+            </button>
+          )}
+        </div>
+      </div>
+    </article>
   </div>
 );
 
@@ -164,21 +127,17 @@ const WritingIndex = () => {
 
   const stats = useMemo(() => {
     const published = numbered.filter((p) => p.published).length;
-    const logEntries = numbered.reduce((n, p) => n + (p.strip?.total || 0), 0);
+    const logEntries = numbered.reduce((n, p) => n + (p.logEntries || 0), 0);
     return { published, drafts: numbered.length - published, logEntries };
   }, [numbered]);
 
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase();
     return numbered
+      .filter((p) => p.published)
       .filter((p) => category === 'All' || p.category === category)
-      .filter((p) => !q || `${p.title} ${p.summary || ''}`.toLowerCase().includes(q))
-      .sort((a, b) => {
-        if (a.published !== b.published) return a.published ? -1 : 1;
-        /* drafts stay in the order they were written into the data file */
-        if (!a.published) return a.index.localeCompare(b.index);
-        return newestFirst ? b.date.localeCompare(a.date) : a.date.localeCompare(b.date);
-      });
+      .filter((p) => !q || `${p.title} ${p.titleAccent || ''} ${p.summary || ''}`.toLowerCase().includes(q))
+      .sort((a, b) => (newestFirst ? b.date.localeCompare(a.date) : a.date.localeCompare(b.date)));
   }, [numbered, category, query, newestFirst]);
 
   const fade = reduced
@@ -194,7 +153,7 @@ const WritingIndex = () => {
       {/* header */}
       <div className="px-5 sm:px-6 py-6 grid grid-cols-1 md:grid-cols-[1.1fr_0.75fr] lg:grid-cols-[1.1fr_0.7fr_1.05fr] gap-6 lg:gap-8">
         <div className="min-w-0">
-          <p className="text-[11.5px] tracking-[0.08em] text-graphite">NOTES / FIELD LOGS</p>
+          <p className="text-[11.5px] tracking-[0.08em] text-muted">NOTES / FIELD LOGS</p>
           <h1 className="mt-3 text-[32px] sm:text-[36px] leading-none text-ink">Writing</h1>
           <p className="mt-4 text-[13px] text-ink leading-[1.6]">
             Personal notes, engineering lessons, tutorials, and build logs.
@@ -225,7 +184,7 @@ const WritingIndex = () => {
               className="w-full h-auto block"
               loading="lazy"
             />
-            <figcaption className="mt-2.5 text-[11.5px] text-graphite">
+            <figcaption className="mt-2.5 text-[11.5px] text-muted">
               Fig. 05 — Ideas become systems when documented.
             </figcaption>
           </CropFrame>
@@ -251,16 +210,16 @@ const WritingIndex = () => {
           ))}
         </div>
 
-        <label className="flex items-center gap-2 h-9 px-2.5 border border-rule rounded-[4px] text-graphite ml-auto shrink-0">
+        <label className="flex items-center gap-2 h-9 px-2.5 border border-rule rounded-[4px] text-muted ml-auto shrink-0">
           <Search className="w-[14px] h-[14px] shrink-0" strokeWidth={1.6} />
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             type="text"
             placeholder="Filter notes..."
-            className="w-[110px] lg:w-[120px] bg-transparent text-[12px] text-ink outline-none placeholder:text-graphite"
+            className="w-[110px] lg:w-[120px] bg-transparent text-[12px] text-ink outline-none placeholder:text-muted"
           />
-          <kbd className="px-1.5 py-0.5 border border-rule rounded-[3px] text-[11px] text-graphite">/</kbd>
+          <kbd className="px-1.5 py-0.5 border border-rule rounded-[3px] text-[11px] text-muted">/</kbd>
         </label>
 
         <button
@@ -274,15 +233,16 @@ const WritingIndex = () => {
 
       {/* the list */}
       <AnimatePresence mode="popLayout" initial={false}>
-        {visible.map((post) => (
+        {visible.map((post, i) => (
           <Motion.div key={post.id} layout={!reduced} {...fade}>
-            {post.published ? <PostCard post={post} onOpen={navigate} /> : <DraftRow post={post} />}
+            {i > 0 && <div className="hatch h-2.5 border-y border-rule" />}
+            <PostCard post={post} onOpen={navigate} />
           </Motion.div>
         ))}
       </AnimatePresence>
 
       {visible.length === 0 && (
-        <p className="px-5 sm:px-6 py-10 text-[12.5px] text-graphite text-center">
+        <p className="px-5 sm:px-6 py-10 text-[12.5px] text-muted text-center">
           No notes match that filter yet.
         </p>
       )}

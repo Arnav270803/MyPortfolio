@@ -1,0 +1,8 @@
+const FILE_TOOLS = new Set(['read', 'write', 'edit', 'ls', 'grep', 'find']);
+
+pi.on('tool_call', async (event, ctx) => {
+  if (event.toolName.startsWith('video_')) return;   // domain tools enforce their own rules
+  if (!FILE_TOOLS.has(event.toolName)) return { block: true, reason: `${event.toolName} isn't available here` };
+  const problem = await pathProblem(event.input?.path ?? '.', ctx.cwd, event.toolName);   // resolves links first
+  if (problem) return { block: true, reason: `Blocked by the guard: ${problem}` };
+});

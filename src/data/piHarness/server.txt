@@ -1,0 +1,9 @@
+const pi = spawn('pi', ['--mode', 'rpc', ...lockdownFlags], { cwd: runFolder, env: scrubbedEnv });
+
+readJsonLines(pi.stdout, event => {
+  if (event.type === 'extension_ui_request') showReviewPanel(event);   // { id, method: 'select', title, options }
+});
+
+function answer(id, value) {   // the reviewer clicked Approve, Request changes or Pause
+  pi.stdin.write(JSON.stringify({ type: 'extension_ui_response', id, value }) + '\n');
+}

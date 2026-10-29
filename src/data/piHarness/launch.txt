@@ -1,0 +1,6 @@
+pi --mode rpc \
+   --tools 'read,write,edit,ls,grep,find,video_*' \
+   --no-extensions --extension ./video-extension.mjs \
+   --no-skills --skill ./skills \
+   --no-mcp --no-context-files --no-prompt-templates --no-approve \
+   --append-system-prompt ./instructions.md

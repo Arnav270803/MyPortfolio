@@ -4,6 +4,7 @@ import Homee from './pages/Homee'
 import BlogPage from './pages/BlogPage'
 import ResumePage from './pages/ResumePage'
 import WinterArcPage from './pages/WinterArcPage'
+import PiHarnessPage from './pages/PiHarnessPage'
 
 /* Ambient lofi. Served from /public so the browser streams it instead of
    pulling 3.5MB through the bundle. */
@@ -142,6 +143,7 @@ const App = () => {
         <Route path='/bblog' element={<BlogPage isDark={isDark} toggleTheme={toggleTheme}/>} />
         <Route path='/resume' element={<ResumePage isDark={isDark} toggleTheme={toggleTheme}/>} />
         <Route path='WinterArc' element={<WinterArcPage isDark={isDark} toggleTheme={toggleTheme}/>} />
+        <Route path='/bblog/let-the-agent-drive-keep-the-keys' element={<PiHarnessPage isDark={isDark} toggleTheme={toggleTheme}/>} />
       </Routes>
 
 

@@ -41,6 +41,13 @@ const BlogPage = ({ isDark, toggleTheme }) => {
             <path d="M50 6C38 13 24 22 10 32" strokeLinecap="round" />
             <path d="M8 20l-2 14 13-4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
+          <p className="absolute -right-[214px] top-[612px] text-[20px] leading-[26px] -rotate-[4deg]">
+            the newest<br />note
+          </p>
+          <svg viewBox="0 0 90 30" className="absolute -right-[128px] top-[676px] w-[80px] -scale-x-100" fill="none" stroke="currentColor" strokeWidth="1.2">
+            <path d="M2 6c26 0 52 8 76 16" strokeLinecap="round" />
+            <path d="M70 18l9 4-6 6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </div>
 
         <Navbar isDark={isDark} toggleTheme={toggleTheme} active="Blog" />

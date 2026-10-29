@@ -4,12 +4,20 @@
   --color-paper: #FAF9F4;
   --color-ink: #111318;
   --color-graphite: #9299A1;
+  --color-muted: #6B7178;      /* small text that has to stay readable; graphite is for strokes */
   --color-rule: #D9DDE1;
   --color-cobalt: #315E9C;
   --color-live: #238857;
+  --color-key: #8E6B2F;        /* a person's decision: approvals, gates, the keys */
+  --color-key-soft: #C9A96B;
+  --color-plate: #0C0E11;      /* the machine's world: code and app screenshots */
+  --color-plate-ink: #E6E8EB;
+  --color-plate-rule: #23282E;
+  --color-plate-muted: #858D96;
 
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-grotesk: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "IBM Plex Serif", ui-serif, Georgia, serif;
   --font-hand: "Caveat", ui-rounded, cursive;
 }
 
@@ -18,9 +26,13 @@
   --color-paper: #07090B;
   --color-ink: #E8EAED;
   --color-graphite: #6C737C;
+  --color-muted: #7A828B;
   --color-rule: #1D2227;
   --color-cobalt: #4C86E0;
   --color-live: #2FA96D;
+  --color-key: #D2B072;
+  --color-plate: #0E1114;
+  --color-plate-rule: #252B31;
 }
 
 /* 15 / SEPARATORS — hatch rule */
@@ -36,4 +48,111 @@
 .blueprint :focus-visible {
   outline: 2px solid var(--color-cobalt);
   outline-offset: 2px;
+}
+
+/* ARTICLES — long-form posts. Plex Sans to read, Plex Serif for the voice,
+   Plex Mono for everything that belongs to the drawing. */
+@layer components {
+  .hatch-ink {
+    background-image: repeating-linear-gradient(45deg, color-mix(in srgb, var(--color-ink) 42%, transparent) 0 1px, transparent 1px 4px);
+  }
+
+  .prose-bp { font-family: var(--font-grotesk); font-size: 16.5px; line-height: 1.75; color: var(--color-ink); }
+  .prose-bp > * + * { margin-top: 1.05em; }
+  .prose-bp .lead { font-size: 18.5px; line-height: 1.65; }
+  .prose-bp a { color: var(--color-cobalt); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  .prose-bp strong { font-weight: 600; }
+  .prose-bp .bul > li { display: flex; gap: 12px; }
+  .prose-bp .bul > li + li { margin-top: .45em; }
+  .prose-bp .bul > li::before { content: "•"; color: var(--color-graphite); flex-shrink: 0; }
+
+  .ic,
+  .prose-bp code {
+    font-family: var(--font-mono);
+    font-size: .84em;
+    padding: .1em .38em;
+    border: 1px solid var(--color-rule);
+    border-radius: 3px;
+    background: color-mix(in srgb, var(--color-ink) 3.5%, transparent);
+    overflow-wrap: anywhere;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  /* plates: code, and screenshots of the running harness */
+  .plate { background: var(--color-plate); color: var(--color-plate-ink); border: 1px solid var(--color-plate); }
+  .theme-dark .plate { border-color: var(--color-rule); }
+  .plate-head { border-bottom: 1px solid var(--color-plate-rule); color: var(--color-plate-muted); }
+  .plate-code { font-family: var(--font-mono); font-size: 12.5px; line-height: 1.8; padding: 14px 0 16px; }
+  .cl { display: grid; grid-template-columns: 46px 1fr; }
+  .ln { color: #4A5159; text-align: right; padding-right: 16px; user-select: none; }
+  .lc { white-space: pre-wrap; overflow-wrap: anywhere; padding-right: 20px; }
+  .t-kw, .t-flag { color: #8FB3F0; }
+  .t-str { color: #D8BC85; }
+  .t-com { color: #7D858E; font-style: italic; }
+  .t-fn { color: #FFFFFF; }
+  .t-num, .t-lit { color: #7FCCA5; }
+  .t-dim { color: #5B636C; }
+  /* numbered marker on a flag, keyed to the list under the code */
+  .mk {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 15px; min-width: 19px; padding: 0 3px; margin: 0 2px; vertical-align: 1px;
+    border: 1px solid #5B7FB8; border-radius: 3px; color: #8FB3F0;
+    font-size: 9.5px; line-height: 1; letter-spacing: .02em;
+  }
+  /* the swatch that explains the painted-out ids in a screenshot */
+  .redact {
+    position: absolute; border: 1px solid #6B737C; border-radius: 2px;
+    background-color: #14181C;
+    background-image: repeating-linear-gradient(45deg, #59616A 0 1px, transparent 1px 4px);
+  }
+
+  /* drawing marks */
+  .callout {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 28px; height: 20px; padding: 0 5px;
+    border: 1px solid currentColor; border-radius: 3px;
+    font-family: var(--font-mono); font-size: 11px; line-height: 1; letter-spacing: .02em;
+  }
+  /* dimension line: ticks at both ends, the label sitting on the line */
+  .dim { position: absolute; top: 9px; height: 1px; background: currentColor; }
+  .dim::before, .dim::after { content: ""; position: absolute; top: -5px; width: 1px; height: 11px; background: currentColor; }
+  .dim::before { left: 0; }
+  .dim::after { right: 0; }
+  .dim > span { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -52%); background: var(--color-paper); padding: 0 8px; white-space: nowrap; }
+  .plus { position: absolute; width: 10px; height: 10px; color: var(--color-graphite); }
+
+  /* the pipeline figure: Pi's line and the person's line run side by side */
+  .pipe { position: relative; }
+  .pipe-spine { position: absolute; top: 0; bottom: 0; width: 10px; pointer-events: none; }
+  .pipe-spine::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1.5px; background: var(--color-cobalt); }
+  .pipe-spine::after {
+    content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 1.5px;
+    background-image: repeating-linear-gradient(180deg, var(--color-key) 0 5px, transparent 5px 9px);
+  }
+  .pipe-group + .pipe-group { margin-top: 22px; }
+  .pipe-phase { position: relative; }
+  @media (min-width: 48rem) {
+    .pipe-phase { border-left: 2px solid var(--color-graphite); }
+    .pipe-phase[data-k="live"] { border-color: var(--color-cobalt); }
+    .pipe-phase[data-k="paid"] { border-left-color: transparent; }
+    .pipe-phase[data-k="paid"]::before {
+      content: ""; position: absolute; left: -2px; top: 0; bottom: 0; width: 4px;
+      background-image: repeating-linear-gradient(45deg, var(--color-ink) 0 1px, transparent 1px 3px);
+    }
+    .pipe-phase[data-k="finish"] { border-color: var(--color-ink); }
+  }
+  .pill {
+    position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center;
+    min-width: 38px; height: 22px; padding: 0 6px;
+    border: 1px solid var(--color-graphite); border-radius: 4px; background: var(--color-paper);
+    font-family: var(--font-mono); font-size: 11px; color: var(--color-ink);
+  }
+  .pill[data-k="live"] { border-color: var(--color-cobalt); color: var(--color-cobalt); }
+  .pill[data-k="paid"], .pill[data-k="finish"] { border-color: var(--color-ink); }
+  .pill[data-k="paid"] > i { position: absolute; inset: 0; border-radius: 3px; opacity: .55; }
+  .pill[data-k="paid"] > b { position: relative; font-weight: 500; background: var(--color-paper); padding: 0 2px; border-radius: 2px; }
+
+  /* handwritten margin note */
+  .note { font-family: var(--font-hand); color: var(--color-cobalt); font-size: 21px; line-height: 25px; }
 }

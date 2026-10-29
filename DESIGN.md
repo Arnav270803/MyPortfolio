@@ -41,31 +41,36 @@ Tailwind v4, CSS-first. Tokens live in `@theme` and are used as utility classes
 | `paper` | `#FAF9F4` | `#07090B` | Canvas and any surface that must hide what's behind it |
 | `ink` | `#111318` | `#E8EAED` | Primary text, strong strokes, emphasised borders, filled dots |
 | `graphite` | `#9299A1` | `#6C737C` | Secondary text, metadata, captions, `/` separators, `•` bullets, inactive SVG strokes |
+| `muted` | `#6B7178` | `#7A828B` | Small text that has to stay readable (summaries, captions, labels). Used by the Writing index and articles |
 | `rule` | `#D9DDE1` | `#1D2227` | Every hairline, default border, hatch, crop/plus marks, dashed guides |
-| `cobalt` | `#315E9C` | `#4C86E0` | **The only accent**: section numbers, active/selected, links, annotations, focus ring, `BUILDING` |
+| `cobalt` | `#315E9C` | `#4C86E0` | **The main accent**: section numbers, active/selected, links, annotations, focus ring, `BUILDING`; in articles, the agent |
 | `live` | `#238857` | `#2FA96D` | Status green: `LIVE`, `CURRENT`, `Ongoing`, `Finished`, done checks, "available" dot |
+| `key` | `#8E6B2F` | `#D2B072` | Articles only: a person's decision (approvals, gates, the keys). `key-soft` `#C9A96B` is its fill |
+| `plate` | `#0C0E11` | `#0E1114` | Articles only: code and app screenshots. With `plate-ink`, `plate-rule`, `plate-muted` |
 
 Rules:
 - **Colour is semantic, not decorative.** Ink and graphite carry the page.
   Cobalt means "this is the active thing / a pointer". Live means "alive or done".
-  There is no third accent: no red, no gradients, no brand colours.
+  Articles add `key` gold, which means a person's decision and nothing else (§13).
+  There are no other accents: no red, no gradients, no brand colours.
 - Tints are opacity on ink: `hover:bg-ink/[0.03]`, `hover:bg-ink/[0.04]`.
 - In SVG, always reference `var(--color-*)` so figures re-theme for free.
 - Dark mode works by **swapping CSS variables** on `.theme-dark`, applied to
   the page root. Never write `isDark ? 'x' : 'y'` class conditionals in
   blueprint code; that pattern belongs to the legacy pages.
 
-Measured contrast on `paper` (WCAG): ink 17.6, cobalt 6.2, live 4.2,
-**graphite 2.7** (dark mode: 4.2). Graphite text is below AA in light mode;
-see §11.
+Measured contrast on `paper` (WCAG): ink 17.6, cobalt 6.2, muted 4.7, key 4.6,
+live 4.2, **graphite 2.7** (dark mode: 4.2). Graphite text is below AA in light
+mode, which is why `muted` exists; see §11.
 
 Fonts (loaded in `index.html` from Google Fonts):
 
 | Token | Family | Use |
 | --- | --- | --- |
 | `font-mono` | IBM Plex Mono 300–700, italic 500/600 | **Everything.** Each section root sets `font-mono` |
-| `font-grotesk` | IBM Plex Sans 500–700 | Only the `AS` monogram (700, `tracking-[-0.03em]`) |
-| `font-hand` | Caveat 400–700 | Margin annotations and the greeting (`Good afternoon`) only |
+| `font-grotesk` | IBM Plex Sans 400–700, italic 400/500 | The `AS` monogram (700, `tracking-[-0.03em]`), and reading text in articles |
+| `font-serif` | IBM Plex Serif 400–600, italic 400/500 | Articles only: the title, section and pattern headings, pull quotes |
+| `font-hand` | Caveat 400–700 | Margin annotations, the greeting (`Good afternoon`) and an article's sign-off |
 
 Utilities defined in CSS:
 - `.hatch`: 45° repeating 1px rule lines every 5px. Used as `hatch h-2.5 border-y border-rule`.
@@ -328,7 +333,8 @@ Fix these or work around them. Don't copy them into new work.
    squares on the dark canvas. `SystemStack` hard-codes light `rgba(49,94,156,…)` / `rgba(17,19,24,…)` fills.
    Use `color-mix(in srgb, var(--color-ink) N%, transparent)` or token-driven values.
 3. **Graphite text contrast** is 2.7:1 on light paper (AA needs 4.5:1 for small text) and `live` is 4.2:1.
-   Consider a darker text-only graphite while keeping `#9299A1` for strokes.
+   `muted` (4.7:1) is the text-only grey; the Writing index and articles use it, the older pages still
+   set small text in graphite.
 4. **Theme isn't persisted**: `isDark` is plain `useState(false)`. It ignores `prefers-color-scheme` and resets on reload.
 5. **Off-system pages**: `/resume` (`ResumePage`, `Resumee`) and the home `Footer.jsx` are pre-redesign
    (zinc/gray palette, default sans, `isDark` conditionals, shadows, scale hovers). Blog and Winter Arc
@@ -381,3 +387,55 @@ Fix these or work around them. Don't copy them into new work.
 - [ ] No horizontal scroll at 390px; wide things scroll inside `overflow-x-auto`
 - [ ] Margin decoration is `xl`-only and `aria-hidden`
 - [ ] `npm run build` and `npm run lint` pass
+
+---
+
+## 13. Articles
+
+Long-form posts extend the sheet; they don't replace it. The first one is
+`/bblog/let-the-agent-drive-keep-the-keys` (`pages/PiHarnessPage.jsx`,
+`Component/PiHarness.jsx`, `Component/PiHarnessFigures.jsx`, `data/piHarness.js`).
+
+**Type.** Plex Mono stays on everything that belongs to the drawing: labels, numbers,
+captions, ledgers, code. Reading text is Plex Sans, `prose-bp`: 16.5 / 1.75, at most
+640px wide. The voice is Plex Serif: title 44/60, section headings 29/34, pattern
+headings 23/26, pull quotes. A title can end in a second sentence set in gold italic
+(`text-key`), as in "Let the agent drive. *Keep the keys.*"
+
+**Colour.** Cobalt is the agent and its machinery; `key` gold is a person's decision,
+nothing else. App screenshots and code sit on dark `plate`s, the machine's world, in
+both themes.
+
+**Structure.**
+- A back row to the index, then a sticky reading ruler (the Winter Arc ruler measuring
+  the read, with the current section's label).
+- Opening: eyebrow `NN / KIND` and date, the serif title, a dek in Plex Sans, a
+  byline and meta ledger with tags, the lead figure, then a TL;DR panel.
+- Sections open with a hatch band, a mono eyebrow `NN / LABEL` and a serif `h2`.
+  Sub-parts (the patterns) use a cobalt callout box `01` and a serif `h3`, divided by
+  dashed rules.
+- Figures are numbered from `Fig. 01` within each post.
+- Lists that carry structure become ledgers or schedules (parts list, flags, hazards,
+  procedure). Prose stays prose.
+- The post ends with the closing line, a Caveat sign-off, credits, a drawing title
+  block (title, drawn by, date, read, rev., sheet, tags), share actions and the
+  neighbouring posts.
+- Wide screens get a contents index fixed in the left margin (`Contents`) and
+  handwritten notes in the right margin (`MarginNote`). Below `xl`, the index folds
+  into one row (`MobileContents`).
+
+**Components**, all in `PiHarnessFigures.jsx` unless noted:
+`Plate` (a screenshot in a dashed crop frame), `Caption`, `CodePlate` (dark plate,
+line numbers, a small tokenizer, wrapped lines hang under their own indent, working
+COPY), `Inline` (backticks in data strings become inline code), the dimension line
+`.dim`, the stage pill `.pill` and spine `.pipe-spine`, the gate figure, the
+fingerprint chain, ledgers, and `Detail` and `MarginNote` in `PiHarness.jsx`.
+
+**Screenshots.** Paint ids, paths and vendor names out of the image file itself, not
+with CSS on top: anyone can download the original. Give every image its `width`
+and `height` so lazy images don't shift the page as they load.
+
+**On the index.** Each published post is one card centred in the rail (cover, kind and
+date, title, a short summary, one footer row and a link), with a hatch band between
+cards. Drafts are counted in the header but not listed. A post's card entry lives in
+`data/writing.js`.

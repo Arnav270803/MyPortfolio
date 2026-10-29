@@ -1,0 +1,23 @@
+import { Type } from '@earendil-works/pi-ai';
+
+export default function (pi) {
+  pi.registerTool({
+    name: 'video_request_render',
+    label: 'Request a render',
+    description: 'Asks a person to approve this render. Only an approval starts it.',
+    parameters: Type.Object({}),
+    exposure: 'model-only',
+    executionMode: 'sequential',
+    async execute(_id, _params, signal, _update, ctx) {
+      const shown = await describe(ctx.cwd);   // exact command, inputs and cap, plus one sha256 over all of it
+      const choice = await ctx.ui.select(shown.title, ['Approve', 'Request changes', 'Pause'], { signal });
+      if (choice !== 'Approve') return result({ decision: choice ?? 'Pause' });   // no clear yes means no
+
+      const now = await describe(ctx.cwd);
+      if (now.fingerprint !== shown.fingerprint) throw new Error('The request changed during review. Ask again.');
+
+      pi.appendEntry('gate', { decision: 'approved', fingerprint: shown.fingerprint });
+      return result(await act(shown));         // a helper loads credentials, does the work, records the undo
+    },
+  });
+}
