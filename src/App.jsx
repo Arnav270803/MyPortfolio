@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
-import { Routes,Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Homee from './pages/Homee'
 import BlogPage from './pages/BlogPage'
 import ResumePage from './pages/ResumePage'
@@ -144,6 +144,8 @@ const App = () => {
         <Route path='/resume' element={<ResumePage isDark={isDark} toggleTheme={toggleTheme}/>} />
         <Route path='WinterArc' element={<WinterArcPage isDark={isDark} toggleTheme={toggleTheme}/>} />
         <Route path='/bblog/let-the-agent-drive-keep-the-keys' element={<PiHarnessPage isDark={isDark} toggleTheme={toggleTheme}/>} />
+        {/* vercel.json hands every address to the app, so a mistyped one lands home instead of on a blank page */}
+        <Route path='*' element={<Navigate to='/' replace />} />
       </Routes>
 
 
