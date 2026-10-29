@@ -52,7 +52,7 @@ export const POSTS = [
     titleAccent: 'Keep the keys.',
     summary: 'How I turned Pi, a minimal open-source coding agent, into the operator of a book-to-movie pipeline, without a shell or a single key.',
     date: '2026-10-29',
-    readTime: '13 min read',
+    readTime: '12 min read',
     tags: ['Pi', 'Agent harness'],
     href: '/bblog/let-the-agent-drive-keep-the-keys',
     cover: {

@@ -558,7 +558,7 @@ export const EnvStrip = () => (
   </div>
 );
 
-/* ---------- 04 / SEVEN PATTERNS ---------- */
+/* ---------- 04 / SIX PATTERNS ---------- */
 
 export const PatternIndex = () => (
   <div className="border-y border-rule font-mono">
@@ -935,36 +935,6 @@ export const Caveat = () => (
   </div>
 );
 
-/* Pi's message from the run, with the catch marked the way a reviewer would */
-export const Catch = () => (
-  <figure className="px-5 sm:px-6 pt-6 pb-11 font-mono">
-    <Plate>
-      <div className="relative">
-        <img
-          src="/pi-catch.jpg"
-          width={1104}
-          height={334}
-          alt="Pi's message: the free plan completed with zero paid calls; one chain crosses a Base-shot boundary and would bypass its intended still, so Pi will fix that in the prompt revision before the paid pilot."
-          className="w-full h-auto block rounded-[2px]"
-          loading="lazy"
-        />
-        <span
-          className="absolute rounded-[2px]"
-          style={{ left: '29.3%', top: '18.4%', width: '59.8%', height: '12.4%', background: 'rgba(201,169,107,.17)', borderBottom: '1.5px solid var(--color-key-soft)' }}
-        />
-        <span
-          className="absolute rounded-[2px]"
-          style={{ left: '10.2%', top: '32.2%', width: '81%', height: '12.4%', background: 'rgba(201,169,107,.17)', borderBottom: '1.5px solid var(--color-key-soft)' }}
-        />
-        <span className="absolute text-[9.5px] tracking-[0.1em] text-key-soft leading-none" style={{ left: '58.5%', top: '49.2%' }}>
-          ▲ THE CATCH, STILL IN THE PLAN
-        </span>
-      </div>
-      <Caption className="mt-3">Fig. 09 — A continuity slip, caught before a single frame was rendered.</Caption>
-    </Plate>
-  </figure>
-);
-
 const WAKE = ['A job ends, hours later', 'Status file and log, on disk', 'The server wakes Pi', 'Pi reads the folder, carries on'];
 
 export const WakeUp = () => (
@@ -988,7 +958,7 @@ export const WakeUp = () => (
         </p>
       </div>
     </div>
-    <Caption>Fig. 10 — The whole wake-up call is one line.</Caption>
+    <Caption>Fig. 09 — The whole wake-up call is one line.</Caption>
   </figure>
 );
 

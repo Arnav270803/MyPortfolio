@@ -33,14 +33,13 @@ export const MARKS = [
   ['s01', '01 / MEET PI'],
   ['s02', '02 / THE TROUBLE WITH HELPFUL'],
   ['s03', '03 / THE SHAPE OF THE THING'],
-  ['s04', '04 / SEVEN PATTERNS'],
+  ['s04', '04 / SIX PATTERNS'],
   ['p1', '04 / 01 · SWAP THE SHELL FOR VERBS'],
   ['p2', '04 / 02 · ONLY A GATE CAN ACT'],
   ['p3', '04 / 03 · APPROVE EXACTLY WHAT YOU SAW'],
   ['p4', '04 / 04 · MAKE EVERY WRITE UNDOABLE'],
   ['p5', '04 / 05 · KEEP SECRETS OUT'],
-  ['p6', '04 / 06 · DECISIONS, NOT COMMANDS'],
-  ['p7', '04 / 07 · DETACHED JOBS'],
+  ['p6', '04 / 06 · DETACHED JOBS'],
   ['s05', '05 / CHECKS BEAT PROMPTS'],
   ['s06', '06 / THINGS THAT BIT US'],
   ['s07', '07 / BUILD YOUR OWN'],
@@ -54,15 +53,14 @@ export const CONTENTS = [
   {
     id: 's04',
     n: '04',
-    label: 'Seven patterns',
+    label: 'Six patterns',
     children: [
       { id: 'p1', n: '01', label: 'Shell → verbs' },
       { id: 'p2', n: '02', label: 'Only a gate can act' },
       { id: 'p3', n: '03', label: 'Approve what you saw' },
       { id: 'p4', n: '04', label: 'Undoable writes' },
       { id: 'p5', n: '05', label: 'Secrets out' },
-      { id: 'p6', n: '06', label: 'Decisions, not commands' },
-      { id: 'p7', n: '07', label: 'Detached jobs' },
+      { id: 'p6', n: '06', label: 'Detached jobs' },
     ],
   },
   { id: 's05', n: '05', label: 'Checks beat prompts' },
@@ -149,8 +147,7 @@ export const PATTERNS = [
   { id: 'p3', title: 'Approve exactly what you saw', tag: 'FINGERPRINTS' },
   { id: 'p4', title: 'Make every write undoable', tag: 'UNDO' },
   { id: 'p5', title: 'Keep secrets out of the agent’s world', tag: 'SECRETS' },
-  { id: 'p6', title: 'Let the agent write decisions, not commands', tag: 'DECISIONS' },
-  { id: 'p7', title: 'Run long work as detached jobs', tag: 'JOBS' },
+  { id: 'p6', title: 'Run long work as detached jobs', tag: 'JOBS' },
 ];
 
 /* Fig. 05. tone: cobalt for the machine's steps, key for the person's */
@@ -180,8 +177,6 @@ export const HAZARDS = [
   { lead: 'JSONL has two traps.', text: 'Pi’s RPC docs warn that Node’s `readline` also splits on `U+2028` and `U+2029`, which are perfectly legal inside JSON strings. Split on `\\n` and nothing else. The second trap we found ourselves: sessions with images get big, and a reader that re-scans its whole buffer on every chunk goes quadratic. Only scan the bytes that just arrived.' },
   { lead: 'Resolve links before you check paths.', text: 'A symlink, or a Windows junction, inside an allowed folder can point anywhere. Our guard resolves the real path first and checks both versions.' },
   { lead: 'Globs can climb.', text: 'A `find` pattern with `..`, a `~` or an absolute path walks right out of the folder you meant. Refuse those outright.' },
-  { lead: 'Windows ignores case, so your rules must too.', text: 'Otherwise `Decision.json` strolls past a rule written for `decision.json`.' },
-  { lead: 'A killed process on Windows lets go slowly.', text: 'It can hold its files for a moment after you end it, and replacing a file that another process has open fails with `EPERM`. We hit this when cancelling jobs. The fix: wait for the job to exit, then retry the rename for a few seconds, the way `graceful-fs` does.' },
   { lead: 'Hard-coded names multiply.', text: 'The moment your code names your test book, it breaks on the next one. Paths, names, formats and limits belong in data files. Our web app doesn’t know a single file path; it asks the server.' },
 ];
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, ArrowUpRight, Calendar, Clock, ListOrdered, ChevronDown, KeyRound, Link2, Share, Plus } from 'lucide-react';
-import { MARKS, CONTENTS, CODE } from '../data/piHarness';
+import { ArrowLeft, ArrowUpRight, Building2, Calendar, Clock, ListOrdered, ChevronDown, KeyRound, Link2, Share, Plus } from 'lucide-react';
+import { MARKS, CONTENTS, CODE, PATTERNS } from '../data/piHarness';
 import {
   CornerMarks,
   Plate,
@@ -22,7 +22,6 @@ import {
   Guarantees,
   RefusedPaths,
   Caveat,
-  Catch,
   WakeUp,
   Fixes,
   HazardLog,
@@ -33,8 +32,9 @@ import {
    The post on Pi, a book-to-movie pipeline and the gates in front of it. The
    prose is here; lists, tables and figures come from PiHarnessFigures. */
 
-const READ_MIN = 13;
+const READ_MIN = 12;
 const TITLE = 'Let the agent drive. Keep the keys.';
+const COMPANY = { name: 'Boock.ai', href: 'https://boock.ai' };
 
 /* set this to '/pi-shot-grid.png' once images/12_shot_grid.png is in public/ */
 const SHOT_GRID = null;
@@ -336,7 +336,21 @@ const PiHarness = () => {
                 </p>
                 <p className="flex items-center gap-2.5">
                   <Clock className="w-[15px] h-[15px] shrink-0" strokeWidth={1.6} />
-                  {READ_MIN} min read · 3,400 words, code included
+                  {READ_MIN} min read · 3,200 words, code included
+                </p>
+                <p className="flex items-center gap-2.5">
+                  <Building2 className="w-[15px] h-[15px] shrink-0" strokeWidth={1.6} />
+                  <span>
+                    Built for{' '}
+                    <a
+                      href={COMPANY.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-cobalt underline underline-offset-4 hover:opacity-70 transition-opacity"
+                    >
+                      {COMPANY.name}
+                    </a>
+                  </span>
                 </p>
               </div>
             </div>
@@ -410,8 +424,12 @@ const PiHarness = () => {
               Every agent project has a moment where you read the tool list and feel slightly cold. For me, it was one word: <code>bash</code>.
             </p>
             <p>
-              At work, our pipeline converts books into cinematic movies. Between “here’s a book” and “here’s a film” sit dozens of careful steps. Check what
-              the other teams delivered. Build the inputs. Plan every shot. Write the prompts. Render clips on rented GPUs. Review them, assemble the film,
+              At{' '}
+              <a href={COMPANY.href} target="_blank" rel="noopener noreferrer">
+                {COMPANY.name}
+              </a>
+              , where I work, our pipeline converts books into cinematic movies. Between “here’s a book” and “here’s a film” sit dozens of careful steps.
+              Check what the other teams delivered. Build the inputs. Plan every shot. Write the prompts. Render clips on rented GPUs. Review them, assemble the film,
               mix the sound. It’s patient, read-everything, follow-the-procedure work, which is exactly what coding agents turn out to be weirdly good at.
             </p>
             <p>
@@ -450,24 +468,18 @@ const PiHarness = () => {
 
         {/* ============ 02 ============ */}
         <section id="s02" className="relative scroll-mt-[64px]">
-          <MarginNote arrow="left" noteClass="-right-[214px] top-[198px] -rotate-[4deg]" arrowClass="-right-[122px] top-[236px] w-[84px] -scale-x-100">
-            mug-worthy
-          </MarginNote>
           <Hatch />
           <SectionHead n="02" label="THE TROUBLE WITH HELPFUL">
             The trouble with helpful
           </SectionHead>
-          <Prose className="pt-5">
-            <p>Pi’s security page opens with a sentence I’d happily print on a mug:</p>
-          </Prose>
-          <Detail className="mt-6 mb-1 py-6">
+          <Detail className="mt-7 mb-1 py-6">
             <p className="font-serif italic text-[25px] sm:text-[29px] leading-[1.25] text-ink">“Treat model-generated commands and code as untrusted.”</p>
             <p className="mt-3 font-mono text-[11px] tracking-[0.08em] text-muted">
               — PI <span className="text-graphite">/</span> DOCS <span className="text-graphite">/</span> SECURITY
             </p>
           </Detail>
           <Prose className="pt-6">
-            <p>It then explains, very calmly, that Pi runs with the permissions of whoever started it and doesn’t ask before every tool call.</p>
+            <p>The same page goes on to explain, very calmly, that Pi runs with the permissions of whoever started it and doesn’t ask before every tool call.</p>
             <p>
               That isn’t a flaw. It’s honesty. A coding agent is a fast, tireless, extremely literal colleague who is logged in as you. With a shell, it can do
               anything you can do, including the expensive things and the things you can’t undo. And a line in the system prompt saying “never start a render
@@ -522,11 +534,11 @@ const PiHarness = () => {
           <div className="px-5 sm:px-6 pt-9 pb-6">
             <p className="font-mono text-[11.5px] tracking-[0.08em] text-ink">
               <span className="text-cobalt">04</span>
-              <span className="text-graphite"> / </span>SEVEN PATTERNS
+              <span className="text-graphite"> / </span>SIX PATTERNS
             </p>
-            <h2 className="mt-3 font-serif font-medium text-[29px] sm:text-[34px] leading-[1.12] tracking-[-0.01em]">Seven patterns worth stealing</h2>
+            <h2 className="mt-3 font-serif font-medium text-[29px] sm:text-[34px] leading-[1.12] tracking-[-0.01em]">Six patterns worth stealing</h2>
             <p className="mt-2 font-mono text-[11px] tracking-[0.08em] text-muted">
-              PATTERN INDEX · <span className="text-cobalt">07</span>
+              PATTERN INDEX · <span className="text-cobalt">{pad(PATTERNS.length)}</span>
             </p>
           </div>
           <PatternIndex />
@@ -712,32 +724,7 @@ const PiHarness = () => {
           {/* 06 */}
           <div id="p6" className="relative scroll-mt-[64px]">
             <PatternRule />
-            <PatternHead n="06" tag="DECISIONS">
-              Let the agent write decisions, not commands
-            </PatternHead>
-            <Prose className="pt-4">
-              <p>
-                Pi’s real output isn’t commands. It’s small, structured decision files: which picture each shot uses, how a prompt should change, whether a
-                clip passes review, notes for the reviewer. The tools validate those files, turn them into the pipeline’s inputs, and predict the result before
-                anything runs. Pi keeps the judgement. The tools keep the mechanics.
-              </p>
-              <p>
-                The guard enforces the split. Pi’s file tools can’t touch anything the harness tools build, and inside each stage’s folder Pi may write only its
-                decision files and review notes. So when a reviewer opens a stage, they see two clean things: what Pi decided, and what the tools built from
-                it.
-              </p>
-              <p>
-                That judgement is the reason to have an agent at all. On one story, Pi spotted a continuity problem in the shot plan and fixed it in the
-                prompts before a single frame was rendered, which is the cheapest moment in all of film-making to find one.
-              </p>
-            </Prose>
-            <Catch />
-          </div>
-
-          {/* 07 */}
-          <div id="p7" className="relative scroll-mt-[64px]">
-            <PatternRule />
-            <PatternHead n="07" tag="JOBS">
+            <PatternHead n="06" tag="JOBS">
               Run long work as detached jobs
             </PatternHead>
             <Prose className="pt-4">
